@@ -1,6 +1,6 @@
 # Problem Hook & Value Proposition: RouteLogic Velocity
 
-Module 1 · Deliverable 1. The discovery groundwork behind it is in [`strategic-map.md`](strategic-map.md).
+Module 1 · Deliverable 1.
 
 ## 1. Chosen scenario
 
@@ -43,7 +43,3 @@ I ran the cold read with a skeptical VP of Finance who saw only the hook and val
 | Is the business risk high enough to justify a new initiative, a high-stakes threat, or a minor inconvenience? | A high-stakes threat, but not yet a funded one. My first draft rested on one account and the claim that other fleets would follow, which nothing supported. The hook now rests on the broad usage decline the brief reports. Open gaps: the account's revenue, its decision date, the cost, and whether anything can ship before the trial ends. |
 | Is the moment of misery a systemic problem or just an edge case? | Systemic. The brief reports a sharp decline in usage among coordinators as a group, and says the extra layers turned a simple job into a struggle for the 95% who rely on RouteLogic daily. These are the core users. The cold read caught that my first draft hid this and read like a project to save one deal, so the hook and value proposition now say it outright. Not yet proven: the exact workaround (phone, group text, spreadsheet) is my inference from the brief. |
 | Does the value proposition actually remove the obstacle you identified, or is it a generic feature? | It removes it, as long as the obstacle is the layers. The brief blames the layers ("administrative burden", "extra layers"), and the value proposition names the three jobs it speeds up. Two fixes came from the cold read. The bar is now "faster than the phone and spreadsheet", not "fastest path in the product", because the fastest path inside a slow product can still lose to a phone. And the layers stay one step away for the executives who bought RouteLogic for them, so the buyer loses nothing. It would not help if the slowness is the software itself, such as load times. The brief gives no time baseline for assign and reroute, so this is unproven. |
-
-## Link to full artifact
-
-This file is the full artifact. Discovery groundwork: [`strategic-map.md`](strategic-map.md).
