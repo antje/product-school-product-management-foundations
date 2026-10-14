@@ -10,7 +10,7 @@
 
 ## The maps
 
-V1 and V3 from fresh chats. V1 is drawn verbatim from the AI output. V3 is condensed from the AI outline, wording kept close.
+Each map comes from its own fresh chat. V1 is drawn verbatim from the AI output. V3 is condensed from the AI outline, wording kept close.
 
 **V1 · shallow prompt:** 13 branches, 77 leaves, no audience, no ranking.
 

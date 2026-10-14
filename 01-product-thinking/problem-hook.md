@@ -10,11 +10,11 @@ The risk is concrete and close: our largest enterprise account is already triali
 
 ## 2. The strategic crisis
 
-> If we do nothing for 12 months, the company will lose the daily user while still winning the executive demo. Coordinator usage is already falling across the base, and our largest account is trialing a leaner rival because RouteLogic slows its most time-sensitive work. That trial is the first visible exit, not the only one. As coordination moves to phones, spreadsheets and lighter tools, RouteLogic becomes the back office admins log into for reports. A reporting layer on top of work done elsewhere is easy to replace. "The most powerful operating system" becomes "the expensive back office."
+> If we do nothing for 12 months, the company will lose the daily user while still winning the executive demo. Coordinator usage is already falling across the base, and our largest account is trialing a leaner rival because RouteLogic slows its most time-sensitive work. That trial is only the first visible exit. As coordination moves to phones, spreadsheets and lighter tools, RouteLogic goes from "the most powerful operating system" to the back office admins log into for reports. A reporting layer on top of work done elsewhere is easy to replace.
 
 ## 3. The moment of misery
 
-> The user is currently forced to work around RouteLogic at the moments that matter most. A driver calls in late and a route has to be reassigned before the trucks leave. RouteLogic can do it, but the steps sit behind layers built for compliance and finance. So the coordinator solves it by phone, in a group text with drivers and on a spreadsheet, then types the result into RouteLogic later, if at all. The system of record drifts away from what actually happened on the road.
+> The user is currently forced to work around RouteLogic when the work is most urgent. A driver calls in late and a route has to be reassigned before the trucks leave. RouteLogic can do it, but the steps sit behind layers built for compliance and finance. So the coordinator solves it by phone, in a group text with drivers and on a spreadsheet, then types the result into RouteLogic later, if at all. The system of record drifts away from what actually happened on the road.
 
 ## 4. Problem hook
 
