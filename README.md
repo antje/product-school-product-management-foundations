@@ -10,8 +10,8 @@ This is a **template repo**. Click **Use this template → Create a new reposito
 
 | # | Deliverable | Module | Status | File |
 |---|---|---|---|---|
-| 1 | **Strategic Discovery Map** (groundwork) | M1 | ☐ | `01-product-thinking/strategic-map.md` |
-| 1 | **Problem Hook & Value Proposition** (+ hypothesis) | M1 | ☐ | `01-product-thinking/problem-hook.md` |
+| 1 | **Strategic Discovery Map** (groundwork) | M1 | ✅ | `01-product-thinking/strategic-map.md` |
+| 1 | **Problem Hook & Value Proposition** (+ hypothesis) | M1 | ✅ | `01-product-thinking/problem-hook.md` |
 | 2 | **AI Synthesis** — Product Health & Insights Summary | M2 | ☐ | `02-discovery/ai-synthesis.md` |
 | 2 | **Competitive Analysis & Journey Map** | M2 | ☐ | `02-discovery/competitive-and-journey.md` |
 | 3 | **Hypothesis & Success Metrics** | M3 | ☐ | `03-analytics/hypothesis-and-metrics.md` |
@@ -24,9 +24,7 @@ This is a **template repo**. Click **Use this template → Create a new reposito
 
 ## The project in one sentence
 
-_What is your product concept, who is it for, and what's the single bet you're making?_
-
-___
+**RouteLogic Velocity** makes the daily jobs of frontline fleet coordinators (assign, reroute, track) faster inside RouteLogic than on the phone and spreadsheet they fall back on, while the compliance and finance layers stay one step away for the admins who bought them. The bet: taking layers away, not adding features, wins back daily use and keeps our largest account.
 
 ## How to submit
 
