@@ -4,7 +4,7 @@ Module 1 · Deliverable 1.
 
 ## 1. Chosen scenario
 
-**Question:** Chosen path, which scenario are you committing to? (StreamLine or RouteLogic, or your own)
+**Chosen path, which scenario are you committing to? (StreamLine or RouteLogic, or your own)**
 
 **Path:** RouteLogic Velocity (B2B)
 
@@ -12,34 +12,32 @@ The risk is concrete and close: our largest enterprise account is already triali
 
 ## 2. The strategic crisis
 
-**Question:** Strategic crisis, based on the brief, if the company does nothing for 12 months, what happens to its market position?
+**Strategic crisis, based on the brief, if the company does nothing for 12 months, what happens to its market position?**
 
-> If we do nothing for 12 months, the company will lose the daily user while still winning the executive demo. Coordinator usage is already falling across the base, and our largest account is trialing a leaner rival because RouteLogic slows its most time-sensitive work. That trial is only the first visible exit. As coordination moves to phones, spreadsheets and lighter tools, RouteLogic goes from "the most powerful operating system" to the back office admins log into for reports. A reporting layer on top of work done elsewhere is easy to replace.
+> If we do nothing for 12 months, the company will lose the daily user while still winning the executive demo. Usage among the people who run fleets in real time is already falling across the base, and our largest account is trialing a leaner rival because RouteLogic slows its most time-sensitive work. That trial is only the first visible exit. As daily work moves to texts, WhatsApp groups, paper and lighter tools, RouteLogic goes from "the most powerful operating system" to the back office admins log into for reports. A reporting layer on top of work done elsewhere is easy to replace.
 
 ## 3. The moment of misery
 
-**Question:** Moment of misery, what is the user likely doing outside the product (Google, spreadsheets, a competitor) because your tool isn’t serving them?
+**Moment of misery, what is the user likely doing outside the product (Google, spreadsheets, a competitor) because your tool isn’t serving them?**
 
-> The user is currently forced to work around RouteLogic when the work is most urgent. A driver calls in late and a route has to be reassigned before the trucks leave. RouteLogic can do it, but the steps sit behind layers built for compliance and finance. So the coordinator solves it by phone, in a group text with drivers and on a spreadsheet, then types the result into RouteLogic later, if at all. The system of record drifts away from what actually happened on the road.
+> The user is currently forced to work around RouteLogic at the doorstep. Marking a stop delivered takes three taps on three screens, in the rain, with a package in one hand, so the driver texts the dispatcher instead (UXR-01, BUG-2055). "Start route", used 30 times a day, is buried under features added in updates (UXR-11). The texts land on a dispatcher who already keeps a WhatsApp group as "the real system", because route changes reach drivers late and delivered stops show "in progress" for up to an hour (UXR-02, UXR-09). Five of seven drivers carry a paper manifest in case the app dies (UXR-12). The system of record drifts away from what actually happened on the road.
 
 ## 4. Problem hook
 
-**Question:** Problem hook, summarize the business risk and user pain into one urgent sentence.
+**Problem hook, summarize the business risk and user pain into one urgent sentence.**
 
-> We must keep our largest account and reverse the drop in daily use across our base by making coordinators' most time-sensitive work faster inside RouteLogic than on the phone and spreadsheet they fall back on today.
+> We must keep our largest account and reverse the drop in daily use across our base by making the actions drivers and dispatchers repeat all day faster inside RouteLogic than the texts, WhatsApp messages and paper they fall back on today.
 
 ## 5. Value proposition
 
-**Question:** Value proposition, based on the proposed initiative (Spotlight or Velocity), what is the new value and why is it urgent to launch now?
+**Value proposition, based on the proposed initiative (Spotlight or Velocity), what is the new value and why is it urgent to launch now?**
 
-> For **frontline fleet coordinators, the 95% who rely on RouteLogic every day**, we will **make assign, reroute and track faster than the phone and spreadsheet they fall back on today, by moving the compliance and finance layers off their screens while keeping them one step away for the admins and executives who bought RouteLogic for them**, because **our largest account is deciding during its trial and coordinator usage is already falling across the base**.
+> For **delivery drivers and their dispatchers, the frontline users among the 95% who rely on RouteLogic every day**, we will **make start route, mark delivered and route changes faster than the texts, WhatsApp group and paper they fall back on today, by moving the compliance and finance layers off their screens while keeping them one step away for the admins and executives who bought RouteLogic for them**, because **our largest account is deciding during its trial and frontline usage is already falling across the base**.
 
 ## 6. Cold-read self-review
 
-I ran the cold read with a skeptical VP of Finance who saw only the hook and value proposition. The verdict on the first draft: "high enough to get a meeting, not to get funding." The answers below record what changed.
-
 | Question | Your answer |
 |---|---|
-| Is the business risk high enough to justify a new initiative, a high-stakes threat, or a minor inconvenience? | A high-stakes threat, but not yet a funded one. My first draft rested on one account and the claim that other fleets would follow, which nothing supported. The hook now rests on the broad usage decline the brief reports. Open gaps: the account's revenue, its decision date, the cost, and whether anything can ship before the trial ends. |
-| Is the moment of misery a systemic problem or just an edge case? | Systemic. The brief reports a sharp decline in usage among coordinators as a group, and says the extra layers turned a simple job into a struggle for the 95% who rely on RouteLogic daily. These are the core users. The cold read caught that my first draft hid this and read like a project to save one deal, so the hook and value proposition now say it outright. Not yet proven: the exact workaround (phone, group text, spreadsheet) is my inference from the brief. |
-| Does the value proposition actually remove the obstacle you identified, or is it a generic feature? | It removes it, as long as the obstacle is the layers. The brief blames the layers ("administrative burden", "extra layers"), and the value proposition names the three jobs it speeds up. Two fixes came from the cold read. The bar is now "faster than the phone and spreadsheet", not "fastest path in the product", because the fastest path inside a slow product can still lose to a phone. And the layers stay one step away for the executives who bought RouteLogic for them, so the buyer loses nothing. It would not help if the slowness is the software itself, such as load times. The brief gives no time baseline for assign and reroute, so this is unproven. |
+| Is the business risk high enough to justify a new initiative, a high-stakes threat, or a minor inconvenience? | A high-stakes threat, but not yet a funded one. The risk is wider than one account: the brief reports a broad decline in usage among the people who run fleets in real time. A skeptical finance reader would still ask for more. Open gaps: the account's revenue, its decision date, the cost, and whether anything can ship before the trial ends. |
+| Is the moment of misery a systemic problem or just an edge case? | Systemic. The brief reports a sharp decline in usage among the people who run fleets in real time, and says the extra layers turned a simple job into a struggle for the 95% who rely on RouteLogic daily. These are the core users, so this is more than a project to save one deal. The research confirms the workarounds: texts to the dispatcher (UXR-01), a WhatsApp group as "the real system" (UXR-02), paper manifests kept by five of seven drivers (UXR-12) and morning screenshots (UXR-06). |
+| Does the value proposition actually remove the obstacle you identified, or is it a generic feature? | It removes it where the obstacle is the layers. The brief blames the layers ("administrative burden", "extra layers"), and the value proposition names the three actions it speeds up. The bar is "faster than the texts, WhatsApp and paper", not "fastest path in the product", because the fastest path inside a slow product can still lose to a phone. The layers stay one step away for the executives who bought RouteLogic for them, so the buyer loses nothing. The research shows two kinds of slowness. Some is layers: three taps to mark a stop delivered, and "start route" buried under new features (BUG-2055, BUG-2079). Some is software faults: route changes that arrive late, crashes on long routes and a blank route offline (BUG-2044, BUG-2031, BUG-2050). Moving layers out of the way fixes the first kind only. There is no time baseline for start route or mark delivered. |
