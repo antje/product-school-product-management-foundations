@@ -12,7 +12,7 @@
 | 1 | **Problem Hook & Value Proposition** | M1 | ✅ | `01-product-thinking/problem-hook.md` |
 | 2 | **AI Synthesis**, Product Health & Insights Summary | M2 | ✅ | `02-discovery/ai-synthesis.md` |
 | 2 | **Competitive Analysis & Journey Map** | M2 | ✅ | `02-discovery/competitive-and-journey.md` · [`journey-map.html`](02-discovery/journey-map.html) |
-| 3 | **Hypothesis & Success Metrics** | M3 | ☐ | `03-analytics/hypothesis-and-metrics.md` |
+| 3 | **Hypothesis & Success Metrics** | M3 | ✅ | `03-analytics/hypothesis-and-metrics.md` |
 | 4 | **Roadmap, PRD & Prototype** | M4 | ☐ | `04-roadmap/roadmap-prd-prototype.md` |
 | 4 | **PRD & Prototype Sprint** | M4 | ☐ | `04-roadmap/prd-and-prototype.md` |
 | 5 | **Experimentation Plan** | M5 | ☐ | `05-experimentation/experimentation-plan.md` |
@@ -22,7 +22,7 @@
 
 ## The project in one sentence
 
-**RouteLogic Velocity** makes the actions delivery drivers and their dispatchers repeat all day (start route, mark delivered, route changes) faster inside RouteLogic than the texts, WhatsApp group and paper they fall back on, while the compliance and finance layers stay one step away for the admins who bought them. The bet: taking layers away, not adding features, wins back daily use and keeps our largest account.
+**RouteLogic Velocity** makes the actions delivery drivers and their dispatchers repeat all day (route changes, compliance checks, mark delivered) faster inside RouteLogic than the texts, WhatsApp group and paper they fall back on, while finance reporting and other features they never use stay one step away for the managers who bought them. The bet: taking layers away, not adding features, wins back daily use and keeps our largest account.
 
 ## Repo structure
 

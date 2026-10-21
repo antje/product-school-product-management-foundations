@@ -32,7 +32,7 @@ The risk is concrete and close: our largest enterprise account is already triali
 
 **Value proposition, based on the proposed initiative (Spotlight or Velocity), what is the new value and why is it urgent to launch now?**
 
-> For **delivery drivers and their dispatchers, the frontline users among the 95% who rely on RouteLogic every day**, we will **make start route, mark delivered and route changes faster than the texts, WhatsApp group and paper they fall back on today, by moving the compliance and finance layers off their screens while keeping them one step away for the admins and executives who bought RouteLogic for them**, because **our largest account is deciding during its trial and frontline usage is already falling across the base**.
+> For **delivery drivers and their dispatchers, the frontline users among the 95% who rely on RouteLogic every day**, we will **make route changes, compliance checks and mark delivered faster than the texts, WhatsApp group and paper they fall back on today, by cutting compliance logging toward its benchmark and moving finance reporting and other features they never use off their screens, while keeping those one step away for the managers who bought RouteLogic for them**, because **our largest account is deciding during its trial and frontline usage is already falling across the base**.
 
 ## 6. Cold-read self-review
 
