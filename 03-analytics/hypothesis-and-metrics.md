@@ -22,11 +22,11 @@ The driver texts the dispatcher instead of tapping. Drivers keep a paper manifes
 
 **Problem Hook, your one-sentence framing of the business crisis (M1)**
 
-We must keep our largest account and reverse the drop in daily use across our base by making the actions drivers and dispatchers repeat all day faster inside RouteLogic than the texts, WhatsApp messages and paper they fall back on today.
+We must keep our largest account and win back daily use by making frontline work faster in RouteLogic than texts, WhatsApp and paper.
 
 **Value Proposition, the outcome your initiative promised to deliver (M1)**
 
-For delivery drivers and their dispatchers, the frontline users among the 95% who rely on RouteLogic every day, we will make start route, mark delivered and route changes faster than the texts, WhatsApp group and paper they fall back on today, by moving the compliance and finance layers off their screens while keeping them one step away for the admins and executives who bought RouteLogic for them, because our largest account is deciding during its trial and frontline usage is already falling across the base.
+For drivers and their dispatchers, we will make start route, mark delivered and route changes faster than texts and paper, because our largest account is deciding during its trial. Compliance and finance layers move off their screens, one step away for the managers who bought them.
 
 ## Read your data snapshots
 
@@ -86,7 +86,7 @@ First, confirm the 48% is real: check that compliance checks done on paper or an
 
 **Draft your full hypothesis sentence, one to three sentences; quote the metric, name the persona, name the outcome**
 
-> Based on dispatchers saying they "can't trust the board" and run the day in WhatsApp, and on compliance logging taking 14.6 minutes against a 3-minute benchmark while completion falls from 71% to 48% at that step, I believe that cutting compliance logging toward the benchmark for fleet coordinators will result in coordinators finishing their daily workflow inside RouteLogic, as measured by a 25% increase in compliance-step completion (48% to 60%). I will protect compliance quality (manager Compliance CSAT at 3.9 or higher, no rise in incomplete records) and will make a go/no-go decision after four weeks and at least 270 coordinators per group.
+> Based on dispatchers who "can't trust the board" and compliance logs that take 14.6 minutes instead of 3, I believe faster compliance logging will get fleet coordinators to finish their day in RouteLogic. It will show as a 25% increase in compliance-step completion, from 48% to 60%. I will protect compliance quality and will make a go/no-go decision after four weeks and at least 270 coordinators per group.
 
 Checked against the four pitfalls:
 
@@ -99,6 +99,6 @@ Checked against the four pitfalls:
 
 | Metric | Type | Target | Why it matters |
 |---|---|---|---|
-| Full daily workflow completion (through shift handoff), averaged over the last two weeks of the test | North-star, success signal, lagging | 31% → 39% | Proves value, not just use: coordinators keep finishing the day in RouteLogic after the novelty wears off. 39% assumes the handoff step keeps converting 65% of coordinators who log compliance, as it does today (31 of 48). |
+| Full daily workflow completion (through handoff), last two weeks of the test | North-star, success signal, lagging | 31% → 39% | Shows lasting value, not a first try. 39% assumes 65% of coordinators who log compliance still finish the handoff, as today (31 of 48). |
 | Compliance-step completion | Leading indicator, initiative signal | 48% → 60% (+25%) | The step where the workflow breaks, and one the build directly moves. Median logging time from 14.6 to 7.3 minutes or less supports it. |
 | Manager Compliance CSAT and compliance record completeness | Guardrail, counter-metric | CSAT ≥ 3.9, and incomplete or failed records do not rise | Speed must not come from skipped checks. The buyer relies on these records. |

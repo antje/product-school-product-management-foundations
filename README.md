@@ -1,6 +1,6 @@
 # RouteLogic Velocity: Product Management Final Project
 
-> My final project for Product School's **Product Management** certification. **RouteLogic Velocity** is a B2B logistics initiative: make the frontline actions drivers and dispatchers repeat all day the fastest thing in the product, taken from a raw problem to a launch-ready concept across six modules.
+> My final project for Product School's **Product Management** certification. **RouteLogic Velocity** is a B2B logistics initiative. It makes the work drivers and dispatchers repeat all day the fastest thing in the product.
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## The project in one sentence
 
-**RouteLogic Velocity** makes the actions delivery drivers and their dispatchers repeat all day (route changes, compliance checks, mark delivered) faster inside RouteLogic than the texts, WhatsApp group and paper they fall back on, while finance reporting and other features they never use stay one step away for the managers who bought them. The bet: taking layers away, not adding features, wins back daily use and keeps our largest account.
+**RouteLogic Velocity** makes the work fleet coordinators and drivers repeat all day faster in RouteLogic than texts, WhatsApp and paper, starting with compliance logging. The bet: taking layers away, not adding features, wins back daily use and keeps our largest account.
 
 ## Repo structure
 

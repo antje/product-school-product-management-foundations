@@ -22,7 +22,7 @@ The app loses the route. It crashes on Android once a route passes about 40 stop
 
 - **Category.** All three are pain points. The need behind them is one job: finish every stop fast, often one-handed, on a route the driver and the dispatcher both trust. The behaviors are the workarounds: a WhatsApp group, texts instead of taps, paper manifests, morning screenshots.
 - **Say vs. do.** Each one rests on behavior, not only on opinion. Dispatchers run a WhatsApp group, drivers text instead of tapping, and five of seven carry paper. Each also has a bug report that confirms it in the system (BUG-2044 and BUG-2072, BUG-2055, BUG-2031 and BUG-2050).
-- **Core-values filter.** Velocity's stated value is to be the fastest tool for everyday work. All three block exactly that. The route optimizer complaint (UXR-05, BUG-2068) is real and costs drivers every day, but it is about routing quality, not the speed of everyday actions, so it did not make my three.
+- **Core-values filter.** Velocity's stated value is to be the fastest tool for everyday work. All three block exactly that. The route optimizer complaint (UXR-05, BUG-2068) is real and costs drivers every day. But it is about routing quality, not the speed of everyday actions, so it did not make my three.
 
 ### Step 2 · Product Health & Insights Summary
 
@@ -87,7 +87,7 @@ Yes, in four places. First, the doorstep moment becomes "one hand free, outdoors
 
 **Did the AI try to suggest features or a roadmap despite the constraints?**
 
-No. There is no roadmap or recommendations section. The closest it comes is restating missing features from the bug reports ("no single-tap option", "no retry queue", "cannot configure their home screen") and the line "each failure on its own is fixable". Those describe gaps, not a plan.
+No. There is no roadmap or recommendations section. The closest it comes is restating missing features from the bug reports: "no single-tap option", "no retry queue", "cannot configure their home screen". It also says "each failure on its own is fixable". Those describe gaps, not a plan.
 
 **Logic leak / hallucination #1 (e.g., “AI suggested a new search bar feature, roadmap leak”)**
 

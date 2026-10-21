@@ -18,7 +18,7 @@ To confirm each stop and move on in seconds, with the rest of the route still th
 
 **Friction, the main barrier (moment of misery) stopping them from succeeding**
 
-Marking a stop delivered takes three taps across three screens, at a doorstep in the rain with a package in one hand, so the driver texts the dispatcher instead (UXR-01, BUG-2055).
+Marking a stop delivered takes three taps across three screens. The driver does it at a doorstep, in the rain, with a package in one hand, so they text the dispatcher instead (UXR-01, BUG-2055).
 
 ### Step 2 · Current workaround
 
