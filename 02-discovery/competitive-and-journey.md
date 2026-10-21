@@ -24,7 +24,7 @@ Marking a stop delivered takes three taps across three screens. The driver does 
 
 **External tools, the outside platforms or tools the user is forced to use**
 
-The driver's own phone and plain text messages to the dispatcher (UXR-01). The same drivers keep backups outside the app: a paper manifest "just in case the app dies" (UXR-12) and a screenshot of the route every morning (UXR-06). At the other end, the dispatcher runs a WhatsApp group as "the real system" (UXR-02).
+The driver's own phone and plain text messages to the dispatcher (UXR-01). The same drivers keep backups outside the app. They carry a paper manifest "just in case the app dies" (UXR-12) and screenshot the route every morning (UXR-06). At the other end, the dispatcher runs a WhatsApp group as "the real system" (UXR-02).
 
 **The process, the 3 to 5 manual steps the user takes to get the job done**
 
@@ -47,6 +47,6 @@ The doorstep. Three screens with a package in one hand, in the rain, is the mome
 
 **Your journey map, a shareable link, or the map file you committed (e.g. journey-map.html)**
 
-[`journey-map.html`](journey-map.html), with a screenshot below. Four stages of one stop, from start of route to the next stop. Each stage shows the action and its benefit, the driver's internal state, the pain point it removes, and the workaround it makes unnecessary. The three competitive advantages over the workaround: one action creates one record, the record carries data a text cannot, and updates flow live in both directions.
+[`journey-map.html`](journey-map.html), with a screenshot below. Four stages of one stop, from start of route to the next stop. Each stage shows the action and its benefit, the driver's internal state, the pain point it removes, and the workaround it makes unnecessary. It ends with three competitive advantages over the workaround. One action creates one record, the record carries data a text cannot, and updates flow live in both directions.
 
 ![Future-state journey map for the RouteLogic driver](images/journey-map.png)

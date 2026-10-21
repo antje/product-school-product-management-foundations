@@ -26,7 +26,7 @@ We must keep our largest account and win back daily use by making frontline work
 
 **Value Proposition, the outcome your initiative promised to deliver (M1)**
 
-For drivers and their dispatchers, we will make start route, mark delivered and route changes faster than texts and paper, because our largest account is deciding during its trial. Compliance and finance layers move off their screens, one step away for the managers who bought them.
+For drivers and their dispatchers, we will make core actions faster than texts and paper, because our largest account is deciding during its trial. Compliance and finance layers move off their screens, one step away for the managers who bought them.
 
 ## Read your data snapshots
 
@@ -52,7 +52,7 @@ Coordinators × Compliance, at 2.2 out of 5: the lowest score any role gives a f
 
 **Qualitative evidence (from M2), quote the specific friction / moment of misery for your persona**
 
-Dispatchers do not trust RouteLogic for the live day: "I can't trust the board" (UXR-09) and "We keep a WhatsApp group as the real system" (UXR-02). An enterprise ops manager adds: "My frontline people use maybe 5% of it and can't find that 5%" (UXR-04). Gap: no interview mentions compliance. The qualitative evidence shows coordinators leaving the tool. It does not show that compliance is the reason.
+Dispatchers do not trust RouteLogic for the live day. They say "I can't trust the board" (UXR-09) and "We keep a WhatsApp group as the real system" (UXR-02). An enterprise ops manager adds: "My frontline people use maybe 5% of it and can't find that 5%" (UXR-04). Gap: no interview mentions compliance. The qualitative evidence shows coordinators leaving the tool. It does not show that compliance is the reason.
 
 **Quantitative evidence (from M3), name the metric or data point that confirms the pain; cite the number**
 
@@ -68,7 +68,7 @@ Logging compliance checks takes coordinators nearly five times the benchmark, so
 
 **Strategic outcome, what behaviour change do you expect, and how does it map to retention / revenue / churn?**
 
-Coordinators finish the daily workflow in RouteLogic instead of leaving after route assignment. On the AARRR funnel this is retention of daily use, a stage the product directly controls. It cuts the complexity that four of five churned accounts cite, which is the churn risk behind our largest account's trial. The funnel we own is the coordinator's daily workflow. The manager's funnel depends on it: renewal holds only if managers keep getting complete records, and that happens only if coordinators finish the workflow inside RouteLogic. The bet is optimizing the existing: fix friction in a known workflow and measure retention and conversion, not activation.
+Coordinators finish the daily workflow in RouteLogic instead of leaving after route assignment. On the AARRR funnel this is retention of daily use, a stage the product directly controls. It cuts the complexity that four of five churned accounts cite, which is the churn risk behind our largest account's trial. The funnel we own is the coordinator's daily workflow. The manager's funnel depends on it. Renewal holds only if managers keep getting complete records, which happens only if coordinators finish the workflow in RouteLogic. The bet is optimizing the existing: fix friction in a known workflow and measure retention and conversion, not activation.
 
 **Primary success metric (initiative signal), the leading indicator that tells you the gap is closing**
 
@@ -80,13 +80,13 @@ Compliance quality. Managers rate Compliance 3.9 today and rely on these records
 
 **Decision window, how much time or data before you scale, pivot, or kill? minimum threshold to proceed?**
 
-First, confirm the 48% is real: check that compliance checks done on paper or another device are not simply missing from the data, the tracking-error check. Then four weeks, with at least 270 coordinators in each group (current flow and faster compliance flow). 270 per group is what it takes to tell 48% from 60% with 80% power at 5% significance. Scale if completion reaches 60% and the guardrail holds. Iterate if completion improves significantly but stays below 60%. Kill and rethink if the difference is not significant or the guardrail breaks.
+First, confirm the 48% is real. Compliance checks done on paper or another device must not simply be missing from the data (the tracking-error check). Then four weeks, with at least 270 coordinators in each group (current flow and faster compliance flow). 270 per group is what it takes to tell 48% from 60% with 80% power at 5% significance. Scale if completion reaches 60% and the guardrail holds. Iterate if completion improves significantly but stays below 60%. Kill and rethink if the difference is not significant or the guardrail breaks.
 
 ## Finalized product hypothesis
 
 **Draft your full hypothesis sentence, one to three sentences; quote the metric, name the persona, name the outcome**
 
-> Based on dispatchers who "can't trust the board" and compliance logs that take 14.6 minutes instead of 3, I believe faster compliance logging will get fleet coordinators to finish their day in RouteLogic. It will show as a 25% increase in compliance-step completion, from 48% to 60%. I will protect compliance quality and will make a go/no-go decision after four weeks and at least 270 coordinators per group.
+> Based on dispatchers who "can't trust the board" and 14.6-minute compliance logs, I believe faster compliance logging will get fleet coordinators to finish their day in RouteLogic. It will show as a 25% increase in compliance-step completion, from 48% to 60%. I will protect compliance quality and will make a go/no-go decision after four weeks and at least 270 coordinators per group.
 
 Checked against the four pitfalls:
 
