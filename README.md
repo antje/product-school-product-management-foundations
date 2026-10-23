@@ -2,6 +2,8 @@
 
 > My final project for Product School's **Product Management** certification. **RouteLogic Velocity** is a B2B logistics initiative. It makes the work drivers and dispatchers repeat all day the fastest thing in the product.
 
+**Live prototype:** [route-ready-checklist.lovable.app](https://route-ready-checklist.lovable.app), the clickable compliance checklist from Module 4.
+
 ---
 
 ## Deliverables at a glance
