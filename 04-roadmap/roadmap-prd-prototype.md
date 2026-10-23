@@ -81,7 +81,7 @@ Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs
 ## High-level product roadmap
 
 ### NOW, Pilot (4 weeks, 3 accounts)
-- **B1 One-Click Compliance Checklist**, the only Now item. At week 4 we read completion against 60%, logging time against 3 minutes, failed or incomplete records, and manager CSAT at 3.9 or higher.
+- **B1 One-Click Compliance Checklist**, the only Now item. At week 4 we read completion against 60%, logging time against 3 minutes, failed or incomplete records, and manager CSAT at 3.9 or higher. The return at target is 11.6 minutes back per coordinator per day, for about two weeks of build by both engineers.
 
 ### NEXT, GA Release (weeks 5-8)
 - **B3 Shift Handoff Wizard**, the next leak in the funnel. B1 rolls out to all accounts if the pilot passes.
@@ -93,6 +93,13 @@ Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs
 ### ✂ Cut List
 - **B2, B4, B5, B6, B7, B8.** Each misses the compliance step or does not fit the pilot. Late route changes (B6) go to engineering as a bug.
 
+**Dependencies and stakeholder review**
+
+- B1 depends on clean route data. A route without a driver or vehicle cannot open a checklist, so dispatch data quality is a pilot risk.
+- B1 keeps the existing compliance record format. Compliance and Legal review the checklist items and confirm nothing changes in what is legally required.
+- B3 and B9 both build on B1's records, so neither starts before B1 ships.
+- The roadmap is re-scored at the week-4 pilot read-out, with the new evidence.
+
 The balance is almost all core work, the 70% share: B1 and B3 fix an existing workflow. B9 is the adjacent 20%, protecting the buyer's records. There is no 10% innovation bet in the pilot. The one candidate, B2's AI auto-fill, is cut for its guardrail risk.
 
 ![RouteLogic Velocity roadmap: Now, Next, Later and Cut List](images/roadmap.png)
@@ -103,6 +110,7 @@ The key elements of the Simplified PRD for B1. The full version is in [`simplifi
 
 - **Vision:** a fleet coordinator logs every compliance check in about 3 minutes, right after assigning the route. No check counts as passed unless the coordinator confirmed it.
 - **Success metrics:** compliance-step completion from 48% to 60% in the pilot. Guardrail: no rise in incomplete or failed records, and manager Compliance CSAT at 3.9 or higher.
+- **MVP core value and happy path:** one outcome, a complete compliance log in about 3 minutes. The shortest path is route list, then 12 one-tap checks with a reason on any Fail, then submit and confirmation.
 - **Core rules:** the checklist opens in one tap from the assigned route. Six header fields come pre-filled and read-only. Every item starts blank and takes one tap. A Fail needs a reason. Submit stays blocked until every item has an answer.
 - **Guard against made-up answers:** every saved result must match a tap event. There is no "mark all as pass".
 - **Evals:** median time to submit of 3:00 or less, 100% complete records, and zero safety triggers before the pilot starts.

@@ -48,3 +48,14 @@ The first build also missed Smart Behavior 4: an early Submit did not show which
 ![Confirmation screen: 11 passed, 1 failed, logged in 0:33](images/prototype-confirmation.png)
 
 ![Early Submit outlines the first open check in red](images/prototype-early-submit.png)
+
+## Alignment handshake
+
+The PRD and the prototype go to each stakeholder together, never one without the other.
+
+| Stakeholder | What they see | What I ask for |
+|---|---|---|
+| Manager | The prototype run on route R-104, then the success metric and guardrail | A green light on the problem and on 48% to 60% as the pilot target |
+| Eng Lead | The smart behaviors, edge cases and the tap-event safety guard | Feasibility in two weeks, and simpler ways to get the same logic |
+| Design Lead | The validated happy path and the three screens | A high-fidelity design for the checklist row and the fail-reason panel |
+
