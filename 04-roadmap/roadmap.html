@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RouteLogic Velocity Roadmap</title>
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#eef1f5; --text:#14181f; --muted:#5b6472; --border:#dde1e7;
+  --accent:#0b5fff; --on-accent:#ffffff; --on-bar:#ffffff;
+  --qw-bg:#e3f5ea; --qw-fg:#13693a; --qw-bar:#178a4a;
+  --mp-bg:#e5edff; --mp-fg:#1c46b3; --mp-bar:#2f5fe0;
+  --fi-bg:#fff3d6; --fi-fg:#7a5000; --fi-bar:#a86f00;
+  --ts-bg:#fde6e6; --ts-fg:#a32020; --ts-bar:#c62f2f;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1217; --surface:#171b22; --surface-2:#1d222b; --text:#e8ebf0; --muted:#9aa3b2; --border:#2a313c;
+    --accent:#6c9bff; --on-accent:#0f1217; --on-bar:#0f1217;
+    --qw-bg:#11331f; --qw-fg:#7fe0a5; --qw-bar:#3cc777;
+    --mp-bg:#16244a; --mp-fg:#a8c0ff; --mp-bar:#7aa3ff;
+    --fi-bg:#3a2c08; --fi-fg:#f5cf6b; --fi-bar:#e6b23a;
+    --ts-bg:#3d1515; --ts-fg:#ff9d9d; --ts-bar:#f27070;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1217; --surface:#171b22; --surface-2:#1d222b; --text:#e8ebf0; --muted:#9aa3b2; --border:#2a313c;
+  --accent:#6c9bff; --on-accent:#0f1217; --on-bar:#0f1217;
+  --qw-bg:#11331f; --qw-fg:#7fe0a5; --qw-bar:#3cc777;
+  --mp-bg:#16244a; --mp-fg:#a8c0ff; --mp-bar:#7aa3ff;
+  --fi-bg:#3a2c08; --fi-fg:#f5cf6b; --fi-bar:#e6b23a;
+  --ts-bg:#3d1515; --ts-fg:#ff9d9d; --ts-bar:#f27070;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 56px}
+.q-qw{--bar:var(--qw-bar);--bg-q:var(--qw-bg);--fg-q:var(--qw-fg)}
+.q-mp{--bar:var(--mp-bar);--bg-q:var(--mp-bg);--fg-q:var(--mp-fg)}
+.q-fi{--bar:var(--fi-bar);--bg-q:var(--fi-bg);--fg-q:var(--fi-fg)}
+.q-ts{--bar:var(--ts-bar);--bg-q:var(--ts-bg);--fg-q:var(--ts-fg)}
+
+/* Header */
+.brand{display:flex;align-items:center;gap:12px}
+.logo{flex:none;width:42px;height:42px;border-radius:11px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-weight:800;letter-spacing:.02em}
+h1{font-size:1.6rem;line-height:1.2;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:2px 0 0;font-size:.92rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.meta li{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:.84rem;color:var(--muted)}
+.meta b{color:var(--text);font-weight:600}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip,.icon-btn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:border-color .15s,box-shadow .15s}
+.chip:hover,.icon-btn:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}
+.chip:focus-visible,.icon-btn:focus-visible,.card:focus-visible,.mdot:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.swatch{width:10px;height:10px;border-radius:50%;background:var(--bar)}
+.chip .n{color:var(--muted);font-size:.78rem}
+.tally{color:var(--muted);font-size:.85rem;margin:0}
+
+/* Lanes */
+.lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.lanes{grid-template-columns:1fr}}
+.lane{background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.lane-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:2px 2px 4px}
+.lane-tag{display:inline-block;font-weight:800;letter-spacing:.1em;font-size:.78rem;color:var(--accent)}
+.lane-title{font-weight:650;font-size:1.02rem;margin:0}
+.lane-sub{color:var(--muted);font-size:.84rem;margin:0}
+.count{flex:none;font-size:.78rem;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:2px 9px;white-space:nowrap}
+.empty{color:var(--muted);font-size:.88rem;text-align:center;padding:18px 12px;border:1px dashed var(--border);border-radius:10px;margin:0}
+
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--bar);border-radius:12px;padding:14px 14px 12px;box-shadow:var(--shadow);transition:box-shadow .15s,transform .15s;min-width:0}
+.card.hl{box-shadow:0 0 0 2px var(--bar);transform:translateY(-1px)}
+.card.flash{animation:flash 1.2s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--bar)}100%{box-shadow:var(--shadow)}}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.fid{font:600 .74rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--muted)}
+.cut-tag{margin-left:6px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:0 5px}
+.card h3{margin:2px 0 0;font-size:1rem;line-height:1.3}
+.badge{flex:none;white-space:nowrap;font-size:.74rem;font-weight:650;padding:3px 9px;border-radius:999px;background:var(--bg-q);color:var(--fg-q)}
+.why{margin:10px 0 12px;font-size:.92rem}
+.scores{display:flex;gap:18px;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
+.scores b{color:var(--text)}
+.pips{display:inline-flex;gap:3px;margin-left:7px;vertical-align:middle}
+.pip{width:8px;height:8px;border-radius:2px;background:var(--border)}
+.pip.on{background:var(--bar)}
+.hidden{display:none !important}
+
+/* Panels */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 16px;margin-top:24px}
+.panel h2{font-size:1.08rem;margin:0 0 4px}
+.panel .lede{color:var(--muted);font-size:.88rem;margin:0 0 16px}
+
+/* Matrix */
+.matrix-layout{display:grid;grid-template-columns:minmax(0,500px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:760px){.matrix-layout{grid-template-columns:1fr}}
+.plot{display:grid;grid-template-columns:18px 14px minmax(0,1fr);gap:4px 6px;max-width:480px}
+.ylab{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:.78rem;color:var(--muted)}
+.yticks{display:grid;grid-template-rows:repeat(5,1fr);align-items:center;text-align:right;font-size:.72rem;color:var(--muted)}
+.xticks{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-size:.72rem;color:var(--muted)}
+.xlab{text-align:center;font-size:.78rem;color:var(--muted)}
+.matrix{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+.qz{position:absolute;background:var(--bg-q);opacity:.55}
+.qz-label{position:absolute;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--fg-q);pointer-events:none}
+.mdot{position:absolute;width:34px;height:34px;margin:0;padding:0;border-radius:50%;background:var(--bar);color:var(--on-bar);font:700 .72rem system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:grid;place-items:center;border:2px solid var(--surface);cursor:pointer;transform:translate(-50%,50%);transition:transform .15s,opacity .15s;z-index:1}
+.mdot.cut{background:var(--surface);color:var(--fg-q);border:2px dashed var(--bar)}
+.mdot.hl{transform:translate(-50%,50%) scale(1.18);z-index:3}
+.mdot.dim{opacity:.18}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.legend li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:.88rem}
+.legend .badge{justify-self:start}
+.legend p{margin:0;color:var(--muted)}
+.keys{margin:16px 0 0;font-size:.84rem;color:var(--muted);display:grid;gap:6px}
+.key{display:flex;align-items:center;gap:8px}
+.k-solid,.k-cut{width:16px;height:16px;border-radius:50%;flex:none}
+.k-solid{background:var(--muted)}
+.k-cut{border:2px dashed var(--muted)}
+
+/* Cut list */
+details.panel>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+details.panel>summary::-webkit-details-marker{display:none}
+.chev{transition:transform .2s;color:var(--muted)}
+details[open] .chev{transform:rotate(90deg)}
+.cut-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.card.cut h3{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">RL</div>
+      <div>
+        <h1>RouteLogic Velocity</h1>
+        <p class="sub">Product roadmap · Effort vs. Value</p>
+      </div>
+    </div>
+    <ul class="meta">
+      <li><b>Team</b> 2 engineers + 1 designer + 1 CS lead</li>
+      <li><b>Primary metric</b> Compliance-step completion 48% → 60%</li>
+      <li><b>Guardrail</b> Manager Compliance CSAT ≥ 3.9, no rise in incomplete or failed records</li>
+    </ul>
+  </header>
+
+  <div class="toolbar">
+    <div class="chips" role="group" aria-label="Filter by quadrant" id="chips"></div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <p class="tally" id="tally"></p>
+      <button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle colour theme"></button>
+    </div>
+  </div>
+
+  <main>
+    <section class="lanes" aria-label="Roadmap lanes">
+      <div class="lane" data-lane="now">
+        <div class="lane-head">
+          <div><span class="lane-tag">NOW</span><p class="lane-title">Pilot</p><p class="lane-sub">4 weeks · 3 accounts</p></div>
+          <span class="count" id="count-now"></span>
+        </div>
+        <div class="lane-body" id="lane-now" style="display:flex;flex-direction:column;gap:12px"></div>
+      </div>
+      <div class="lane" data-lane="next">
+        <div class="lane-head">
+          <div><span class="lane-tag">NEXT</span><p class="lane-title">GA Release</p><p class="lane-sub">Weeks 5-8</p></div>
+          <span class="count" id="count-next"></span>
+        </div>
+        <div class="lane-body" id="lane-next" style="display:flex;flex-direction:column;gap:12px"></div>
+      </div>
+      <div class="lane" data-lane="later">
+        <div class="lane-head">
+          <div><span class="lane-tag">LATER</span><p class="lane-title">Backlog</p><p class="lane-sub">Build when the trigger appears</p></div>
+          <span class="count" id="count-later"></span>
+        </div>
+        <div class="lane-body" id="lane-later" style="display:flex;flex-direction:column;gap:12px"></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="matrix-h">
+      <h2 id="matrix-h">Effort vs. Value</h2>
+      <p class="lede">Every feature on one grid. Hover a dot to find its card. Click it to jump there.</p>
+      <div class="matrix-layout">
+        <div class="plot">
+          <div class="ylab">Value (1 low · 5 high)</div>
+          <div class="yticks" aria-hidden="true"><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+          <div class="matrix" id="matrix" role="group" aria-label="Effort versus value matrix"></div>
+          <div></div><div></div>
+          <div class="xticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          <div></div><div></div>
+          <div class="xlab">Effort (1 low · 5 high)</div>
+        </div>
+        <div>
+          <ul class="legend">
+            <li class="q-qw"><span class="badge">Quick Win</span><p>Value 4-5, Effort 1-2. Do it now.</p></li>
+            <li class="q-mp"><span class="badge">Major Project</span><p>Value 4-5, Effort 3-5. Plan and staff it.</p></li>
+            <li class="q-fi"><span class="badge">Fill-In</span><p>Value 1-3, Effort 1-2. Only with spare capacity.</p></li>
+            <li class="q-ts"><span class="badge">Time Sinker</span><p>Value 1-3, Effort 3-5. Avoid.</p></li>
+          </ul>
+          <div class="keys">
+            <span class="key"><span class="k-solid"></span>Solid dot: on the roadmap</span>
+            <span class="key"><span class="k-cut"></span>Dashed ring: on the Cut List</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <details class="panel" id="cut-panel" open>
+      <summary>
+        <div>
+          <h2>Cut List</h2>
+          <p class="lede" style="margin:0">Not in Velocity. Each cut has a reason tied to the compliance step.</p>
+        </div>
+        <span class="chev" aria-hidden="true">▶</span>
+      </summary>
+      <div class="cut-grid" id="lane-cut"></div>
+      <p class="empty hidden" id="cut-empty">No cut items match this filter.</p>
+    </details>
+  </main>
+
+  <footer>RouteLogic Velocity · Persona: fleet coordinator · Moment of misery: compliance logging at 14.6 min vs. a 3-min benchmark</footer>
+</div>
+
+<script>
+(function(){
+  var Q = {qw:"Quick Win", mp:"Major Project", fi:"Fill-In", ts:"Time Sinker"};
+  var items = [
+    {id:"B1", name:"One-Click Compliance Checklist", lane:"now", q:"qw", v:5, e:2,
+     why:`Cuts the 14.6-minute compliance step toward the 3-minute benchmark by pre-filling only what RouteLogic already knows; coordinators still confirm every pass/fail item.`},
+    {id:"B3", name:"Shift Handoff Wizard", lane:"next", q:"mp", v:4, e:3,
+     why:`Handoff is the next leak once compliance is fixed: 48% log compliance but only 31% finish the handoff, and handoff runs 6.8 minutes over benchmark.`},
+    {id:"B9", name:"Compliance Audit Trail Export", lane:"later", q:"fi", v:3, e:2,
+     why:`Protects the manager's compliance records, our guardrail, but does not speed up logging.`},
+    {id:"B10", name:"In-App Coordinator Training", lane:"later", q:"fi", v:2, e:2,
+     why:`The CS lead trains the 3 pilot accounts by hand; build only when new coordinators join at scale.`},
+    {id:"B5", name:"Step Progress Indicator", lane:"cut", q:"fi", v:2, e:1,
+     why:`Folded into B1 as a "compliance not yet logged" marker instead of a separate feature.`},
+    {id:"B7", name:"Contextual AI ETA Display", lane:"cut", q:"fi", v:1, e:2,
+     why:`11% adoption and nothing to do with compliance logging.`},
+    {id:"B2", name:"Smart Daily Report Auto-Fill", lane:"cut", q:"ts", v:2, e:4,
+     why:`Wrong step, and one-click AI submit invites rubber-stamping that breaks the records guardrail.`},
+    {id:"B6", name:"Driver Alert Notifications", lane:"cut", q:"ts", v:2, e:4,
+     why:`Late route changes (BUG-2044) are a reliability bug for engineering, not a Velocity feature, and they do not move compliance completion.`},
+    {id:"B4", name:"Mobile-First Coordinator Dashboard", lane:"cut", q:"ts", v:3, e:5,
+     why:`Rebuilds three flows with one designer.`},
+    {id:"B8", name:"Fleet Analytics Manager View", lane:"cut", q:"ts", v:2, e:5,
+     why:`A Sales request for the buyer; the manager's satisfaction is a guardrail to hold, not a target.`}
+  ];
+
+  var active = new Set();
+  var root = document.documentElement;
+
+  function pips(n){
+    var s = "";
+    for (var i = 1; i <= 5; i++) s += '<span class="pip' + (i <= n ? ' on' : '') + '"></span>';
+    return '<span class="pips" aria-hidden="true">' + s + '</span>';
+  }
+
+  function cardHTML(it){
+    var cut = it.lane === "cut";
+    return '<article class="card q-' + it.q + (cut ? ' cut' : '') + '" id="card-' + it.id + '" data-id="' + it.id + '" data-q="' + it.q + '" tabindex="0">' +
+      '<div class="card-top"><div><span class="fid">' + it.id + '</span>' + (cut ? '<span class="cut-tag">Cut</span>' : '') +
+      '<h3>' + it.name + '</h3></div><span class="badge">' + Q[it.q] + '</span></div>' +
+      '<p class="why">' + it.why + '</p>' +
+      '<div class="scores"><span>Value <b>' + it.v + '</b>/5' + pips(it.v) + '</span>' +
+      '<span>Effort <b>' + it.e + '</b>/5' + pips(it.e) + '</span></div></article>';
+  }
+
+  // Lanes and cut list
+  ["now","next","later","cut"].forEach(function(l){
+    var el = document.getElementById("lane-" + l);
+    var html = items.filter(function(it){ return it.lane === l; }).map(cardHTML).join("");
+    if (l !== "cut") html += '<p class="empty hidden" id="empty-' + l + '">No features match this filter.</p>';
+    el.innerHTML = html;
+  });
+
+  // Filter chips
+  var chips = document.getElementById("chips");
+  var chipDefs = [{k:"all", label:"All"}].concat(Object.keys(Q).map(function(k){ return {k:k, label:Q[k]}; }));
+  chips.innerHTML = chipDefs.map(function(c){
+    var n = c.k === "all" ? items.length : items.filter(function(it){ return it.q === c.k; }).length;
+    return '<button type="button" class="chip' + (c.k !== "all" ? ' q-' + c.k : '') + '" data-k="' + c.k + '" aria-pressed="' + (c.k === "all") + '">' +
+      (c.k !== "all" ? '<span class="swatch" aria-hidden="true"></span>' : '') + c.label + ' <span class="n">' + n + '</span></button>';
+  }).join("");
+
+  chips.addEventListener("click", function(e){
+    var b = e.target.closest(".chip"); if (!b) return;
+    var k = b.dataset.k;
+    if (k === "all") active.clear();
+    else if (active.has(k)) active.delete(k);
+    else active.add(k);
+    if (active.size === Object.keys(Q).length) active.clear();
+    applyFilter();
+  });
+
+  function matches(it){ return active.size === 0 || active.has(it.q); }
+
+  function applyFilter(){
+    chips.querySelectorAll(".chip").forEach(function(b){
+      var k = b.dataset.k;
+      b.setAttribute("aria-pressed", k === "all" ? String(active.size === 0) : String(active.has(k)));
+    });
+    var counts = {now:0, next:0, later:0, cut:0};
+    items.forEach(function(it){
+      var ok = matches(it);
+      document.getElementById("card-" + it.id).classList.toggle("hidden", !ok);
+      var d = document.getElementById("dot-" + it.id);
+      if (d) d.classList.toggle("dim", !ok);
+      if (ok) counts[it.lane]++;
+    });
+    ["now","next","later"].forEach(function(l){
+      var total = items.filter(function(it){ return it.lane === l; }).length;
+      document.getElementById("count-" + l).textContent = counts[l] + " of " + total;
+      document.getElementById("empty-" + l).classList.toggle("hidden", counts[l] > 0);
+    });
+    document.getElementById("cut-empty").classList.toggle("hidden", counts.cut > 0);
+  }
+
+  // Tally
+  var t = {now:0,next:0,later:0,cut:0};
+  items.forEach(function(it){ t[it.lane]++; });
+  document.getElementById("tally").textContent =
+    items.length + " features · " + t.now + " now · " + t.next + " next · " + t.later + " later · " + t.cut + " cut";
+
+  // Matrix
+  var m = document.getElementById("matrix");
+  var zones = [
+    {q:"qw", left:0,  top:0,  w:40, h:40, lp:"left:8px;top:6px"},
+    {q:"mp", left:40, top:0,  w:60, h:40, lp:"right:8px;top:6px"},
+    {q:"fi", left:0,  top:40, w:40, h:60, lp:"left:8px;bottom:6px"},
+    {q:"ts", left:40, top:40, w:60, h:60, lp:"right:8px;bottom:6px"}
+  ];
+  var zh = "";
+  zones.forEach(function(z){
+    zh += '<div class="qz q-' + z.q + '" style="left:' + z.left + '%;top:' + z.top + '%;width:' + z.w + '%;height:' + z.h + '%"></div>';
+  });
+  zones.forEach(function(z){
+    zh += '<span class="qz-label q-' + z.q + '" style="' + z.lp + '">' + Q[z.q] + '</span>';
+  });
+  var groups = {};
+  items.forEach(function(it){ var k = it.v + "-" + it.e; (groups[k] = groups[k] || []).push(it); });
+  Object.keys(groups).forEach(function(k){
+    var g = groups[k];
+    g.forEach(function(it, i){
+      var off = (i - (g.length - 1) / 2) * 30;
+      var left = (it.e - 0.5) / 5 * 100;
+      var bottom = (it.v - 0.5) / 5 * 100;
+      zh += '<button type="button" class="mdot q-' + it.q + (it.lane === "cut" ? ' cut' : '') + '" id="dot-' + it.id + '" data-id="' + it.id + '"' +
+        ' style="left:calc(' + left + '% + ' + off + 'px);bottom:' + bottom + '%"' +
+        ' aria-label="' + it.id + ' ' + it.name + ', ' + Q[it.q] + ', value ' + it.v + ', effort ' + it.e + (it.lane === "cut" ? ', cut' : '') + '"' +
+        ' title="' + it.id + ' ' + it.name + '">' + it.id + '</button>';
+    });
+  });
+  m.innerHTML = zh;
+
+  // Linked highlighting
+  function hl(id, on){
+    var c = document.getElementById("card-" + id), d = document.getElementById("dot-" + id);
+    if (c) c.classList.toggle("hl", on);
+    if (d) d.classList.toggle("hl", on);
+  }
+  document.querySelectorAll("[data-id]").forEach(function(el){
+    var id = el.dataset.id;
+    el.addEventListener("mouseenter", function(){ hl(id, true); });
+    el.addEventListener("mouseleave", function(){ hl(id, false); });
+    el.addEventListener("focus", function(){ hl(id, true); });
+    el.addEventListener("blur", function(){ hl(id, false); });
+  });
+  m.addEventListener("click", function(e){
+    var d = e.target.closest(".mdot"); if (!d) return;
+    var id = d.dataset.id;
+    var it = items.filter(function(x){ return x.id === id; })[0];
+    if (!matches(it)) { active.clear(); applyFilter(); }
+    if (it.lane === "cut") document.getElementById("cut-panel").open = true;
+    var c = document.getElementById("card-" + id);
+    c.scrollIntoView({behavior:"smooth", block:"center"});
+    c.classList.remove("flash"); void c.offsetWidth; c.classList.add("flash");
+  });
+
+  // Theme
+  var btn = document.getElementById("theme-btn");
+  function current(){
+    if (root.dataset.theme) return root.dataset.theme;
+    return window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  function label(){ btn.textContent = current() === "dark" ? "☀ Light mode" : "☾ Dark mode"; }
+  try { var saved = localStorage.getItem("rlv-theme"); if (saved) root.dataset.theme = saved; } catch(e){}
+  btn.addEventListener("click", function(){
+    var n = current() === "dark" ? "light" : "dark";
+    root.dataset.theme = n;
+    try { localStorage.setItem("rlv-theme", n); } catch(e){}
+    label();
+  });
+  if (window.matchMedia) {
+    var mq = matchMedia("(prefers-color-scheme: dark)");
+    if (mq.addEventListener) mq.addEventListener("change", label);
+  }
+  label();
+
+  applyFilter();
+})();
+</script>
+</body>
+</html>

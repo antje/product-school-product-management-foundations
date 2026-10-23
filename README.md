@@ -13,8 +13,8 @@
 | 2 | **AI Synthesis**, Product Health & Insights Summary | M2 | ✅ | `02-discovery/ai-synthesis.md` |
 | 2 | **Competitive Analysis & Journey Map** | M2 | ✅ | `02-discovery/competitive-and-journey.md` · [`journey-map.html`](02-discovery/journey-map.html) |
 | 3 | **Hypothesis & Success Metrics** | M3 | ✅ | `03-analytics/hypothesis-and-metrics.md` |
-| 4 | **Roadmap, PRD & Prototype** | M4 | ☐ | `04-roadmap/roadmap-prd-prototype.md` |
-| 4 | **PRD & Prototype Sprint** | M4 | ☐ | `04-roadmap/prd-and-prototype.md` |
+| 4 | **Roadmap, PRD & Prototype** | M4 | ✅ | `04-roadmap/roadmap-prd-prototype.md` · [`roadmap.html`](04-roadmap/roadmap.html) |
+| 4 | **PRD & Prototype Sprint** | M4 | ✅ | `04-roadmap/prd-and-prototype.md` · [prototype](https://route-ready-checklist.lovable.app) |
 | 5 | **Experimentation Plan** | M5 | ☐ | `05-experimentation/experimentation-plan.md` |
 | 6 | **GTM Strategy & Success Dashboard** | M6 | ☐ | `06-launch/gtm-and-dashboard.md` |
 | 6 | **Individual Insights** (reflection) | M6 | ☐ | `06-launch/individual-insights.md` |
@@ -42,7 +42,10 @@ product-school-product-management-foundations/
 │   └── hypothesis-and-metrics.md          ← M3: hypothesis + success metrics ★ Deliverable 3
 ├── 04-roadmap/
 │   ├── roadmap-prd-prototype.md           ← M4 lab 1: roadmap + prioritization ★ Deliverable 4
-│   └── prd-and-prototype.md               ← M4 lab 2: PRD + prototype
+│   ├── roadmap.html                       ← M4 lab 1: interactive Now / Next / Later roadmap
+│   ├── prd-and-prototype.md               ← M4 lab 2: PRD + prototype sprint
+│   ├── simplified-prd.md                  ← M4 lab 2: Simplified PRD for B1
+│   └── images/                            ← roadmap and prototype screenshots
 ├── 05-experimentation/
 │   └── experimentation-plan.md            ← M5: experimentation plan          ★ Deliverable 5
 └── 06-launch/
