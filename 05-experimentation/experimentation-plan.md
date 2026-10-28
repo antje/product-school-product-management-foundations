@@ -28,6 +28,24 @@ A multivariate test would need about ten times the traffic. A fake door would on
 | Guardrail metric | Record accuracy, and the Fail rate as a check against rubber-stamping. |
 | Decision rule (ship / kill / pivot) | Ship at +12 points or more with p < 0.05 and both guardrails held. Iterate, investigate or kill otherwise. Read fixed at day 14. |
 
+## Parameters
+
+| Parameter | Decision |
+|---|---|
+| Feature under test | B1 One-Click Compliance Checklist, as specified in the Simplified PRD |
+| Persona | Fleet coordinator who assigns routes, logs compliance checks and hands off shifts every day |
+| Expected outcome | Coordinators finish compliance logging in RouteLogic on the day they assign routes |
+| Primary success metric | Daily compliance-step completion, per coordinator, averaged per arm |
+| Baseline rate | 48% |
+| Guardrail metric | Record accuracy: records corrected or flagged in the compliance audit |
+| Guardrail boundary | No more than 2 points above control |
+| Second guardrail | Fail rate: share of checks marked Fail, not below half of control |
+| Minimum Detectable Effect | +12 percentage points (48% to 60%) |
+| Sample size per arm | 270 coordinators (540 in total) |
+| Traffic split | 50/50 by coordinator, within each of the 3 pilot accounts |
+| Test duration | 14 days, pilot weeks 3 and 4 |
+| Significance threshold | p < 0.05, two-sided |
+
 ## Get your documents ready
 
 **From M3, your hypothesis sentence**
