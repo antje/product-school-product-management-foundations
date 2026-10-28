@@ -76,7 +76,7 @@ Compliance-step completion: the share of coordinators who open RouteLogic and fi
 
 **Guardrail metric (product signal), the metric that must NOT drop; it protects your existing base**
 
-Compliance quality. Managers rate Compliance 3.9 today and rely on these records for the reporting they bought (Reporting 4.5). A faster flow must not come from skipped checks. Guardrail: manager Compliance CSAT stays at 3.9 or higher, and the share of incomplete or failed compliance records does not rise. The snapshots give no baseline for incomplete records.
+Compliance quality. Managers rate Compliance 3.9 today and rely on these records for the reporting they bought (Reporting 4.5). A faster flow must not come from skipped checks. Guardrail: record accuracy holds, meaning records corrected or flagged in audit do not rise. The share of checks marked Fail must not collapse, because a collapse means coordinators tap Pass without checking. Manager Compliance CSAT stays at 3.9 or higher. The snapshots give no baseline for record accuracy.
 
 **Decision window, how much time or data before you scale, pivot, or kill? minimum threshold to proceed?**
 
@@ -101,4 +101,4 @@ Checked against the four pitfalls:
 |---|---|---|---|
 | Full daily workflow completion (through handoff), last two weeks of the test | North-star, success signal, lagging | 31% → 39% | Shows lasting value, not a first try. 39% assumes 65% of coordinators who log compliance still finish the handoff, as today (31 of 48). |
 | Compliance-step completion | Leading indicator, initiative signal | 48% → 60% (+25%) | The step where the workflow breaks, and one the build directly moves. Median logging time from 14.6 to 7.3 minutes or less supports it. |
-| Manager Compliance CSAT and compliance record completeness | Guardrail, counter-metric | CSAT ≥ 3.9, and incomplete or failed records do not rise | Speed must not come from skipped checks. The buyer relies on these records. |
+| Record accuracy, Fail rate and manager Compliance CSAT | Guardrail, counter-metric | Corrected or flagged records do not rise, the Fail rate does not collapse, and CSAT stays at 3.9 or higher | Speed must not come from skipped checks. The buyer relies on these records. |

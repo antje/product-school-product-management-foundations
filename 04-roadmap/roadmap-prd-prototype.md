@@ -18,7 +18,7 @@ Logging compliance checks takes 14.6 minutes against a 3-minute benchmark. It is
 
 **Guardrail metric (M3), what must not drop or break**
 
-Manager Compliance CSAT stays at 3.9 or higher, and incomplete or failed compliance records do not rise.
+Record accuracy holds and the share of checks marked Fail does not collapse. Manager Compliance CSAT stays at 3.9 or higher.
 
 ## Scan the backlog & set a human baseline
 
@@ -81,7 +81,7 @@ Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs
 ## High-level product roadmap
 
 ### NOW, Pilot (4 weeks, 3 accounts)
-- **B1 One-Click Compliance Checklist**, the only Now item. At week 4 we read completion against 60%, logging time against 3 minutes, failed or incomplete records, and manager CSAT at 3.9 or higher. The return at target is 11.6 minutes back per coordinator per day, for about two weeks of build by both engineers.
+- **B1 One-Click Compliance Checklist**, the only Now item. At week 4 we read completion against 60%, logging time against 3 minutes, record accuracy, the Fail rate, and manager CSAT at 3.9 or higher. The return at target is 11.6 minutes back per coordinator per day, for about two weeks of build by both engineers.
 
 ### NEXT, GA Release (weeks 5-8)
 - **B3 Shift Handoff Wizard**, the next leak in the funnel. B1 rolls out to all accounts if the pilot passes.
@@ -109,7 +109,7 @@ The balance is almost all core work, the 70% share: B1 and B3 fix an existing wo
 The key elements of the Simplified PRD for B1. The full version is in [`simplified-prd.md`](simplified-prd.md).
 
 - **Vision:** a fleet coordinator logs every compliance check in about 3 minutes, right after assigning the route. No check counts as passed unless the coordinator confirmed it.
-- **Success metrics:** compliance-step completion from 48% to 60% in the pilot. Guardrail: no rise in incomplete or failed records, and manager Compliance CSAT at 3.9 or higher.
+- **Success metrics:** compliance-step completion from 48% to 60% in the pilot. Guardrail: record accuracy holds, the Fail rate does not collapse, and manager Compliance CSAT stays at 3.9 or higher.
 - **MVP core value and happy path:** one outcome, a complete compliance log in about 3 minutes. The shortest path is route list, then 12 one-tap checks with a reason on any Fail, then submit and confirmation.
 - **Core rules:** the checklist opens in one tap from the assigned route. Six header fields come pre-filled and read-only. Every item starts blank and takes one tap. A Fail needs a reason. Submit stays blocked until every item has an answer.
 - **Guard against made-up answers:** every saved result must match a tap event. There is no "mark all as pass".

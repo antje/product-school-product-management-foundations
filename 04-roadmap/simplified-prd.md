@@ -10,7 +10,7 @@
 
   **Faster, and the record stays complete.** Every check starts blank, so nothing counts as passed until the coordinator taps Pass. A failed check needs a reason from a short list. The log cannot be submitted until every check has an answer. Managers get the same compliance record they rely on today, filled in completely.
 - **Success metric:** compliance-step completion, the share of coordinators who finish logging compliance checks in RouteLogic. Baseline 48%, target 60% across the 3 pilot accounts by the end of the 4-week pilot.
-- **Guardrail:** no rise in incomplete or failed compliance records against the pre-pilot rate for the 3 accounts. The CS lead also tracks manager Compliance CSAT, which must stay at 3.9 or higher.
+- **Guardrail:** record accuracy holds, meaning records corrected or flagged in audit do not rise. The share of checks marked Fail must not collapse, which would signal rubber-stamping. The CS lead also tracks manager Compliance CSAT, which must stay at 3.9 or higher.
 
 ---
 
@@ -134,7 +134,7 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 
 | # | Decision | Rejected alternative | Why |
 |---|---|---|---|
-| D1 | Every item starts blank, with no bulk answer of any kind. | Answers ticked "Pass" in advance, or a "Mark all as pass" button. That would be the fastest option. | A pass nobody checked is a guessed record, and it breaks the guardrail on incomplete or failed records. Even with one tap per item, 12 items fit inside the 3-minute target. |
+| D1 | Every item starts blank, with no bulk answer of any kind. | Answers ticked "Pass" in advance, or a "Mark all as pass" button. That would be the fastest option. | A pass nobody checked is a guessed record, and it breaks the record accuracy guardrail. Even with one tap per item, 12 items fit inside the 3-minute target. |
 | D2 | The "compliance not yet logged" marker (S1) stays out of sprint 1. The entry row only switches between "Log compliance" and "Logged hh:mm". | Status badges and an outstanding-count on Screen 1. | The marker nudges completion, but logging is no faster with it. Sprint 1 capacity goes to M1 to M6 so that 2 of the pilot's 4 weeks stay free for measuring. The "Logged" state exists only to block duplicate records (FR6). |
 
 ### Evals
