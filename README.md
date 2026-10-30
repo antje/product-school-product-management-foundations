@@ -18,7 +18,7 @@
 | 4 | **Roadmap, PRD & Prototype** | M4 | ✅ | `04-roadmap/roadmap-prd-prototype.md` · [`roadmap.html`](04-roadmap/roadmap.html) |
 | 4 | **PRD & Prototype Sprint** | M4 | ✅ | `04-roadmap/prd-and-prototype.md` · [prototype](https://route-ready-checklist.lovable.app) |
 | 5 | **Experimentation Plan** | M5 | ✅ | `05-experimentation/experimentation-plan.md` |
-| 6 | **GTM Strategy & Success Dashboard** | M6 | ☐ | `06-launch/gtm-and-dashboard.md` |
+| 6 | **GTM Strategy & Success Dashboard** | M6 | ✅ | `06-launch/gtm-and-dashboard.md` |
 | 6 | **Individual Insights** (reflection) | M6 | ☐ | `06-launch/individual-insights.md` |
 | ★ | **Final Project Presentation** (the deck you submit) | M6 | ☐ | `06-launch/final-presentation.md` |
 
