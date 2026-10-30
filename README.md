@@ -19,8 +19,8 @@
 | 4 | **PRD & Prototype Sprint** | M4 | ✅ | `04-roadmap/prd-and-prototype.md` · [prototype](https://route-ready-checklist.lovable.app) |
 | 5 | **Experimentation Plan** | M5 | ✅ | `05-experimentation/experimentation-plan.md` |
 | 6 | **GTM Strategy & Success Dashboard** | M6 | ✅ | `06-launch/gtm-and-dashboard.md` |
-| 6 | **Individual Insights** (reflection) | M6 | ☐ | `06-launch/individual-insights.md` |
-| ★ | **Final Project Presentation** (the deck you submit) | M6 | ☐ | `06-launch/final-presentation.md` |
+| 6 | **Individual Insights** (reflection) | M6 | ✅ | `06-launch/individual-insights.md` |
+| ★ | **Final Project Presentation** (the deck you submit) | M6 | ✅ | [`final-presentation.html`](06-launch/final-presentation.html) · [view the deck](https://antje.github.io/product-school-product-management-foundations/06-launch/final-presentation.html) |
 
 ## The project in one sentence
 
@@ -53,5 +53,6 @@ product-school-product-management-foundations/
 └── 06-launch/
     ├── gtm-and-dashboard.md               ← M6: GTM plan + success dashboard  ★ Deliverable 6
     ├── individual-insights.md             ← M6: friction, learnings, aha
-    └── final-presentation.md              ← M6: how to build & submit the deck ★ Final submission
+    ├── final-presentation.md              ← M6: how to build & submit the deck
+    └── final-presentation.html            ← M6: the final presentation       ★ Final submission
 ```
