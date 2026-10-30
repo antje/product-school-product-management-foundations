@@ -36,7 +36,7 @@ What the launch must not disrupt: the compliance records managers rely on. They 
 
 Where the targets come from:
 
-- **60%** is the pilot's target: half of the 23 points lost between route assignment (71%) and compliance (48%). Pooling it, with at least two thirds of accounts clearing it, follows the pilot's rule of 2 of 3 accounts. One small account can't block the launch alone.
+- **60%** is the pilot's target, derived in [Module 3](../03-analytics/hypothesis-and-metrics.md). Pooling it, with at least two thirds of accounts clearing it, follows the pilot's rule of 2 of 3 accounts. One small account can't block the launch alone.
 - **85%** is arithmetic. 85% of the 71% who assign routes is 60%, so below 85% activation the completion target is out of reach. It is a floor, not a forecast.
 - **3:00** is the benchmark and the PRD's E1 eval.
 - **39%** assumes 65% of coordinators who log compliance still finish the handoff, as today (31 of 48). B3 ships in weeks 5 to 8 and moves this number too, so it reads B1 and B3 together, not B1 alone.

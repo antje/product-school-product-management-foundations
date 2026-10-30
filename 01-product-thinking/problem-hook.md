@@ -20,7 +20,7 @@ The risk is concrete and close. Our largest enterprise account is already triali
 
 **Moment of misery, what is the user likely doing outside the product (Google, spreadsheets, a competitor) because your tool isn’t serving them?**
 
-> The user is currently forced to work around RouteLogic at the doorstep. Marking a stop delivered takes three taps on three screens, in the rain, with a package in one hand. So the driver texts the dispatcher instead (UXR-01, BUG-2055). "Start route", used 30 times a day, is buried under features added in updates (UXR-11). The texts land on a dispatcher who already runs a WhatsApp group as "the real system". Route changes reach drivers late, and delivered stops show "in progress" for up to an hour (UXR-02, UXR-09). Five of seven drivers carry a paper manifest in case the app dies (UXR-12). The system of record drifts away from what actually happened on the road.
+> The user is currently forced to leave RouteLogic right after assigning routes. Logging compliance checks takes the fleet coordinator 14.6 minutes against a 3-minute benchmark. 71% of coordinators finish route assignment, but only 48% go on to log compliance. The rest of the day runs in a WhatsApp group, "the real system" (UXR-02). Drivers feed it too. Marking a stop delivered takes three taps on three screens, so they text the coordinator instead (UXR-01, BUG-2055). Route changes reach drivers late, and delivered stops show "in progress" for up to an hour (UXR-02, UXR-09). Five of seven drivers carry a paper manifest in case the app dies (UXR-12). The system of record drifts away from what actually happened on the road.
 
 ## 4. Problem hook
 

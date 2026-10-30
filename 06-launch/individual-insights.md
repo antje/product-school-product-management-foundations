@@ -4,7 +4,7 @@ Module 6 · Deliverable 6 (reflection). Scenario: RouteLogic Velocity.
 
 ## Friction points
 
-_The biggest technical or strategic challenge you faced while developing your product concept._
+**The biggest technical or strategic challenge you faced while developing your product concept.**
 
 Letting go of the persona. I spent two modules on the driver. Seven of the 12 research notes came from drivers, and the three-tap doorstep moment was vivid. Then the Module 3 data put the driver outside the coordinator's workflow funnel. Drivers rated Core Dispatch 4.3, the best frontline score in the table. Coordinators rated Compliance 2.2 while 77% of them used it every day. I moved the persona to the coordinator and the friction to compliance logging. It also changed my Module 1 value proposition. I had counted compliance among the layers to move off frontline screens, and the data said it is core frontline work.
 
@@ -14,7 +14,7 @@ Planning a launch before the result exists. The GTM plan had to be written while
 
 ## Key learnings
 
-_A few surprising discoveries or insights you gained from the course overall._
+**A few surprising discoveries or insights you gained from the course overall.**
 
 - **The Now lane holds one item.** The primary metric depends on one step, and the pilot has two engineers for four weeks. A second Now item would have split them. Six features went to the cut list.
 - **My instincts needed the same audit as the AI.** Two of my three quick-win picks were wrong. B6 doesn't move the metric, and B5 shows the drop without removing it. The AI was wrong too. It scored B1's effort as 3 and still called it low, which breaks the framework's own cut-off of 1 or 2.
@@ -24,7 +24,7 @@ _A few surprising discoveries or insights you gained from the course overall._
 
 ## Aha! moment
 
-_Your main "aha" moment during the project process._
+**Your main "aha" moment during the project process.**
 
 The CSAT heatmap in Module 3. I went looking for the cell that matched my driver's misery, and it scored 4.3. Our persona was satisfied where I had placed the pain. The lowest score sat one row over: coordinators rating a feature they use every day at 2.2. The research had told me where people complain. The usage data told me where the workflow breaks, and those were different places.
 

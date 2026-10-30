@@ -1,8 +1,22 @@
 # RouteLogic Velocity: Product Management Final Project
 
-> My final project for Product School's **Product Management** certification. **RouteLogic Velocity** is a B2B logistics initiative. It makes the work drivers and dispatchers repeat all day the fastest thing in the product.
+> My final project for Product School's **Product Management** certification. **RouteLogic Velocity** is a B2B logistics initiative. It makes the work fleet coordinators repeat all day the fastest thing in the product.
 
-**Live prototype:** [route-ready-checklist.lovable.app](https://route-ready-checklist.lovable.app), the clickable compliance checklist from Module 4.
+**[View the presentation](https://antje.github.io/product-school-product-management-foundations/06-launch/final-presentation.html)** · **[Live prototype](https://route-ready-checklist.lovable.app)**, the clickable compliance checklist from Module 4.
+
+## Executive path
+
+- **Problem.** Fleet coordinators leave RouteLogic at compliance logging. It takes 14.6 minutes against a 3-minute benchmark, and only 48% log it after 71% assign routes. Coordinator NPS fell from +18 to -12, and our largest account is trialing a leaner rival. [Hook](01-product-thinking/problem-hook.md) · [Data](03-analytics/hypothesis-and-metrics.md)
+- **Bet.** B1, a One-Click Compliance Checklist, lifts daily compliance completion from 48% to 60%. We take layers away instead of adding features. [Roadmap](04-roadmap/roadmap-prd-prototype.md)
+- **Prototype.** [route-ready-checklist.lovable.app](https://route-ready-checklist.lovable.app), tested against every rule in the [PRD](04-roadmap/simplified-prd.md). [Sprint](04-roadmap/prd-and-prototype.md)
+- **Why we win.** The leaner rival is fast but thin. Buyers chose RouteLogic for its reporting (UXR-10), and their compliance records already live in it. Velocity keeps that depth and makes the frontline fast.
+- **Evidence today.** The course's scenario data: 12 interviews, 10 bug reports and three metric snapshots. The prototype runs on mock data. The experiment has not run, so the lift is a hypothesis.
+- **Biggest unknown.** Whether every account can use the same 12 checks, and whether 3 pilot accounts have 540 active coordinators. [GTM plan](06-launch/gtm-and-dashboard.md)
+- **Next test.** VEL-01, a 14-day A/B test in pilot weeks 3 and 4. Ship on day 14 only at +12 points with record accuracy and the Fail rate held. [Experiment](05-experimentation/experimentation-plan.md)
+
+## The project in one sentence
+
+**RouteLogic Velocity** makes the work fleet coordinators and drivers repeat all day faster in RouteLogic than texts, WhatsApp and paper, starting with compliance logging. The bet: taking layers away, not adding features, wins back daily use and keeps our largest account.
 
 ---
 
@@ -21,10 +35,6 @@
 | 6 | **GTM Strategy & Success Dashboard** | M6 | ✅ | `06-launch/gtm-and-dashboard.md` |
 | 6 | **Individual Insights** (reflection) | M6 | ✅ | `06-launch/individual-insights.md` |
 | ★ | **Final Project Presentation** (the deck you submit) | M6 | ✅ | [`final-presentation.html`](06-launch/final-presentation.html) · [view the deck](https://antje.github.io/product-school-product-management-foundations/06-launch/final-presentation.html) |
-
-## The project in one sentence
-
-**RouteLogic Velocity** makes the work fleet coordinators and drivers repeat all day faster in RouteLogic than texts, WhatsApp and paper, starting with compliance logging. The bet: taking layers away, not adding features, wins back daily use and keeps our largest account.
 
 ## Repo structure
 

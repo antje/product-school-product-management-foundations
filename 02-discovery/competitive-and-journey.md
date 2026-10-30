@@ -50,3 +50,7 @@ The doorstep. Three screens with a package in one hand, in the rain, is the mome
 [`journey-map.html`](journey-map.html), with a screenshot below. Four stages of one stop, from start of route to the next stop. Each stage shows the action and its benefit, the driver's internal state, the pain point it removes, and the workaround it makes unnecessary. It ends with three competitive advantages over the workaround. One action creates one record, the record carries data a text cannot, and updates flow live in both directions.
 
 ![Future-state journey map for the RouteLogic driver](images/journey-map.png)
+
+## The leaner rival
+
+The status quo is the competitor coordinators fall back on every day. The account-level competitor is the leaner rival our largest account is trialing, one that "just does routing well" (UXR-04). It is fast but thin. Buyers chose RouteLogic for its reporting ("that's why we bought it", UXR-10), and their compliance records already live in it. So Velocity doesn't try to out-simplify the rival everywhere. It makes the frontline actions fast and keeps the depth the buyer pays for. A rival can copy a faster form within months. Moving an account's compliance history and reporting is a migration the account has to choose.

@@ -80,13 +80,13 @@ Compliance quality. Managers rate Compliance 3.9 today and rely on these records
 
 **Decision window, how much time or data before you scale, pivot, or kill? minimum threshold to proceed?**
 
-First, confirm the 48% is real. Compliance checks done on paper or another device must not simply be missing from the data (the tracking-error check). Then four weeks, with at least 270 coordinators in each group (current flow and faster compliance flow). 270 per group is what it takes to tell 48% from 60% with 80% power at 5% significance. Scale if completion reaches 60% and the guardrail holds. Iterate if completion improves significantly but stays below 60%. Kill and rethink if the difference is not significant or the guardrail breaks.
+First, confirm the 48% is real. Compliance checks done on paper or another device must not simply be missing from the data (the tracking-error check). Then a 14-day test in pilot weeks 3 and 4, after a 2-week build. It needs at least 270 coordinators in each group (current flow and faster compliance flow). The read is fixed at day 14. 270 per group is what it takes to tell 48% from 60% with 80% power at 5% significance. Scale if completion reaches 60% and the guardrail holds. Iterate if completion improves significantly but stays below 60%. Kill and rethink if the difference is not significant or the guardrail breaks.
 
 ## Finalized product hypothesis
 
 **Draft your full hypothesis sentence, one to three sentences; quote the metric, name the persona, name the outcome**
 
-> Based on dispatchers who "can't trust the board" and 14.6-minute compliance logs, I believe faster compliance logging will get fleet coordinators to finish their day in RouteLogic. It will show as a 25% increase in compliance-step completion, from 48% to 60%. I will protect compliance quality and will make a go/no-go decision after four weeks and at least 270 coordinators per group.
+> Based on dispatchers who "can't trust the board" and 14.6-minute compliance logs, I believe faster compliance logging will get fleet coordinators to finish their day in RouteLogic. It will show as a 25% increase in compliance-step completion, from 48% to 60%. I will protect compliance quality and will make a go/no-go decision on day 14 of the test, with at least 270 coordinators per group.
 
 Checked against the four pitfalls:
 
@@ -99,6 +99,6 @@ Checked against the four pitfalls:
 
 | Metric | Type | Target | Why it matters |
 |---|---|---|---|
-| Full daily workflow completion (through handoff), last two weeks of the test | North-star, success signal, lagging | 31% → 39% | Shows lasting value, not a first try. 39% assumes 65% of coordinators who log compliance still finish the handoff, as today (31 of 48). |
+| Full daily workflow completion (through handoff), read at the end of week 12 | North-star, success signal, lagging | 31% → 39% | Shows lasting value after rollout, not a first try. 39% assumes 65% of coordinators who log compliance still finish the handoff, as today (31 of 48). |
 | Compliance-step completion | Leading indicator, initiative signal | 48% → 60% (+25%) | The step where the workflow breaks, and one the build directly moves. Median logging time from 14.6 to 7.3 minutes or less supports it. |
 | Record accuracy, Fail rate and manager Compliance CSAT | Guardrail, counter-metric | Corrected or flagged records do not rise, the Fail rate does not collapse, and CSAT stays at 3.9 or higher | Speed must not come from skipped checks. The buyer relies on these records. |

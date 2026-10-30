@@ -12,7 +12,7 @@ This is an A/B test of the One-Click Compliance Checklist (B1) inside the 4-week
 
 - **Canary:** at the end of week 2, the CS lead and two coordinators use B1 for two days to confirm it is stable.
 - **Feature flag:** the flag controls who sees B1 and allows instant rollback.
-- **Phased rollout:** if B1 ships, it goes to one account, then all three, then general availability.
+- **Phased rollout:** if B1 ships, the 3 pilot accounts switch on fully in week 5. Every other account follows in weekly waves in weeks 6 to 8.
 
 A multivariate test would need about ten times the traffic. A fake door would only measure interest, and demand for a faster form is not in doubt.
 
@@ -86,8 +86,8 @@ Daily compliance-step completion: the share of a coordinator's workdays on which
 
 Two guardrails, each against the control arm in the same weeks:
 
-- **Record accuracy:** measured as the share of records later corrected or flagged in the compliance audit, including wrong pre-filled drivers or vehicles. Boundary: no more than 2 points above control.
-- **Fail rate:** the share of checks marked Fail. More Fails can mean more honest logging. A collapse means coordinators are tapping Pass to clear the blocked submit. Boundary: not below half of the control rate. All-Pass records submitted in under 20 seconds are reviewed as the diagnostic.
+- **Record accuracy:** measured as the share of records later corrected or flagged in the compliance audit, including wrong pre-filled drivers or vehicles. Boundary: no more than 2 points above control. Two points is a judgment call, agreed with the compliance owner before launch, and the read checks it against the audit's normal week-to-week variation.
+- **Fail rate:** the share of checks marked Fail. More Fails can mean more honest logging. A collapse means coordinators are tapping Pass to clear the blocked submit. Boundary: not below half of the control rate. Honest logging should keep the Fail rate near control, so a drop by half is too large to be noise. All-Pass records submitted in under 20 seconds are reviewed as the diagnostic. Twenty seconds for 12 checks is under 2 seconds a check, too fast to have looked at anything.
 
 Manager Compliance CSAT, which must stay at 3.9 or higher, is tracked across the whole pilot. It cannot be split by arm, because managers see records from both.
 
