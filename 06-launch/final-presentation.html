@@ -137,7 +137,7 @@ td{padding:7px 10px}
       <div class="rule" style="grid-template-columns:118px 1fr"><b>Ask</b><p>2 engineers, 1 designer and the CS lead for 4 weeks. B1 is about 2 weeks of build. Rollout adds the CS lead's time in weeks 5 to 8 and one engineer.</p></div>
       <div class="rule" style="grid-template-columns:118px 1fr"><b>Return</b><p>11.6 minutes back per coordinator per day at target. For the 48% who log today, that is about 50 coordinator-hours a day across the pilot, assuming 540 coordinators.</p></div>
       <div class="rule" style="grid-template-columns:118px 1fr"><b>Gates</b><p>Day 14 of the test, end of week 4: ship only at +12 points with both guardrails held. Week 12: double-down, iterate or deprioritize.</p></div>
-      <div class="rule" style="grid-template-columns:118px 1fr"><b class="kill">Missing</b><p>The largest account's revenue and renewal date are not in our data. They are the first two numbers to get. If it decides before week 4, it hears the plan, not an early read.</p></div>
+      <div class="rule" style="grid-template-columns:118px 1fr"><b class="kill">Missing</b><p>The largest account's revenue and renewal date are not in our data. They are the first two numbers to get. If it decides before day 14, engineering puts the two bugs below first.</p></div>
       <div class="rule" style="grid-template-columns:118px 1fr"><b class="kill">Outside B1</b><p>The renewal also depends on late route changes and crashes on long routes (BUG-2044, BUG-2031). They need an engineering owner and a date.</p></div>
     </div>
   </div>
@@ -368,7 +368,7 @@ td{padding:7px 10px}
       <div class="callout"><div class="label" style="color:var(--orange-soft)">Bad signal</div>
         <p>Coordinators open B1 but don't submit. A wave below 85% first-week activation holds the next wave until the cause is known.</p>
         <p style="margin-top:8px;font-size:13.5px;color:var(--muted)">Also watched: completion rises while the Fail rate collapses, which means Pass is tapped without checking.</p></div>
-      <div class="card"><div class="label">Scariest assumption</div><p>Every account can use the same 12 checks. The CS lead checks each account's list by week 3, before any wave is set.</p></div>
+      <div class="card"><div class="label">Scariest assumption</div><p>Every account can use the same 12 checks. The CS lead checks the pilot accounts' lists in week 1, before the build locks, and every other account's by week 3.</p></div>
       <div class="card"><div class="label">Most likely decision · Iterate</div><p>If waves with different checklists stall below 60% while matching accounts clear it, B1 stays on where it fits and the rest wait for a checklist per account.</p></div>
     </div>
   </div>

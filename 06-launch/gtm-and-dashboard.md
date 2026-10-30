@@ -16,7 +16,7 @@ B1 launches to fleet coordinators who already use RouteLogic every day. So the g
 
 The pilot is a release, not a launch. Announcing B1 during the A/B test would contaminate the control arm. The launch comes at general availability in week 5, and only if the day-14 read says ship. If the pilot doesn't ship, there is no launch. Go-to-market can amplify a result the pilot has proven, but it can't create one.
 
-The scariest assumption is that every account can use the same 12 checks. The PRD built B1 on one 12-item list and kept a checklist per account (S5) as a should-have. Three pilot accounts can hide a mismatch. General availability can't. So by the end of week 3, the CS lead asks every account whether its checklist matches B1's 12 items. Accounts that match go first.
+The scariest assumption is that every account can use the same 12 checks. The PRD built B1 on one 12-item list and kept a checklist per account (S5) as a should-have. Three pilot accounts can hide a mismatch. General availability can't. So in week 1, before the build locks, the CS lead checks the 3 pilot accounts' checklists against B1's 12 items. By the end of week 3, the CS lead asks every other account whether its checklist matches. Accounts that match go first.
 
 What the launch must not disrupt: the compliance records managers rely on. They rate Compliance 3.9 and Reporting 4.5 today, and the guardrails below watch both.
 
@@ -160,7 +160,7 @@ The PRD blocks a second record per route and shift, but doesn't define how to co
 The scenario names only me, so the other owners are roles. Each role is one person.
 
 - **Antje Barth (PM):** this plan, the enablement brief, the launch tracker and the wave plan by the end of week 4. Also delay approvals, the day-14 go/no-go, the weekly metric read, the all-Pass log review and the post-launch decision.
-- **CS lead:** the checklist-match check, contact confirmation and the list of accounts that raised complexity, all by the end of week 3. Also delay requests, the manager emails, live sessions, the one-pager, the walkthrough recording, the peer-call ask and the objections log.
+- **CS lead:** the pilot accounts' checklist check in week 1. The checklist-match check for every other account, contact confirmation and the list of accounts that raised complexity, all by the end of week 3. Also delay requests, the manager emails, live sessions, the one-pager, the walkthrough recording, the peer-call ask and the objections log.
 - **Compliance owner:** sign-off on every customer-facing sentence about compliance by the end of week 4, and the weekly count of audit corrections for the record-accuracy guardrail.
 - **Designer:** the in-app note.
 - **Support lead:** the FAQ, and routing every correction request to the audit correction process.
@@ -181,7 +181,7 @@ I make two requests before the plan locks at the end of week 2. One is the CS le
 
 **Timeline, Phase 1 beta → Phase 2 launch moment → Phase 3 post-launch**
 
-- **Phase 1 · Beta (pilot weeks 1 to 4).** B1 is built in weeks 1 and 2 and runs as a canary at the end of week 2. It is A/B tested in weeks 3 and 4. Nothing is announced. By the end of week 3, the CS lead checks every account's checklist against B1's 12 items and confirms its ops manager and compliance contact. By the end of week 4, the assets are drafted and signed off, but nothing is sent. Track: how often the variant arm uses B1, and whether the week-2 lift holds at least half of week 1. Go/no-go at the end of week 4, on day 14 of the test.
+- **Phase 1 · Beta (pilot weeks 1 to 4).** B1 is built in weeks 1 and 2 and runs as a canary at the end of week 2. It is A/B tested in weeks 3 and 4. Nothing is announced. In week 1, before the build locks, the CS lead checks the 3 pilot accounts' checklists against B1's 12 items. By the end of week 3, the CS lead checks every other account's checklist and confirms its ops manager and compliance contact. By the end of week 4, the assets are drafted and signed off, but nothing is sent. Track: how often the variant arm uses B1, and whether the week-2 lift holds at least half of week 1. Go/no-go at the end of week 4, on day 14 of the test.
 - **Phase 2 · Launch moment (week 5, only on a ship).** Internal teams get the brief before any customer. In week 5, the pilot accounts get the result by email on day 1, and their control coordinators switch on no earlier than day 4. New accounts follow in weekly waves from week 6 to week 8, with matching checklists first. Each wave's email goes out a week before its switch-on. A manager's delay request is due 3 working days before switch-on. Each wave switches on only after the previous wave's 7-day activation read is in. If our largest account isn't a pilot account, it joins the week-6 wave, as long as its checklist matches. Track: first-week activation in each wave.
 - **Phase 3 · Post-launch adoption (weeks 6 to 12).** I read each account weekly. Track: adoption velocity, meaning how many weeks each wave takes to reach 60% completion, and the error rate. The decision comes at the end of week 12, four full weeks after the last wave.
 
