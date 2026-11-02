@@ -4,44 +4,46 @@ RouteLogic Velocity.
 
 Module 3's funnel and CSAT evidence moved the priority from driver delivery confirmation to coordinator compliance logging. B1 addresses that narrower workflow. The [historical driver journey](#historical-baseline-the-original-driver-journey) records the evidence behind the initial choice.
 
-## Persona
+## Responses
 
-### Role
+### Persona
+
+#### Role
 
 A fleet coordinator, called a dispatcher in the interviews, who assigns routes, logs compliance checks and hands off shifts each day.
 
-### Goal
+#### Goal
 
 Finish the daily compliance record in RouteLogic, with each answer recorded and the record available to the managers who rely on it.
 
-### Friction and validation
+#### Friction and validation
 
 The Module 3 scenario reports **mean compliance logging time of 14.6 minutes against a 3-minute benchmark**. Workflow completion falls from 71% at route assignment to 48% at compliance. Coordinators rate Compliance 2.2 out of 5 while 77% use it daily. These signals justify investigating this step first. They do not establish how much time a faster form can remove. [Hypothesis and metrics](../03-analytics/hypothesis-and-metrics.md).
 
 No interview describes compliance logging. The current screens, repeated data entry and use of paper for compliance are unverified. Under VEL-01's **pre-build evidence gate**, observe five current-flow sessions per pilot account. Separate checking time from recording time, confirm the checklist and route fields, and verify the correction path with the compliance owner. If physical checks consume most of the time or the 12-item list does not fit, revisit B1 before approving the build estimate.
 
-## Current workflow and workaround
+### Current workflow and workaround
 
-### Observed external tools
+#### Observed external tools
 
 Dispatchers use a WhatsApp group as "the real system" (UXR-02) and say "I can't trust the board" (UXR-09). That establishes an off-platform coordination workaround. It does **not** establish that they log compliance in WhatsApp or on paper. The compliance workaround, if there is one, must be observed rather than inferred from the messaging complaints.
 
-### Workflow sequence
+#### Workflow sequence
 
 1. Open RouteLogic and load the fleet. The scenario funnel has 100% at open and 94% at fleet view.
 2. Assign routes. 71% reach this step. This is B1's proposed entry point. Route assignment itself does not change.
 3. Log compliance. 48% reach it, and its scenario mean time is 14.6 minutes. The existing screens and any copied fields are hypotheses pending observation.
 4. Complete the shift handoff. 31% reach it. The funnel does not prove that compliance friction caused the later drop or that the missing work was done elsewhere.
 
-### Mechanism to validate
+#### Mechanism to validate
 
 The candidate moment is the transition from an assigned route to a completed compliance log. The measurable gap is clear. The explanation to test is that avoidable recording work, rather than the checks themselves, consumes the time and discourages completion.
 
-### Evidence
+#### Evidence
 
 The workflow drop, the 14.6-minute mean and the 2.2 Compliance CSAT cell establish the priority to investigate. The interviews corroborate a wider coordination problem, not its cause at compliance. Pre-build observation tests the proposed recording obstacle. [VEL-01](../05-experimentation/experimentation-plan.md) then tests B1's effect on completion and record quality.
 
-## Proposed coordinator journey
+### Proposed coordinator journey
 
 [Coordinator journey map](journey-map.html). The prototype illustrates this proposed workflow. Completion and time improvements remain hypotheses.
 
@@ -60,11 +62,11 @@ Three advantages to validate against today's logging workflow:
 
 B1 does not fix driver delivery confirmation, photo uploads, offline routes, reassignment notifications or live two-way sync. Those problems remain in the research and need their own engineering decisions. [B1 PRD and exclusions](../04-roadmap/simplified-prd.md).
 
-## The leaner rival
+### The leaner rival
 
 The account-level competitor is the leaner rival our largest account is trialing, one that "just does routing well" (UXR-04). Buyers chose RouteLogic for its reporting ("that's why we bought it", UXR-10). The proposed advantage is a faster compliance-recording step within the workflow and history the buyer already uses. A rival can copy a faster form within months. The advantage depends on workflow fit and the cost of migrating history, rather than a unique form. B1 does not resolve the separate routing and reliability reasons an account might leave.
 
-## Historical baseline: the original driver journey
+### Historical baseline: the original driver journey
 
 **Module 2's original choice, before the Module 3 pivot.** I chose a delivery driver making dozens of stops a day, often at a doorstep with one hand free. Seven of the 12 research notes came from drivers, plus the focus group, and 8 of the 10 bug reports hit the driver app. UXR-10 tied renewal risk to the "daily driver experience". The goal was to confirm each stop and move on in seconds, with the rest of the route still there.
 

@@ -1,6 +1,6 @@
 ![RouteLogic Velocity — One-Click Compliance Checklist, with the prototype's route header and explicit Pass / Fail controls](assets/route-logic-velocity-banner.png)
 
-# RouteLogic Velocity
+# RouteLogic Velocity: Product Management Final Project
 
 A Product Management Foundations final project by **Antje Barth**. A focused proposal to improve fleet coordinators' compliance logging while preserving the records managers rely on.
 

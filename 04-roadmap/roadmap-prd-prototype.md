@@ -105,7 +105,7 @@ Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs
 
 Using the 70/20/10 horizon lens, B1 and the B3 candidate are core workflow work. B9 is adjacent. These are categories, not measured staffing allocations. The pilot funds only B1. It includes no innovation bet: B2's AI auto-fill is cut for its record-quality risk.
 
-## Specification summary
+## PRD snippets
 
 [B1 specification](simplified-prd.md).
 
@@ -116,7 +116,7 @@ Using the 70/20/10 horizon lens, B1 and the B3 candidate are core workflow work.
 - **Guard against automatic answers:** every saved result must match a tap event. There is no "mark all as pass". Record audits still need to check truthfulness.
 - **Evals:** proposed median time to submit ≤ 3:00 in 15 usability sessions, plus deterministic record validation and edge-case checks. These do not establish production accuracy or time savings. [PRD acceptance checks](simplified-prd.md#evals) separate build checks from VEL-01's pilot gate.
 
-## Prototype
+## Wireframes / prototype
 
 [Open the B1 prototype](https://route-ready-checklist.lovable.app) · [Prototype findings and limitations](prd-and-prototype.md).
 

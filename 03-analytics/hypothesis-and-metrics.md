@@ -70,11 +70,11 @@ Weeks 1 and 2 build and test the implementation. The pre-exposure implementation
 
 ## Success metrics
 
-| Metric and role | Target or action | Read |
-|---|---|---|
-| **Compliance completion**, primary leading indicator | Pilot: +12 points versus concurrent control. Rollout: verified baseline +12 points, locked before exposure. Scenario illustration: 48% → 60%. | Pilot day 14, then four weeks after switch-on |
-| **Workflow through handoff**, lagging north star | Lock the projection before exposure using the verified completion target and matched-cohort handoff ratio. Scenario illustration: 60% × (31/48) = 38.75%, rounded to 39%. B3 could change this outcome too. | Week 12 if rollout stays on schedule |
-| **Audited records and Fail rate**, quality guardrails | Accuracy deterioration ≤ 2 points. Fail ratio below 0.5 triggers an audit. These planning judgments require agreement before launch. Confirmed harm blocks shipping. | Live monitoring and the day-14 audit read under VEL-01 |
-| **Manager Compliance CSAT**, descriptive trust signal | Scenario reference 3.9. Investigate a decline. Managers see both arms, so this cannot estimate B1's causal effect. | Pilot monitoring and week-12 follow-up |
+| Metric | Type | Target | Why it matters |
+|---|---|---|---|
+| **Compliance completion** | Primary leading indicator | Pilot: +12 points versus concurrent control. Rollout: verified baseline +12 points, locked before exposure. Scenario illustration: 48% → 60%. | Measures the behavior B1 directly tests. **Read:** pilot day 14, then four weeks after switch-on. |
+| **Workflow through handoff** | Lagging north star | Lock the projection before exposure using the verified completion target and matched-cohort handoff ratio. Scenario illustration: 60% × (31/48) = 38.75%, rounded to 39%. | Tracks completion beyond compliance. B3 could change this outcome too. **Read:** week 12 if rollout stays on schedule. |
+| **Audited records and Fail rate** | Quality guardrails | Accuracy deterioration ≤ 2 points. Fail ratio below 0.5 triggers an audit. These planning judgments require agreement before launch. | Protects record quality. Confirmed harm blocks shipping. **Read:** live monitoring and the day-14 audit under VEL-01. |
+| **Manager Compliance CSAT** | Descriptive trust signal | Scenario reference 3.9. Investigate a decline. | Managers see both arms, so this cannot estimate B1's causal effect. **Read:** pilot monitoring and week-12 follow-up. |
 
 Prototype median ≤ 3 minutes remains a separate usability hypothesis. It is not the completion metric or evidence of mean time savings.

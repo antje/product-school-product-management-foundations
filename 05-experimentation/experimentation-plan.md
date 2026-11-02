@@ -25,7 +25,7 @@ VEL-01 tests whether B1 changes coordinators' daily compliance behavior. The pro
 
 **Instrumentation.** PRD M6 checklist events alone cannot count non-users. Join assignment and account/coordinator IDs to the work roster, route/shift obligations, app opens, completed records in both flows, block reasons, corrections, and audit outcomes. These joins and missing-event handling must pass the pre-exposure implementation gate and canary. A failed denominator or control-arm check holds randomization.
 
-## Test definition
+## What you're testing
 
 | Element | Detail |
 |---|---|
@@ -150,6 +150,6 @@ The half-week persistence bar is a PM planning judgment screening a novelty-only
 
 Read efficacy only at the end of day 14, planned as the end of pilot week 4 if both gates pass on schedule. Do not inspect interim lift to stop for success or change targeting, variant, or metric. Daily safety and data monitoring continue throughout. Report Δ, uncertainty, account effects, persistence, guardrails, and sample validity together. Log every outcome and rationale. Report elapsed-time mean and median separately. Subtracting the prototype median from the scenario mean cannot establish time savings.
 
-## Findings & decision
+## Findings & decision _(after running it)_
 
 **Not run.** There is no measured lift, guardrail result, or ship decision. The prototype demonstrates interface behavior on mock data. VEL-01 remains a proposed test. The pre-build evidence gate and pre-exposure implementation gate are both outstanding.

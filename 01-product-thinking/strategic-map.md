@@ -2,25 +2,27 @@
 
 A comparison of two discovery maps for a hydration app: a broad feature map and a version focused on a specific audience and job.
 
-## Features without a strategic case
+## Responses
+
+### Features without a strategic case
 
 The virtual plant or pet that grows, from the Engagement branch, has no strategic case in the map. Nothing says who asked for it, which metric it moves, or why it should come before one-tap logging and reminders. The same map names those two as what decides week-one retention. It also costs design and animation work. My only answer to the engineer would be "other apps have one", and that is not a reason.
 
-## Unsupported precision
+### Unsupported precision
 
 Drink types with hydration weighting (tea, coffee, juice, sports drinks) look rigorous. But the same map's Problems branch says self-reported data is unreliable, because people guess sizes and log from memory. Weighting adds precision on top of a guess. No user need in the map asks for it, and it is not tied to any revenue line.
 
-## What changed between V1 and V3
+### What changed between V1 and V3
 
 V1 gave 13 branches and 77 leaves for everyone, all with equal weight. V3 starts from one claim about the audience: busy adults who know they should drink more, and forget. So the job is remembering, not measuring. V3 sorts features into quick wins, big bets, fill-ins and money pits. It names seven tensions to settle before any roadmap, such as whether to put the reminders that drive retention behind a paywall. The plant or pet that sat unquestioned in V1 is now a low-impact fill-in, flagged as a risk for an adult audience. V3 is more useful, but not more true. Its effort and impact ranks are guesses, and it says so. Its numbers have no source and disagree. Novelty fades in "two to three weeks" in one branch and "weeks 2 to 4" in another, and V2 said one to two. The AI did not get smarter. It was the same model, in a fresh chat each time. What changed was the prompt: I gave it a segment, a problem, and the frameworks (JTBD, effort vs. impact, retention).
 
-## PM judgment
+### PM judgment
 
 The AI organized whatever I gave it. Every choice that made V3 useful came from my prompt: who the app is for, which problem to solve, and how to rank the work. V3 then handed the hardest decisions back to me as open tensions, and its numbers still needed checking. The PM decides what matters and checks the result. The AI does the drafting.
 
 ---
 
-## The maps
+### The maps
 
 **V1 · shallow prompt:** 13 branches, 77 leaves, no audience, no ranking.
 
