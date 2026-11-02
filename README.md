@@ -26,24 +26,16 @@ A Product Management Foundations final project by **Antje Barth**. A focused pro
 | Roadmap and prototype | [Prioritization and roadmap](04-roadmap/roadmap-prd-prototype.md) · [Visual roadmap](https://antje.github.io/product-school-product-management-foundations/04-roadmap/roadmap.html) · [Simplified PRD](04-roadmap/simplified-prd.md) · [Prototype sprint and checks](04-roadmap/prd-and-prototype.md) |
 | Experimentation | [VEL-01 experiment plan](05-experimentation/experimentation-plan.md) |
 | Launch | [GTM strategy and success dashboard](06-launch/gtm-and-dashboard.md) · [Individual insights](06-launch/individual-insights.md) |
-| Final presentation | [Published deck](https://antje.github.io/product-school-product-management-foundations/06-launch/final-presentation.html) · [Standalone HTML file](06-launch/final-presentation.html) · [Sources and submission notes](06-launch/final-presentation.md) |
+| Final presentation | [Published deck](https://antje.github.io/product-school-product-management-foundations/06-launch/final-presentation.html) · [Standalone HTML file](06-launch/final-presentation.html) · [Presentation sources](06-launch/final-presentation.md) |
 
-## How the work evolved
+## Evidence and scope
 
-The early discovery exercise focused on drivers and delivery confirmation. The later workflow and satisfaction data moved the priority to coordinators and compliance logging. Dated refinements connect that change across the artifacts, and the original driver journey remains labeled as historical. The strategic discovery map is a separate classroom exercise.
+The initial discovery focused on drivers and delivery confirmation. Workflow and satisfaction data moved the priority to coordinators and compliance logging. The original driver journey remains available alongside the current coordinator journey.
 
 VEL-01 is the source for measurement, readiness and decision rules. Its primary measure includes all scheduled workdays fixed before assignment, counting non-use as zero. The scenario's app-opener funnel uses a different denominator, so baseline and power must be re-estimated before build. A separate implementation gate verifies telemetry, write guards, usability and the canary before randomization.
 
-The checklist prototype demonstrates interaction rules, not production persistence, legal compliance, record truthfulness or measured time savings. Known limitations and the remaining “Other” reason-label issue are documented in the [prototype sprint](04-roadmap/prd-and-prototype.md). The banner is an illustrative composition based on the prototype; screenshots in the prototype review document its actual behavior.
+The checklist prototype demonstrates interaction rules, not production persistence, legal compliance, record truthfulness or measured time savings. Known limitations and the remaining “Other” reason-label issue are documented in the [prototype sprint](04-roadmap/prd-and-prototype.md).
 
 ## The project in one sentence
 
 RouteLogic Velocity tests whether a simpler compliance checklist helps coordinators complete their daily logs while preserving record quality.
-
-## How to submit
-
-Submit the [repository URL](https://github.com/antje/product-school-product-management-foundations) and the [presentation link](https://antje.github.io/product-school-product-management-foundations/06-launch/final-presentation.html), or its standalone HTML file, in the Learning Platform's final-project upload section.
-
-## Repo structure
-
-The six numbered folders hold the module artifacts. `06-launch/` also contains the final presentation and individual reflection; `assets/` contains the repository banner. The table above links every completed deliverable.

@@ -1,53 +1,49 @@
 # Competitive Analysis & Journey Map
 
-Module 2 · Deliverable 2. Scenario: RouteLogic Velocity.
+RouteLogic Velocity.
 
-**Refined on 2026-11-02.** Module 3 changed the priority from the driver's delivery confirmation to the coordinator's compliance logging. The current persona and journey below reflect that decision and the B1 scope. The original driver research remains in the historical baseline at the end, including the evidence that made it a reasonable starting point.
+Module 3's funnel and CSAT evidence moved the priority from driver delivery confirmation to coordinator compliance logging. B1 addresses that narrower workflow. The [historical driver journey](#historical-baseline-the-original-driver-journey) records the evidence behind the initial choice.
 
-## Responses
+## Persona
 
-### Step 1 · Persona
-
-**Role, who are you solving for? (the specific user segment or profile)**
+### Role
 
 A fleet coordinator, called a dispatcher in the interviews, who assigns routes, logs compliance checks and hands off shifts each day.
 
-**Goal, what is this user ultimately trying to achieve?**
+### Goal
 
 Finish the daily compliance record in RouteLogic, with each answer recorded and the record available to the managers who rely on it.
 
-**Friction, the main barrier (moment of misery) stopping them from succeeding**
+### Friction and validation
 
 The Module 3 scenario reports **mean compliance logging time of 14.6 minutes against a 3-minute benchmark**. Workflow completion falls from 71% at route assignment to 48% at compliance. Coordinators rate Compliance 2.2 out of 5 while 77% use it daily. These signals justify investigating this step first. They do not establish how much time a faster form can remove. [Hypothesis and metrics](../03-analytics/hypothesis-and-metrics.md).
 
 No interview describes compliance logging. The current screens, repeated data entry and use of paper for compliance are unverified. Under VEL-01's **pre-build evidence gate**, observe five current-flow sessions per pilot account. Separate checking time from recording time, confirm the checklist and route fields, and verify the correction path with the compliance owner. If physical checks consume most of the time or the 12-item list does not fit, revisit B1 before approving the build estimate.
 
-### Step 2 · Current workaround
+## Current workflow and workaround
 
-**External tools, the outside platforms or tools the user is forced to use**
+### Observed external tools
 
 Dispatchers use a WhatsApp group as "the real system" (UXR-02) and say "I can't trust the board" (UXR-09). That establishes an off-platform coordination workaround. It does **not** establish that they log compliance in WhatsApp or on paper. The compliance workaround, if there is one, must be observed rather than inferred from the messaging complaints.
 
-**The process, the 3 to 5 manual steps the user takes to get the job done**
+### Workflow sequence
 
 1. Open RouteLogic and load the fleet. The scenario funnel has 100% at open and 94% at fleet view.
 2. Assign routes. 71% reach this step. This is B1's proposed entry point. Route assignment itself does not change.
 3. Log compliance. 48% reach it, and its scenario mean time is 14.6 minutes. The existing screens and any copied fields are hypotheses pending observation.
 4. Complete the shift handoff. 31% reach it. The funnel does not prove that compliance friction caused the later drop or that the missing work was done elsewhere.
 
-**Core frustration, the exact moment the process feels most “broken”**
+### Mechanism to validate
 
 The candidate moment is the transition from an assigned route to a completed compliance log. The measurable gap is clear. The explanation to test is that avoidable recording work, rather than the checks themselves, consumes the time and discourages completion.
 
-**The evidence, a specific quote or behavior from the research that proves this**
+### Evidence
 
 The workflow drop, the 14.6-minute mean and the 2.2 Compliance CSAT cell establish the priority to investigate. The interviews corroborate a wider coordination problem, not its cause at compliance. Pre-build observation tests the proposed recording obstacle. [VEL-01](../05-experimentation/experimentation-plan.md) then tests B1's effect on completion and record quality.
 
-### Step 3 · Future-state journey map
+## Proposed coordinator journey
 
-**Your journey map, a shareable link, or the map file you committed (e.g. journey-map.html)**
-
-[`journey-map.html`](journey-map.html), with the current coordinator journey below. The prototype illustrates this proposed workflow. Completion and time improvements remain hypotheses.
+[Coordinator journey map](journey-map.html). The prototype illustrates this proposed workflow. Completion and time improvements remain hypotheses.
 
 | Stage | User action → benefit | Intended internal state | Friction addressed |
 |---|---|---|---|
@@ -78,7 +74,7 @@ The original workaround sequence was: skip the delivery flow, text the dispatche
 
 The original four-stage future journey was **Start route → Arrive at stop → Confirm delivery → Move to next stop**. It proposed cached routes, one-tap delivery, photo confirmation and reassignment alerts. Its proposed advantages were one driver action creating one record, richer stop data and live updates in both directions. Those remain broader Velocity aspirations, not demonstrated outcomes or B1 capabilities. Texts can carry identifiers, photos and other details, but do not enforce a record structure.
 
-Module 3 changed the priority: Drivers × Core Dispatch scored 4.3, while Coordinators × Compliance scored 2.2 and the coordinator funnel showed the largest time gap at compliance. That supports testing the coordinator bet first, not dismissing the drivers' documented failures. The expandable history in the HTML map keeps this earlier journey visible without presenting it as the current solution.
+Module 3 changed the priority: Drivers × Core Dispatch scored 4.3, while Coordinators × Compliance scored 2.2 and the coordinator funnel showed the largest time gap at compliance. That supports testing the coordinator bet first, not dismissing the drivers' documented failures.
 
 The screenshot below is the original driver journey, retained as history. [The current coordinator journey HTML](journey-map.html) is authoritative for B1.
 

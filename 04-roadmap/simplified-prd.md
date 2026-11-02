@@ -1,14 +1,15 @@
 # B1 One-Click Compliance Checklist, Simplified PRD (RouteLogic)
 
-**Author:** Antje Barth · **Status:** Draft · **Target:** High-Fidelity Prototype · **Persona:** fleet coordinator
+**Owner:** Antje Barth · **Status:** Proposed pilot specification · **Persona:** fleet coordinator
 
-**Refined on 2026-11-02.** This is the proposed interaction contract, not a production implementation. The supplied 14.6 minutes is a scenario mean. The median ≤ 3-minute usability bar is unproven. VEL-01 owns pilot readiness, measurement and shipping decisions. The hosted prototype still has the known “Other” note-label gap recorded in the [sprint debrief](prd-and-prototype.md).
+The hosted session prototype demonstrates the interaction, with limitations in the [prototype findings](prd-and-prototype.md). It does not establish production persistence, record accuracy or time savings. The supplied 14.6 minutes is a scenario mean, and the median ≤3-minute usability bar is unproven. [VEL-01](../05-experimentation/experimentation-plan.md) defines readiness, measurement and shipping decisions.
 
 ---
 
-## 1. The Big Picture
+## Product direction
+
 - **Vision:** A coordinator records compliance from the assigned route, with each answer explicit and the saved result visible.
-- **Press release, proposed benefit:** **RouteLogic would put compliance recording in one checklist.** The scenario's mean logging time is 14.6 minutes against a 3-minute benchmark. Its coordinator funnel falls from 71% at route assignment to 48% at compliance. B1 tests whether reusing route details and reducing navigation removes recording friction. No supplied interview describes compliance logging, so current-flow observation must verify the mechanism before build.
+- **Proposed benefit:** **RouteLogic would put compliance recording in one checklist.** The scenario's mean logging time is 14.6 minutes against a 3-minute benchmark. Its coordinator funnel falls from 71% at route assignment to 48% at compliance. B1 tests whether reusing route details and reducing navigation removes recording friction. No supplied interview describes compliance logging, so current-flow observation must verify the mechanism before build.
 
   **Every check starts blank.** A Pass takes one tap. A Fail needs a reason. Submit saves only a complete response. The proposed record format and correction process must be confirmed with the compliance owner. A tap proves an answer was recorded, not that a physical check occurred.
 - **Success metric:** +12 points in daily compliance completion versus concurrent control, using [VEL-01's fixed workday denominator and ordered policy](../05-experimentation/experimentation-plan.md). The scenario's 48% → 60% illustrates that effect, not an absolute ship rule.
@@ -16,11 +17,11 @@
 
 ---
 
-## 2. The Details
+## Product requirements
 
 ### User stories
 
-**US1. Open a checklist that is already filled in (M1, M2)**
+**US1. Open a checklist with route details filled in (M1, M2)**
 As a fleet coordinator, I want to open a pre-filled checklist from the route I just assigned, so that I never re-type data RouteLogic already has.
 - From the route row, it takes 1 tap to open the checklist.
 - All 6 header fields (driver, vehicle, route, date, shift, coordinator) match the route record exactly.
@@ -41,7 +42,7 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 - The confirmation screen shows the number of passes and fails, each failed item with its reason, and the time taken.
 - On the route list, that row changes from "Log compliance" to "Logged hh:mm".
 
-### Screens to build
+### Screens
 
 **Screen 1: Today's Routes (entry point)**
 - Header: coordinator name, account name, date, shift.
@@ -97,7 +98,8 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 | Date + route + shift already logged in this account | The row shows "Logged hh:mm". A second record is blocked. Corrections follow the agreed audit process rather than creating another log. |
 | Route has no driver or vehicle | The checklist does not open. The row shows the "Assign a driver and vehicle" message. |
 
-### Technical constraints
+### Prototype constraints
+
 - **No external APIs.** All data is hard-coded mock data: 1 coordinator, 1 account, 5 routes (1 of them with no driver), 12 checklist items, 5 fail reasons.
 - **No login.** The coordinator is hard-coded.
 - **useState only.** No Redux, Context, localStorage, IndexedDB or backend. Refresh resets the demo. Session-level duplicate blocking is not evidence of durable uniqueness. Production persistence, date-key uniqueness and the audit-correction integration must be implemented and verified before pilot exposure.
@@ -108,9 +110,10 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 
 ---
 
-## 3. The Logistics
+## Scope and delivery
 
-### Features out
+### Scope exclusions
+
 - A "Mark all as pass" button, or pass answers ticked in advance.
 - AI-suggested answers, or carrying forward yesterday's answers (B2 territory).
 - Any change to the compliance record format or to what the checklist legally requires.
@@ -123,7 +126,8 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 - Third-party telematics integrations.
 - Also held for later, as Should-Haves: S1 to S5. See the MoSCoW scope below.
 
-### Edge cases & safety guard
+### Edge cases and safety
+
 1. **Route data missing.** A route with no driver or vehicle cannot open a checklist. The prototype never fills a gap with a guess or a default.
 2. **Pre-filled details are wrong.** The header is read-only. The coordinator follows "Fix them in route assignment", so corrections happen in the existing flow. The checklist never holds data that differs from the route record.
 3. **Coordinator leaves mid-checklist.** The discard dialog appears, and nothing is saved, so no partial record is created. In the event log, an open with no submit counts as abandoned.
@@ -132,7 +136,7 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 6. **"Other" chosen with an empty or short note.** Once other inputs are complete, Submit reads "Add a note". Activation focuses that note and saves nothing.
 7. **Guard against automatic answers.** Copy header fields from the verified route record. Every saved item result must match the latest `item_answered` tap event for that item. A mismatch blocks saving. This checks interface behavior, not whether the coordinator performed the physical inspection. Audits and VEL-01's live safety monitoring address that separate risk.
 
-### Decision log
+### Decision rationale
 
 | # | Decision | Rejected alternative | Why |
 |---|---|---|---|
@@ -145,17 +149,18 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 |---|---|---|---|
 | E1 | **Time on task** | Proposed prototype median ≤ 3:00 from open to submit for the verified checklist. This is an unproven usability bar. | Five timed sessions per account, 15 total, using `checklist_submitted` minus `checklist_opened`. Record time spent checking versus entering data. The scenario's 14.6 is a mean; measure control and variant mean and median separately before claiming savings. |
 | E2 | **Header mapping and record validation** | Every saved demo header matches its fixture; every required answer, reason and Other note passes FR4/FR5. | Run deterministic checks of all validation states and inspect the 15 usability sessions. These sessions do not establish production accuracy or truthful inspection. |
-| E3 | **Write guards** | No result without a matching tap event; no write for missing assignment data; no duplicate date + route + shift record. | Test happy and failure paths, repeated taps and duplicate keys. The local demo covers session behavior; production storage, reload and multi-device cases require separate verification before exposure. A failed guard holds the build. |
+| E3 | **Write guards** | No result without a matching tap event; no write for missing assignment data; no duplicate date + route + shift record. | Test happy and failure paths, repeated taps and duplicate keys. The local demo covers session behavior; production storage, reload and multi-device cases require separate verification before exposure. A failed guard holds exposure. |
 
 The 15 sessions assess usability and reveal problems. They do not prove completion lift, an error-rate bound or production reliability. E1 to E3 belong to [VEL-01's pre-exposure implementation gate](../05-experimentation/experimentation-plan.md#overview), after build weeks 1 and 2. The earlier pre-build evidence gate confirms observed mechanism, checklist fit, enrollment, power, feasible measurement/audit design and staffing, then starts the four-week plan. Before randomization, implemented both-arm telemetry, persistence/write guards, the 15 usability sessions and canary must pass. A failure holds exposure and moves the read without shortening the 14-day test. The pilot uses VEL-01's fixed workday denominator, ordered decision policy and live harm monitoring.
 
 ## MoSCoW scope
+
 - **Must:**
   - M1 One-screen checklist, opened in one tap from the assigned route.
   - M2 Auto-fill of system data only, read-only.
   - M3 One tap per item, nothing pre-answered.
   - M4 A reason from a pick list for every Fail.
-  - M5 Submit blocked until every item has an answer, then saved in one action in the existing record format.
+  - M5 Save only when all answers, Fail reasons and required Other notes are complete, in one action and the existing record format.
   - M6 Event logging: opened, item answered, submitted, time taken.
 - **Should:**
   - S1 "Compliance not yet logged" marker.
@@ -176,6 +181,3 @@ The 15 sessions assess usability and reveal problems. They do not prove completi
   - Changes to the record format or the legal checklist.
   - Mobile app (B4), audit export (B9), manager dashboard (B8), driver notifications (B6), handoff link (B3), in-app training (B10).
   - Third-party telematics.
-
----
-**Builder hook:** Build a working prototype based on this PRD. Use the User Story as the core flow, Functional Requirements as build constraints, and prioritize speed and clarity over visual complexity.

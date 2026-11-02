@@ -133,7 +133,7 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:left}
       <li><b>Primary metric</b> Daily compliance completion +12 points versus concurrent control</li>
       <li><b>Quality</b> Accuracy boundary +2 points; a Fail-rate ratio below 0.5 triggers an audit</li>
     </ul>
-    <p class="readiness"><b>Entry gate:</b> observe current work and confirm checklist fit, enrollment, power, feasible measurement/audit design and staffing before build. Then build for two weeks and verify implemented telemetry, write guards and usability before exposure. <a href="../05-experimentation/experimentation-plan.md">VEL-01 owns the ship and safety rules.</a> Refined 2 November 2026.</p>
+    <p class="readiness"><b>Readiness gates:</b> observe current work and confirm checklist fit, enrollment, power, feasible measurement/audit design and staffing before build. Then build for two weeks and verify implemented telemetry, write guards, usability and the canary before exposure. <a href="../05-experimentation/experimentation-plan.md">VEL-01 owns the ship and safety rules.</a></p>
   </header>
 
   <div class="toolbar">
@@ -156,7 +156,7 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:left}
       </div>
       <div class="lane" data-lane="next">
         <div class="lane-head">
-          <div><span class="lane-tag">NEXT</span><p class="lane-title">Conditional next step</p><p class="lane-sub">Rollout first; validate B3 before approval</p></div>
+          <div><span class="lane-tag">NEXT</span><p class="lane-title">Conditional next step</p><p class="lane-sub">Rollout first. Validate B3 before approval</p></div>
           <span class="count" id="count-next"></span>
         </div>
         <div class="lane-body" id="lane-next" style="display:flex;flex-direction:column;gap:12px"></div>
@@ -219,7 +219,7 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:left}
   var Q = {qw:"Quick Win", mp:"Major Project", fi:"Fill-In", ts:"Time Sinker"};
   var items = [
     {id:"B1", name:"One-Click Compliance Checklist", lane:"now", q:"qw", v:5, e:2,
-     why:`Tests whether one checklist and verified route fields remove observed recording friction. Proposed median ≤3 minutes is a usability bar. After build, verify telemetry, write guards and usability before exposure. Ship only under VEL-01.`},
+     why:`Tests whether one checklist and verified route fields remove observed recording friction. Proposed median ≤3 minutes is a usability bar. After build, verify telemetry, write guards, usability and the canary before exposure. Ship only under VEL-01.`},
     {id:"B3", name:"Shift Handoff Wizard", lane:"next", q:"mp", v:4, e:3,
      why:`A validation candidate, not an approved build. Proceed only after sustained complete-day logging without confirmed harm, observed handoff needs and confirmed engineering/design capacity.`},
     {id:"B9", name:"Compliance Audit Trail Export", lane:"later", q:"fi", v:3, e:2,
@@ -233,7 +233,7 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:left}
     {id:"B2", name:"Smart Daily Report Auto-Fill", lane:"cut", q:"ts", v:2, e:4,
      why:`Wrong step, and one-click AI submit invites rubber-stamping that breaks the records guardrail.`},
     {id:"B6", name:"Driver Alert Notifications", lane:"cut", q:"ts", v:2, e:4,
-     why:`Late route changes (BUG-2044) need a separate engineering owner. They are outside the compliance pilot, not dismissed as unimportant.`},
+     why:`Late route changes (BUG-2044) need a separate engineering owner. They are outside the compliance pilot.`},
     {id:"B4", name:"Mobile-First Coordinator Dashboard", lane:"cut", q:"ts", v:3, e:5,
      why:`Rebuilds three flows with one designer.`},
     {id:"B8", name:"Fleet Analytics Manager View", lane:"cut", q:"ts", v:2, e:5,

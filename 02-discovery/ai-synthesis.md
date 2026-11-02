@@ -1,30 +1,28 @@
 # AI Synthesis, Product Health & Insights Summary
 
-Module 2 · Lab 1. Scenario: RouteLogic Velocity. Dataset: 12 user-research notes and 10 bug reports.
+RouteLogic Velocity. Dataset: 12 user-research notes and 10 bug reports.
 
-## Responses
+## Research baseline
 
-### Step 1 · Truth baseline
-
-**Moment of misery / red flag #1 (e.g., “user gave up after 3 tries”)**
+### Delayed dispatch and status updates
 
 Route changes reach the driver 8 to 15 minutes late, with no push notification, so drivers drive the wrong way (UXR-02, BUG-2044, Critical). Status runs late in the other direction too: delivered stops show "in progress" for 20 to 60 minutes (UXR-09, BUG-2072). Dispatchers keep a WhatsApp group as "the real system" and say "I can't trust the board."
 
-**Moment of misery / red flag #2**
+### Delivery confirmation at the doorstep
 
 Marking a stop delivered takes three taps on three screens, at a doorstep, in the rain, with a package in one hand. Drivers text the dispatcher instead (UXR-01, BUG-2055, logged as the top frontline complaint). "Start route", used 30 times a day, is buried under features added in updates (UXR-11, BUG-2079).
 
-**Moment of misery / red flag #3**
+### Lost routes and offline failure
 
 The app loses the route. It crashes on Android once a route passes about 40 stops and drops the remaining stops (UXR-03, BUG-2031, Critical). Offline, it shows a blank stop list, which blocks rural routes (UXR-06, BUG-2050). Five of seven drivers carry a paper manifest "just in case the app dies" (UXR-12).
 
-**The three, read through the module's lenses**
+### Evidence lenses
 
 - **Category.** All three are pain points. The need behind them is one job: finish every stop fast, often one-handed, on a route the driver and the dispatcher both trust. The behaviors are the workarounds: a WhatsApp group, texts instead of taps, paper manifests, morning screenshots.
 - **Say vs. do.** Each one rests on behavior, not only on opinion. Dispatchers run a WhatsApp group, drivers text instead of tapping, and five of seven carry paper. Each also has a bug report that confirms it in the system (BUG-2044 and BUG-2072, BUG-2055, BUG-2031 and BUG-2050).
 - **Core-values filter.** Velocity's stated value is to be the fastest tool for everyday work. All three block exactly that. The route optimizer complaint (UXR-05, BUG-2068) is real and costs drivers every day. But it is about routing quality, not the speed of everyday actions, so it did not make my three.
 
-### Step 2 · Product Health & Insights Summary
+## AI-generated synthesis
 
 **Product Health & Insights Summary (Claude's output)**
 
@@ -75,24 +73,24 @@ The app loses the route. It crashes on Android once a route passes about 40 stop
 >
 > **Minor Technical Debt:** GPS pin drift of up to 200m in dense urban areas triggers false "arrived at stop" detection (BUG-2085). The onboarding tutorial cannot be reopened after first launch, and there is no in-app help for key flows (BUG-2090). Both are Low severity on their own. The onboarding gap adds to the discoverability problems in Theme 3.
 
-### Step 3 · Audit, compare & refine
+## Audit of the synthesis
 
-**Did the AI catch the specific moment of misery / pain point you found in Step 1?**
+### Coverage of the three failure patterns
 
-Yes, all three. The two-way sync failure is Theme 2, with the WhatsApp "real system" quote. The three-tap delivery is the first bullet of Theme 3. The crash, the blank offline route and the paper manifests open Theme 1. It also linked them the way I did: each failure feeds a backup system outside the app. And it caught one thing my baseline missed: BUG-2072 is filed as Medium, but the interviews show a bigger impact.
+The synthesis covers all three. The two-way sync failure is Theme 2, with the WhatsApp "real system" quote. The three-tap delivery is the first bullet of Theme 3. The crash, the blank offline route and the paper manifests open Theme 1. It also linked them the way I did: each failure feeds a backup system outside the app. And it caught one thing my baseline missed: BUG-2072 is filed as Medium, but the interviews show a bigger impact.
 
-**Did it smooth over a critical frustration into a generic bullet point?**
+### Detail lost in summarization
 
-Yes, in four places. First, the doorstep moment becomes "one hand free, outdoors, under time pressure". The rain, the package and the doorstep are what make three taps a misery, and they are gone. Second, the WhatsApp group appears only in a list of workarounds that "make the app's data less complete". For the dispatcher it is worse than that: coordination now runs in WhatsApp, so RouteLogic is no longer where they coordinate. Third, it calls the cost of overriding the route optimizer "small each time". The data shows a road closed for months and an override every day. Nothing in it measures that cost as small. Fourth, it treats what users say and what they do as equal evidence. Theme 3 rests on "all seven focus group drivers ranked the speed of core actions above any new feature". That is an opinion from a focus group. The stronger evidence from the same group is behavior: five of seven carry a paper manifest.
+Four details lose their force. First, the doorstep moment becomes "one hand free, outdoors, under time pressure". The rain, the package and the doorstep are what make three taps a misery, and they are gone. Second, the WhatsApp group appears only in a list of workarounds that "make the app's data less complete". For the dispatcher it is worse than that: coordination now runs in WhatsApp, so RouteLogic is no longer where they coordinate. Third, it calls the cost of overriding the route optimizer "small each time". The data shows a road closed for months and an override every day. Nothing in it measures that cost as small. Fourth, it treats what users say and what they do as equal evidence. Theme 3 rests on "all seven focus group drivers ranked the speed of core actions above any new feature". That is an opinion from a focus group. The stronger evidence from the same group is behavior: five of seven carry a paper manifest.
 
-**Did the AI try to suggest features or a roadmap despite the constraints?**
+### Scope discipline
 
-No. There is no roadmap or recommendations section. The closest it comes is restating missing features from the bug reports: "no single-tap option", "no retry queue", "cannot configure their home screen". It also says "each failure on its own is fixable". Those describe gaps, not a plan.
+There is no roadmap or recommendations section. The closest it comes is restating missing features from the bug reports: "no single-tap option", "no retry queue", "cannot configure their home screen". It also says "each failure on its own is fixable". Those describe gaps, not a plan.
 
-**Logic leak / hallucination #1 (e.g., “AI suggested a new search bar feature, roadmap leak”)**
+### Severity and customer attribution
 
 It re-rated severity and merged two customers into one. It raised two Medium bugs to High (BUG-2072, BUG-2079). It rated the onboarding problem High in Theme 3 and Low in Minor Technical Debt. It added a new Critical, "renewal risk at an enterprise account", citing UXR-10. UXR-10 is a regional manager and does not say enterprise. The enterprise account is UXR-04. So the executive summary's "at least one enterprise renewal is now at risk" joins two notes that may be different customers. Severity is the PM's call.
 
-**Logic leak / hallucination #2**
+### Unsupported causal claims
 
 It states things the data does not say. Theme 3 is "raised ... by warehouse and ops leads", but the warehouse lead (UXR-07) talks about photo uploads, which is Theme 1. Theme 5 says the admin reporting "depends on data entered by frontline users". That is plausible, but no note says it. It is the link that turns a usability problem into a buyer problem, so I treat it as an assumption, not a finding.
