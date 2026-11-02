@@ -2,15 +2,17 @@
 
 **Author:** Antje Barth · **Status:** Draft · **Target:** High-Fidelity Prototype · **Persona:** fleet coordinator
 
+**Refined on 2026-11-02.** This is the proposed interaction contract, not a production implementation. The supplied 14.6 minutes is a scenario mean. The median ≤ 3-minute usability bar is unproven. VEL-01 owns pilot readiness, measurement and shipping decisions. The hosted prototype still has the known “Other” note-label gap recorded in the [sprint debrief](prd-and-prototype.md).
+
 ---
 
 ## 1. The Big Picture
-- **Vision:** A fleet coordinator logs every compliance check in about 3 minutes, right after assigning the route. No check counts as passed unless the coordinator confirmed it.
-- **Press release:** **RouteLogic cuts compliance logging from 14.6 minutes to about 3.** Fleet coordinators assign routes, log compliance checks and hand off shifts every day. Compliance logging is where that day breaks. 71% of coordinators finish assigning routes, but only 48% go on to log compliance in RouteLogic. The new checklist opens with one tap from the route the coordinator just assigned. Driver, vehicle, route, date, shift and coordinator are already filled in from RouteLogic. The coordinator answers each check with one tap and submits once.
+- **Vision:** A coordinator records compliance from the assigned route, with each answer explicit and the saved result visible.
+- **Press release, proposed benefit:** **RouteLogic would put compliance recording in one checklist.** The scenario's mean logging time is 14.6 minutes against a 3-minute benchmark. Its coordinator funnel falls from 71% at route assignment to 48% at compliance. B1 tests whether reusing route details and reducing navigation removes recording friction. No supplied interview describes compliance logging, so current-flow observation must verify the mechanism before build.
 
-  **Faster, and the record stays complete.** Every check starts blank, so nothing counts as passed until the coordinator taps Pass. A failed check needs a reason from a short list. The log cannot be submitted until every check has an answer. Managers get the same compliance record they rely on today, filled in completely.
-- **Success metric:** compliance-step completion, the share of coordinators who finish logging compliance checks in RouteLogic. Baseline 48%, target 60% across the 3 pilot accounts by the end of the 4-week pilot.
-- **Guardrail:** record accuracy holds, meaning records corrected or flagged in audit do not rise. The share of checks marked Fail must not collapse, which would signal rubber-stamping. The CS lead also tracks manager Compliance CSAT, which must stay at 3.9 or higher.
+  **Every check starts blank.** A Pass takes one tap. A Fail needs a reason. Submit saves only a complete response. The proposed record format and correction process must be confirmed with the compliance owner. A tap proves an answer was recorded, not that a physical check occurred.
+- **Success metric:** +12 points in daily compliance completion versus concurrent control, using [VEL-01's fixed workday denominator and ordered policy](../05-experimentation/experimentation-plan.md). The scenario's 48% → 60% illustrates that effect, not an absolute ship rule.
+- **Guardrail:** audited correction/flag deterioration ≤ 2 points versus control. A Fail-rate ratio below 0.5 triggers an audit and pauses shipping. These planning boundaries require compliance-owner agreement before exposure. Manager CSAT is descriptive because managers see both arms.
 
 ---
 
@@ -34,8 +36,8 @@ As a fleet coordinator, I want one tap per check and a reason only on a Fail, so
 
 **US3. Submit once and know it is saved (M5, M6)**
 As a fleet coordinator, I want to submit once and see that it saved, so that I can get back to dispatch knowing the record is complete.
-- Submit stays inactive until all 12 items are answered and every Fail has a reason.
-- One tap saves exactly one record for that route and shift.
+- Before completion, Submit can be activated to reveal what is missing but cannot save. All 12 items, every Fail reason and any required Other note must be complete before a write.
+- One valid tap saves one record for the account's date + route + shift key. Production must enforce uniqueness at storage, not only by disabling the button.
 - The confirmation screen shows the number of passes and fails, each failed item with its reason, and the time taken.
 - On the route list, that row changes from "Log compliance" to "Logged hh:mm".
 
@@ -55,9 +57,9 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 - The checklist: 12 items on one scrolling page, with no tabs or pages. Each item has:
   - the item label
   - Pass and Fail buttons side by side, both unselected to start
-  - on Fail: a reason dropdown (Missing, Expired, Damaged, Not performed, Other), plus a note field that is optional unless the reason is Other.
+  - on Fail: a reason dropdown (Missing, Expired, Damaged, Not performed, Other), plus a note field that is optional unless the reason is Other. Other requires at least 5 non-whitespace characters.
 - A counter: "9 of 12 answered". A Fail counts as answered, even before its reason is chosen.
-- A Submit button that sits at the bottom of the screen. It reads "Answer 3 more" while items are open, "Add 1 reason" when only fail reasons are missing, and "Submit compliance log" when complete.
+- A Submit button at the bottom. Validation priority is unanswered items, missing Fail reasons, then a missing or short Other note. Labels are "Answer 3 more", "Add 1 reason", "Add a note", and "Submit compliance log" when complete. Before completion, activation scrolls to and identifies the first missing input without saving. Only an in-progress or finished save disables activation.
 - A discard dialog for leaving mid-checklist: "Leave without saving? Your answers will be lost." with Leave and Stay buttons.
 
 **Screen 3: Compliance Logged (confirmation)**
@@ -65,7 +67,7 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 - Summary line: "11 passed · 1 failed · Logged in 2:14 at 08:42".
 - A list of failed items, shown at the top, with each reason and note.
 - Primary button: "Back to today's routes". There is no "Next vehicle" button. That is S2.
-- Prototype-only event log panel, collapsed by default. It lists M6 events with timestamps and is used to run the Evals.
+- Prototype-only event log panel, collapsed by default. It lists M6 events with timestamps for interaction checks. Demo timestamps do not measure real-world logging speed.
 
 ### Functional requirements
 
@@ -74,9 +76,9 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 | FR1 | The checklist opens in 1 tap from any route row that has a driver and vehicle. All 12 items sit on one scrolling screen. | M1 |
 | FR2 | 6 header fields are copied word for word from the route record. 0 fields can be edited. 0 characters are typed outside fail notes. | M2 |
 | FR3 | 100% of items start blank. Each answer takes exactly 1 tap. There is no control that answers more than 1 item at once. | M3 |
-| FR4 | Every Fail needs exactly 1 reason from the 5-option list. The reason "Other" needs a note of at least 5 characters. | M4 |
-| FR5 | Submit saves only when 12 of 12 items are answered and every Fail has a reason. One tap writes one record with the fields routeId, vehicleId, driverId, date, shift, coordinatorId, submittedAt, and items[] holding itemId, result, reason and note. | M5 |
-| FR6 | Only 1 record can exist per route per shift. After submit, the button is disabled within the same tap, and the route row shows "Logged hh:mm". | M5 |
+| FR4 | Every Fail needs exactly 1 reason from the 5-option list. The reason "Other" needs a note of at least 5 non-whitespace characters. | M4 |
+| FR5 | Submit saves only when all 12 items, Fail reasons and required Other notes are complete. Earlier activation shows the missing input and saves nothing. One valid tap writes one record with routeId, vehicleId, driverId, date, shift, coordinatorId, submittedAt and items[] containing itemId, result, reason and note. | M5 |
+| FR6 | Within an account, at most 1 record exists for date + routeId + shift. Disable Submit during and after the save; production storage must reject duplicate keys across devices and reloads. The row shows "Logged hh:mm". The prototype demonstrates only session-level blocking. | M5 |
 | FR7 | Events are logged with millisecond timestamps: `checklist_opened` (routeId), `item_answered` (itemId, result, on every change), `checklist_submitted` (routeId, recordId). Time taken is `checklist_submitted` minus `checklist_opened`. | M6 |
 
 ### Smart behaviors (Situation → Outcome)
@@ -84,21 +86,21 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 | Situation | Outcome |
 |---|---|
 | Coordinator taps Fail on an item | The reason dropdown appears inline under that item and takes focus. |
-| Coordinator chooses the reason "Other" | The note field becomes required. Submit stays inactive until the note has at least 5 characters. |
+| Coordinator chooses the reason "Other" | Require a note of at least 5 non-whitespace characters. If it is missing or short after the other fields are complete, Submit reads "Add a note". Activation focuses the note and saves nothing. |
 | Coordinator switches an item from Fail to Pass | The reason and note are cleared, so no leftover reason is saved with a Pass. |
-| Coordinator taps Submit while items are unanswered | Nothing saves. The page scrolls to the first unanswered item and outlines it in red until it is answered. |
-| Every item answered, but a Fail has no reason yet | The counter shows 12 of 12. Submit reads "Add 1 reason" and stays inactive. |
-| Last item answered and every Fail has a reason | Submit changes to "Submit compliance log" and becomes active. |
+| Coordinator activates Submit while items are unanswered | Nothing saves. Scroll to the first unanswered item and show a text error with a visible outline until answered. |
+| Every item answered, but a Fail has no reason yet | The counter shows 12 of 12. Submit reads "Add 1 reason". Activation focuses the missing reason and saves nothing. |
+| All items, reasons and required Other notes complete | Submit reads "Submit compliance log". Activation saves once, then disables the control. |
 | One or more items failed at submit | The record saves as complete, because a Fail is a valid answer. Screen 3 lists the failed items first. |
 | Coordinator presses Back with any item answered | The discard dialog appears. Choosing Leave saves nothing. |
 | Coordinator presses Back with nothing answered | Returns to Screen 1 with no dialog. |
-| Route already logged this shift | The row shows "Logged hh:mm". The checklist cannot be reopened for a second record. |
+| Date + route + shift already logged in this account | The row shows "Logged hh:mm". A second record is blocked. Corrections follow the agreed audit process rather than creating another log. |
 | Route has no driver or vehicle | The checklist does not open. The row shows the "Assign a driver and vehicle" message. |
 
 ### Technical constraints
 - **No external APIs.** All data is hard-coded mock data: 1 coordinator, 1 account, 5 routes (1 of them with no driver), 12 checklist items, 5 fail reasons.
 - **No login.** The coordinator is hard-coded.
-- **useState only.** No Redux, Context, localStorage, IndexedDB or backend. A page refresh resets everything, as intended.
+- **useState only.** No Redux, Context, localStorage, IndexedDB or backend. Refresh resets the demo. Session-level duplicate blocking is not evidence of durable uniqueness. Production persistence, date-key uniqueness and the audit-correction integration must be implemented and verified before pilot exposure.
 - **No routing library.** One state variable switches between the 3 screens.
 - **No AI or model calls of any kind.** Nothing in this feature is generated.
 - **Desktop only, 1280 px wide.** No mobile layout, because B4 is cut.
@@ -125,27 +127,27 @@ As a fleet coordinator, I want to submit once and see that it saved, so that I c
 1. **Route data missing.** A route with no driver or vehicle cannot open a checklist. The prototype never fills a gap with a guess or a default.
 2. **Pre-filled details are wrong.** The header is read-only. The coordinator follows "Fix them in route assignment", so corrections happen in the existing flow. The checklist never holds data that differs from the route record.
 3. **Coordinator leaves mid-checklist.** The discard dialog appears, and nothing is saved, so no partial record is created. In the event log, an open with no submit counts as abandoned.
-4. **Double-tap on Submit.** The button disables within the same tap, so exactly 1 record is written.
-5. **Second log attempt for the same route.** It is blocked by FR6.
-6. **"Other" chosen with an empty note.** Submit is blocked.
-7. **Safety guard against made-up answers.** Header fields are the only values the system writes. They are copied from the route record and never inferred. Every item result in a saved record must have a matching `item_answered` event from a tap. If any result has no matching tap event, the record does not save, and the eval counts it as a safety failure.
+4. **Double-tap on Submit.** Disable activation during the write. Production enforces the date + route + shift key even when two devices submit.
+5. **Second log attempt for the same date, route and shift.** Block it under FR6. A new date permits the next scheduled log. Refreshing the prototype resets the demo and does not test persistence.
+6. **"Other" chosen with an empty or short note.** Once other inputs are complete, Submit reads "Add a note". Activation focuses that note and saves nothing.
+7. **Guard against automatic answers.** Copy header fields from the verified route record. Every saved item result must match the latest `item_answered` tap event for that item. A mismatch blocks saving. This checks interface behavior, not whether the coordinator performed the physical inspection. Audits and VEL-01's live safety monitoring address that separate risk.
 
 ### Decision log
 
 | # | Decision | Rejected alternative | Why |
 |---|---|---|---|
-| D1 | Every item starts blank, with no bulk answer of any kind. | Answers ticked "Pass" in advance, or a "Mark all as pass" button. That would be the fastest option. | A pass nobody checked is a guessed record, and it breaks the record accuracy guardrail. Even with one tap per item, 12 items fit inside the 3-minute target. |
+| D1 | Every item starts blank, with no bulk answer of any kind. | Answers ticked "Pass" in advance, or a "Mark all as pass" button. That would be the fastest option. | Pre-ticked answers could create a complete-looking record without an explicit response. Blank checks reduce that interface risk, but cannot prove a physical inspection. Timed sessions will test whether the proposed 12-item flow fits the 3-minute usability bar. |
 | D2 | The "compliance not yet logged" marker (S1) stays out of sprint 1. The entry row only switches between "Log compliance" and "Logged hh:mm". | Status badges and an outstanding-count on Screen 1. | The marker nudges completion, but logging is no faster with it. Sprint 1 capacity goes to M1 to M6 so that 2 of the pilot's 4 weeks stay free for measuring. The "Logged" state exists only to block duplicate records (FR6). |
 
 ### Evals
 
 | # | Eval | Target | How it is measured |
 |---|---|---|---|
-| E1 | **Time on task** | Median of 3:00 or less from open to submit for the 12-item checklist, against today's 14.6-minute baseline | `checklist_submitted` minus `checklist_opened`, in timed sessions with pilot coordinators. At least 5 sessions per account, 15 in total. |
-| E2 | **Pre-fill accuracy and record completeness** | 100% of header fields match the mock route record. 100% of saved records have 12 of 12 items answered and a reason on every Fail. | Compare each saved record against the route record and FR4/FR5, across all 15 sessions. |
-| E3 | **Safety triggers** | 0 item results without a matching tap event. 0 records written for routes with missing data. 0 duplicate records per route and shift. | Check the event log against the saved records. Any single occurrence blocks the prototype from going to the pilot. |
+| E1 | **Time on task** | Proposed prototype median ≤ 3:00 from open to submit for the verified checklist. This is an unproven usability bar. | Five timed sessions per account, 15 total, using `checklist_submitted` minus `checklist_opened`. Record time spent checking versus entering data. The scenario's 14.6 is a mean; measure control and variant mean and median separately before claiming savings. |
+| E2 | **Header mapping and record validation** | Every saved demo header matches its fixture; every required answer, reason and Other note passes FR4/FR5. | Run deterministic checks of all validation states and inspect the 15 usability sessions. These sessions do not establish production accuracy or truthful inspection. |
+| E3 | **Write guards** | No result without a matching tap event; no write for missing assignment data; no duplicate date + route + shift record. | Test happy and failure paths, repeated taps and duplicate keys. The local demo covers session behavior; production storage, reload and multi-device cases require separate verification before exposure. A failed guard holds the build. |
 
-The primary metric, 48% to 60% compliance-step completion, is read in the 4-week pilot across the 3 accounts, not in the prototype. E1 to E3 decide whether the build is ready for the pilot.
+The 15 sessions assess usability and reveal problems. They do not prove completion lift, an error-rate bound or production reliability. E1 to E3 belong to [VEL-01's pre-exposure implementation gate](../05-experimentation/experimentation-plan.md#overview), after build weeks 1 and 2. The earlier pre-build evidence gate confirms observed mechanism, checklist fit, enrollment, power, feasible measurement/audit design and staffing, then starts the four-week plan. Before randomization, implemented both-arm telemetry, persistence/write guards, the 15 usability sessions and canary must pass. A failure holds exposure and moves the read without shortening the 14-day test. The pilot uses VEL-01's fixed workday denominator, ordered decision policy and live harm monitoring.
 
 ## MoSCoW scope
 - **Must:**

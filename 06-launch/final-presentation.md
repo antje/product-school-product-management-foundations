@@ -17,4 +17,4 @@ The deck is a single HTML file built from the deliverables in this repo. Each sl
 
 ## The final showcase _(optional)_
 
-A seven-minute walkthrough of the six content slides: the problem, the research, the blueprint, the validation, the launch plan and the story. It closes on the ask: fund the 4-week pilot of B1 at 3 accounts.
+A walkthrough covering the problem, research, blueprint, validation, launch plan and story. It closes on the ask: approve the pre-build evidence check, then fund the 4-week pilot of B1 at 3 eligible accounts if that gate clears.

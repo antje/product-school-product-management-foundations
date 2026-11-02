@@ -3,39 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>RouteLogic Velocity Roadmap</title>
 <style>
 :root{
-  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#eef1f5; --text:#14181f; --muted:#5b6472; --border:#dde1e7;
-  --accent:#0b5fff; --on-accent:#ffffff; --on-bar:#ffffff;
-  --qw-bg:#e3f5ea; --qw-fg:#13693a; --qw-bar:#178a4a;
-  --mp-bg:#e5edff; --mp-fg:#1c46b3; --mp-bar:#2f5fe0;
-  --fi-bg:#fff3d6; --fi-fg:#7a5000; --fi-bar:#a86f00;
-  --ts-bg:#fde6e6; --ts-fg:#a32020; --ts-bar:#c62f2f;
-  --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0f1217; --surface:#171b22; --surface-2:#1d222b; --text:#e8ebf0; --muted:#9aa3b2; --border:#2a313c;
-    --accent:#6c9bff; --on-accent:#0f1217; --on-bar:#0f1217;
-    --qw-bg:#11331f; --qw-fg:#7fe0a5; --qw-bar:#3cc777;
-    --mp-bg:#16244a; --mp-fg:#a8c0ff; --mp-bar:#7aa3ff;
-    --fi-bg:#3a2c08; --fi-fg:#f5cf6b; --fi-bar:#e6b23a;
-    --ts-bg:#3d1515; --ts-fg:#ff9d9d; --ts-bar:#f27070;
-    --shadow:none;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0f1217; --surface:#171b22; --surface-2:#1d222b; --text:#e8ebf0; --muted:#9aa3b2; --border:#2a313c;
-  --accent:#6c9bff; --on-accent:#0f1217; --on-bar:#0f1217;
-  --qw-bg:#11331f; --qw-fg:#7fe0a5; --qw-bar:#3cc777;
-  --mp-bg:#16244a; --mp-fg:#a8c0ff; --mp-bar:#7aa3ff;
-  --fi-bg:#3a2c08; --fi-fg:#f5cf6b; --fi-bar:#e6b23a;
-  --ts-bg:#3d1515; --ts-fg:#ff9d9d; --ts-bar:#f27070;
-  --shadow:none;
+  color-scheme:light;
+  --bg:#fafaf7; --surface:#ffffff; --surface-2:#f0f4f1; --text:#182d42; --muted:#526575; --border:#d9e2dd;
+  --accent:#176344; --on-accent:#ffffff; --on-bar:#ffffff;
+  --qw-bg:#e8f4ec; --qw-fg:#185a37; --qw-bar:#267b4b;
+  --mp-bg:#e8eef6; --mp-fg:#284f79; --mp-bar:#3b628b;
+  --fi-bg:#f8f0df; --fi-fg:#745316; --fi-bar:#9b752b;
+  --ts-bg:#f8e9e5; --ts-fg:#8b3c35; --ts-bar:#ad5147;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--muted) var(--bg)}
+::selection{background:var(--mp-bg);color:var(--text)}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .wrap{max-width:1180px;margin:0 auto;padding:28px 16px 56px}
 .q-qw{--bar:var(--qw-bar);--bg-q:var(--qw-bg);--fg-q:var(--qw-fg)}
@@ -46,19 +30,20 @@ body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-ap
 /* Header */
 .brand{display:flex;align-items:center;gap:12px}
 .logo{flex:none;width:42px;height:42px;border-radius:11px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-weight:800;letter-spacing:.02em}
-h1{font-size:1.6rem;line-height:1.2;margin:0;letter-spacing:-.01em}
+h1{font-size:1.6rem;line-height:1.35;margin:0;letter-spacing:-.01em}
 .sub{color:var(--muted);margin:2px 0 0;font-size:.92rem}
 .meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
-.meta li{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:.84rem;color:var(--muted)}
+.meta li{padding:2px 15px 2px 0;font-size:.86rem;color:var(--muted)}
+.readiness{margin:14px 0 0;padding-top:14px;border-top:1px solid var(--border);max-width:90ch;font-size:.88rem;color:var(--muted)}
 .meta b{color:var(--text);font-weight:600}
 
 /* Toolbar */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 16px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip,.icon-btn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:border-color .15s,box-shadow .15s}
-.chip:hover,.icon-btn:hover{border-color:var(--muted)}
+.chip{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:border-color .15s,box-shadow .15s}
+.chip:hover{border-color:var(--muted)}
 .chip[aria-pressed="true"]{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}
-.chip:focus-visible,.icon-btn:focus-visible,.card:focus-visible,.mdot:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip:focus-visible,.card:focus-visible,.mdot:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .swatch{width:10px;height:10px;border-radius:50%;background:var(--bar)}
 .chip .n{color:var(--muted);font-size:.78rem}
 .tally{color:var(--muted);font-size:.85rem;margin:0}
@@ -75,14 +60,12 @@ h1{font-size:1.6rem;line-height:1.2;margin:0;letter-spacing:-.01em}
 .empty{color:var(--muted);font-size:.88rem;text-align:center;padding:18px 12px;border:1px dashed var(--border);border-radius:10px;margin:0}
 
 /* Cards */
-.card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--bar);border-radius:12px;padding:14px 14px 12px;box-shadow:var(--shadow);transition:box-shadow .15s,transform .15s;min-width:0}
-.card.hl{box-shadow:0 0 0 2px var(--bar);transform:translateY(-1px)}
-.card.flash{animation:flash 1.2s ease}
-@keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--bar)}100%{box-shadow:var(--shadow)}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 14px 12px;transition:border-color .15s;min-width:0}
+.card.hl,.card.flash{outline:2px solid var(--bar);outline-offset:2px}
 .card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.fid{font:600 .74rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--muted)}
-.cut-tag{margin-left:6px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:0 5px}
-.card h3{margin:2px 0 0;font-size:1rem;line-height:1.3}
+.fid{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.74rem;font-weight:600;line-height:1.5;color:var(--muted)}
+.cut-tag{margin-left:6px;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:0 5px}
+.card h3{margin:2px 0 0;font-size:1rem;line-height:1.4}
 .badge{flex:none;white-space:nowrap;font-size:.74rem;font-weight:650;padding:3px 9px;border-radius:999px;background:var(--bg-q);color:var(--fg-q)}
 .why{margin:10px 0 12px;font-size:.92rem}
 .scores{display:flex;gap:18px;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
@@ -108,7 +91,7 @@ h1{font-size:1.6rem;line-height:1.2;margin:0;letter-spacing:-.01em}
 .matrix{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
 .qz{position:absolute;background:var(--bg-q);opacity:.55}
 .qz-label{position:absolute;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--fg-q);pointer-events:none}
-.mdot{position:absolute;width:34px;height:34px;margin:0;padding:0;border-radius:50%;background:var(--bar);color:var(--on-bar);font:700 .72rem system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:grid;place-items:center;border:2px solid var(--surface);cursor:pointer;transform:translate(-50%,50%);transition:transform .15s,opacity .15s;z-index:1}
+.mdot{position:absolute;width:34px;height:34px;margin:0;padding:0;border-radius:50%;background:var(--bar);color:var(--on-bar);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.72rem;font-weight:700;line-height:1.5;display:grid;place-items:center;border:2px solid var(--surface);cursor:pointer;transform:translate(-50%,50%);transition:transform .15s,opacity .15s;z-index:1}
 .mdot.cut{background:var(--surface);color:var(--fg-q);border:2px dashed var(--bar)}
 .mdot.hl{transform:translate(-50%,50%) scale(1.18);z-index:3}
 .mdot.dim{opacity:.18}
@@ -129,7 +112,10 @@ details.panel>summary::-webkit-details-marker{display:none}
 details[open] .chev{transform:rotate(90deg)}
 .cut-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
 .card.cut h3{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
-footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center}
+footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:left}
+.fid,.mdot{line-height:1.5}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{body{background:#fff;font-size:12px}.wrap{max-width:none;padding:12px}.toolbar{display:none}.lanes{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.lane{padding:10px}.card{padding:10px;break-inside:avoid}.count{display:none}.card.hidden{display:block!important}.panel{break-inside:avoid;margin-top:18px}.cut-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}#cut-empty{display:none!important}.matrix-layout{grid-template-columns:1fr 1fr}.chip{display:none}.readiness{font-size:12px}.why{font-size:12px}.badge,.scores{font-size:11px}.fid,.cut-tag{font-size:11px}footer{font-size:11px}}
 </style>
 </head>
 <body>
@@ -144,31 +130,33 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center}
     </div>
     <ul class="meta">
       <li><b>Team</b> 2 engineers + 1 designer + 1 CS lead</li>
-      <li><b>Primary metric</b> Compliance-step completion 48% → 60%</li>
-      <li><b>Guardrail</b> Record accuracy holds, Fail rate does not collapse, manager Compliance CSAT ≥ 3.9</li>
+      <li><b>Primary metric</b> Daily compliance completion +12 points versus concurrent control</li>
+      <li><b>Quality</b> Accuracy boundary +2 points; a Fail-rate ratio below 0.5 triggers an audit</li>
     </ul>
+    <p class="readiness"><b>Entry gate:</b> observe current work and confirm checklist fit, enrollment, power, feasible measurement/audit design and staffing before build. Then build for two weeks and verify implemented telemetry, write guards and usability before exposure. <a href="../05-experimentation/experimentation-plan.md">VEL-01 owns the ship and safety rules.</a> Refined 2 November 2026.</p>
   </header>
 
   <div class="toolbar">
     <div class="chips" role="group" aria-label="Filter by quadrant" id="chips"></div>
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
       <p class="tally" id="tally"></p>
-      <button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle colour theme"></button>
+
     </div>
   </div>
 
   <main>
+    <noscript><p>This interactive roadmap needs JavaScript. <a href="roadmap-prd-prototype.md">Read the complete roadmap and decisions.</a></p></noscript>
     <section class="lanes" aria-label="Roadmap lanes">
       <div class="lane" data-lane="now">
         <div class="lane-head">
-          <div><span class="lane-tag">NOW</span><p class="lane-title">Pilot</p><p class="lane-sub">4 weeks · 3 accounts</p></div>
+          <div><span class="lane-tag">NOW</span><p class="lane-title">Pilot</p><p class="lane-sub">4-week plan after evidence gate · 3 eligible accounts</p></div>
           <span class="count" id="count-now"></span>
         </div>
         <div class="lane-body" id="lane-now" style="display:flex;flex-direction:column;gap:12px"></div>
       </div>
       <div class="lane" data-lane="next">
         <div class="lane-head">
-          <div><span class="lane-tag">NEXT</span><p class="lane-title">GA Release</p><p class="lane-sub">Weeks 5-8</p></div>
+          <div><span class="lane-tag">NEXT</span><p class="lane-title">Conditional next step</p><p class="lane-sub">Rollout first; validate B3 before approval</p></div>
           <span class="count" id="count-next"></span>
         </div>
         <div class="lane-body" id="lane-next" style="display:flex;flex-direction:column;gap:12px"></div>
@@ -214,16 +202,16 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center}
       <summary>
         <div>
           <h2>Cut List</h2>
-          <p class="lede" style="margin:0">Not in Velocity. Each cut has a reason tied to the compliance step.</p>
+          <p class="lede" style="margin:0">Outside this pilot. Each cut protects the compliance test.</p>
         </div>
-        <span class="chev" aria-hidden="true">▶</span>
+        <span class="chev" aria-hidden="true">+</span>
       </summary>
       <div class="cut-grid" id="lane-cut"></div>
       <p class="empty hidden" id="cut-empty">No cut items match this filter.</p>
     </details>
   </main>
 
-  <footer>RouteLogic Velocity · Persona: fleet coordinator · Moment of misery: compliance logging at 14.6 min vs. a 3-min benchmark</footer>
+  <footer>RouteLogic Velocity · Persona: fleet coordinator · Scenario: 14.6-min mean compliance step vs. a 3-min benchmark. No measured time saving yet.</footer>
 </div>
 
 <script>
@@ -231,29 +219,28 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center}
   var Q = {qw:"Quick Win", mp:"Major Project", fi:"Fill-In", ts:"Time Sinker"};
   var items = [
     {id:"B1", name:"One-Click Compliance Checklist", lane:"now", q:"qw", v:5, e:2,
-     why:`Cuts the 14.6-minute compliance step toward the 3-minute benchmark by pre-filling only what RouteLogic already knows; coordinators still confirm every pass/fail item.`},
+     why:`Tests whether one checklist and verified route fields remove observed recording friction. Proposed median ≤3 minutes is a usability bar. After build, verify telemetry, write guards and usability before exposure. Ship only under VEL-01.`},
     {id:"B3", name:"Shift Handoff Wizard", lane:"next", q:"mp", v:4, e:3,
-     why:`Handoff is the next leak once compliance is fixed: 48% log compliance but only 31% finish the handoff, and handoff runs 6.8 minutes over benchmark.`},
+     why:`A validation candidate, not an approved build. Proceed only after sustained complete-day logging without confirmed harm, observed handoff needs and confirmed engineering/design capacity.`},
     {id:"B9", name:"Compliance Audit Trail Export", lane:"later", q:"fi", v:3, e:2,
-     why:`Protects the manager's compliance records, our guardrail, but does not speed up logging.`},
+     why:`Consider only if an observed audit gap justifies it and capacity is approved. It is outside the B1 experiment.`},
     {id:"B10", name:"In-App Coordinator Training", lane:"later", q:"fi", v:2, e:2,
      why:`The CS lead trains the 3 pilot accounts by hand; build only when new coordinators join at scale.`},
     {id:"B5", name:"Step Progress Indicator", lane:"cut", q:"fi", v:2, e:1,
-     why:`Folded into B1 as a "compliance not yet logged" marker instead of a separate feature.`},
+     why:`Cut as a separate feature. The marker is a should-have outside sprint 1; showing a missing log does not remove recording work.`},
     {id:"B7", name:"Contextual AI ETA Display", lane:"cut", q:"fi", v:1, e:2,
      why:`11% adoption and nothing to do with compliance logging.`},
     {id:"B2", name:"Smart Daily Report Auto-Fill", lane:"cut", q:"ts", v:2, e:4,
      why:`Wrong step, and one-click AI submit invites rubber-stamping that breaks the records guardrail.`},
     {id:"B6", name:"Driver Alert Notifications", lane:"cut", q:"ts", v:2, e:4,
-     why:`Late route changes (BUG-2044) are a reliability bug for engineering, not a Velocity feature, and they do not move compliance completion.`},
+     why:`Late route changes (BUG-2044) need a separate engineering owner. They are outside the compliance pilot, not dismissed as unimportant.`},
     {id:"B4", name:"Mobile-First Coordinator Dashboard", lane:"cut", q:"ts", v:3, e:5,
      why:`Rebuilds three flows with one designer.`},
     {id:"B8", name:"Fleet Analytics Manager View", lane:"cut", q:"ts", v:2, e:5,
-     why:`A Sales request for the buyer; the manager's satisfaction is a guardrail to hold, not a target.`}
+     why:`A Sales request outside the compliance step. Manager trust remains a descriptive signal, not a reason to add another dashboard.`}
   ];
 
   var active = new Set();
-  var root = document.documentElement;
 
   function pips(n){
     var s = "";
@@ -378,29 +365,10 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center}
     if (!matches(it)) { active.clear(); applyFilter(); }
     if (it.lane === "cut") document.getElementById("cut-panel").open = true;
     var c = document.getElementById("card-" + id);
-    c.scrollIntoView({behavior:"smooth", block:"center"});
-    c.classList.remove("flash"); void c.offsetWidth; c.classList.add("flash");
+    c.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"});
+    document.querySelectorAll(".card.flash").forEach(function(card){card.classList.remove("flash");}); c.classList.add("flash");
   });
 
-  // Theme
-  var btn = document.getElementById("theme-btn");
-  function current(){
-    if (root.dataset.theme) return root.dataset.theme;
-    return window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-  function label(){ btn.textContent = current() === "dark" ? "☀ Light mode" : "☾ Dark mode"; }
-  try { var saved = localStorage.getItem("rlv-theme"); if (saved) root.dataset.theme = saved; } catch(e){}
-  btn.addEventListener("click", function(){
-    var n = current() === "dark" ? "light" : "dark";
-    root.dataset.theme = n;
-    try { localStorage.setItem("rlv-theme", n); } catch(e){}
-    label();
-  });
-  if (window.matchMedia) {
-    var mq = matchMedia("(prefers-color-scheme: dark)");
-    if (mq.addEventListener) mq.addEventListener("change", label);
-  }
-  label();
 
   applyFilter();
 })();

@@ -2,42 +2,58 @@
 
 Module 1 · Deliverable 1.
 
+**Refined on 2026-11-02.** I began with drivers and delivery confirmation. Module 3's workflow and CSAT data moved the priority to coordinators and compliance logging. This page carries the current bet. The [Module 2 historical baseline](../02-discovery/competitive-and-journey.md#historical-baseline-the-original-driver-journey) keeps the earlier reasoning. All business and workflow figures below come from the course scenario. B1's improvement has not been measured.
+
 ## 1. Chosen scenario
 
 **Chosen path, which scenario are you committing to? (StreamLine or RouteLogic, or your own)**
 
 **Path:** RouteLogic Velocity (B2B)
 
-The risk is concrete and close. Our largest enterprise account is already trialing a leaner competitor, and the people who run fleets every day are using RouteLogic less.
+The scenario's largest enterprise account is trialing a leaner competitor while daily frontline use declines. I chose the operational simplicity problem because it connects a user workflow to an account decision.
 
 ## 2. The strategic crisis
 
 **Strategic crisis, based on the brief, if the company does nothing for 12 months, what happens to its market position?**
 
-> If we do nothing for 12 months, the company will lose the daily user while still winning the executive demo. Usage among the people who run fleets in real time is already falling. Our largest account is trialing a leaner rival because RouteLogic slows its most time-sensitive work. That trial is only the first visible exit. RouteLogic is sold as "the most powerful operating system". As daily work moves to texts, WhatsApp, paper and lighter tools, it shrinks to the back office admins log into for reports. A reporting layer on top of work done elsewhere is easy to replace.
+> RouteLogic risks becoming the reporting system managers buy while coordinators run the day elsewhere. The brief reports declining frontline use and our largest account's trial of a leaner rival. UXR-02 describes WhatsApp as "the real system". Losing that daily workflow threatens the reporting value, but the scenario does not quantify the revenue at risk or give the account's decision date.
 
 ## 3. The moment of misery
 
 **Moment of misery, what is the user likely doing outside the product (Google, spreadsheets, a competitor) because your tool isn’t serving them?**
 
-> The user is currently forced to leave RouteLogic right after assigning routes. Logging compliance checks takes the fleet coordinator 14.6 minutes against a 3-minute benchmark. 71% of coordinators finish route assignment, but only 48% go on to log compliance. The rest of the day runs in a WhatsApp group, "the real system" (UXR-02). Drivers feed it too. Marking a stop delivered takes three taps on three screens, so they text the coordinator instead (UXR-01, BUG-2055). Route changes reach drivers late, and delivered stops show "in progress" for up to an hour (UXR-02, UXR-09). Five of seven drivers carry a paper manifest in case the app dies (UXR-12). The system of record drifts away from what actually happened on the road.
+> Coordinator completion falls from 71% at route assignment to 48% at compliance logging. The compliance step has a supplied mean of 14.6 minutes against a 3-minute benchmark, and coordinators rate it 2.2 out of 5 while 77% use it daily. This is the step to investigate first. The interviews describe WhatsApp and an untrusted dispatch board, but no interview describes compliance logging or proves that compliance is done off-platform. Before build, observe current-flow sessions and check whether recording friction explains the gap.
+
+The driver problems remain in scope for separate engineering decisions: delivery confirmation takes three taps (UXR-01, BUG-2055), route changes arrive late (UXR-02, BUG-2044), and long routes can crash (UXR-03, BUG-2031). B1 does not fix them, so it cannot guarantee the renewal.
 
 ## 4. Problem hook
 
 **Problem hook, summarize the business risk and user pain into one urgent sentence.**
 
-> We must keep our largest account and win back daily use by making frontline work faster in RouteLogic than texts, WhatsApp and paper.
+> We must win back coordinators' daily use by removing verified compliance-recording friction, while preserving the records managers rely on.
 
 ## 5. Value proposition
 
 **Value proposition, based on the proposed initiative (Spotlight or Velocity), what is the new value and why is it urgent to launch now?**
 
-> For **fleet coordinators and their drivers**, we will **make daily work faster than texts, WhatsApp and paper**, because **our largest account is deciding during its trial**. The biggest gain is compliance logging, the slowest step. Finance reporting and other features the frontline never uses move off their screens, one step away for the managers who bought them.
+> For **fleet coordinators**, B1 would **reuse route details and make every compliance answer explicit in one checklist**, because **daily use is falling while our largest account evaluates a rival**. The pilot tests whether this improves completed daily logs without weakening record accuracy. The existing compliance obligations and record format stay in place.
+
+This is a proposed benefit. The 3-minute prototype median is an unproven usability bar, not a measured reduction from the scenario mean. The [pre-build evidence gate](../05-experimentation/experimentation-plan.md#overview) must confirm the actual workflow, checklist fit, enrollment, power, feasible measurement/audit design and staffing. Passing it starts the four-week plan. Build weeks 1 and 2 implement the flow and measurement. The pre-exposure implementation gate then verifies telemetry, write guards, usability and the canary before randomization. A failed check delays exposure and the read, not the 14-day test duration.
 
 ## 6. Cold-read self-review
 
 | Question | Your answer |
 |---|---|
-| Is the business risk high enough to justify a new initiative, a high-stakes threat, or a minor inconvenience? | A high-stakes threat, but not yet a funded one. The risk is wider than one account: the brief reports a broad decline in usage among the people who run fleets in real time. A skeptical finance reader would still ask for more. Open gaps: the account's revenue, its decision date, the cost, and whether anything can ship before the trial ends. |
-| Is the moment of misery a systemic problem or just an edge case? | Systemic. The brief reports a sharp decline in usage among the people who run fleets in real time. It says the extra layers turned a simple job into a struggle for the 95% who rely on RouteLogic daily. These are the core users, so this is more than a project to save one deal. The research confirms the workarounds: texts to the dispatcher (UXR-01) and a WhatsApp group as "the real system" (UXR-02). Five of seven drivers keep paper manifests (UXR-12), and one screenshots the route every morning (UXR-06). |
-| Does the value proposition actually remove the obstacle you identified, or is it a generic feature? | It removes it where the obstacle is the layers. The brief blames the layers ("administrative burden", "extra layers"), and the value proposition names the three actions it speeds up. The bar is "faster than the texts, WhatsApp and paper", not "fastest path in the product". The fastest path inside a slow product can still lose to a phone. The layers stay one step away for the executives who bought RouteLogic for them, so the buyer loses nothing. The research shows two kinds of slowness. Some is layers: three taps to mark a stop delivered, and "start route" buried under new features (BUG-2055, BUG-2079). Some is software faults: route changes that arrive late, crashes on long routes and a blank route offline (BUG-2044, BUG-2031, BUG-2050). Moving layers out of the way fixes the first kind only. There is no time baseline for start route or mark delivered. |
+| Is the business risk high enough to justify a new initiative, a high-stakes threat, or a minor inconvenience? | High stakes in the scenario: declining daily use and the largest account trialing a rival. The account's revenue and decision date are missing. Obtain both before deciding whether the pilot can affect that decision. |
+| Is the moment of misery a systemic problem or just an edge case? | The scenario funnel, mean time and CSAT point to compliance across coordinators. They do not prove the cause. Observe five sessions per pilot account before build, as VEL-01 requires, and validate the baseline on its fixed workday denominator. |
+| Does the value proposition actually remove the obstacle you identified, or is it a generic feature? | It removes the proposed recording obstacle if route-field copying and checklist navigation are the time cost. If required physical checks consume most of the 14.6 minutes, a faster form cannot remove that work. The pre-build observation must settle this before the estimate is approved. Sync and crash failures need separate owners. |
+
+## 7. Finalized hypothesis _(complete in Module 3)_
+
+> Based on dispatchers who "can't trust the board" and the scenario's 14.6-minute mean compliance step, I believe removing observed interface friction will increase fleet coordinators' daily compliance completion by at least 12 points versus concurrent control. I will protect compliance quality and decide at the fixed day-14 read. Enrollment, checklist fit, measurement design, and power must clear before build, with the implementation verified before exposure.
+
+[Module 3 hypothesis and metric definitions](../03-analytics/hypothesis-and-metrics.md#finalized-product-hypothesis) · [VEL-01 measurement and ordered decision rules](../05-experimentation/experimentation-plan.md).
+
+## Link to full artifact
+
+This file is the completed Problem Hook artifact. Supporting work: [current coordinator journey](../02-discovery/competitive-and-journey.md), [hypothesis and metrics](../03-analytics/hypothesis-and-metrics.md), and [B1 PRD](../04-roadmap/simplified-prd.md).

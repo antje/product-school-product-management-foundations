@@ -1,6 +1,8 @@
 # Roadmap, PRD & Prototype
 
-Module 4 · Deliverable 4. Scenario: RouteLogic Velocity. Team: 2 engineers, 1 designer and 1 CS lead, with a 4-week pilot at 3 accounts.
+Module 4 · Deliverable 4. Scenario: RouteLogic Velocity. Proposed team: 2 engineers, 1 designer and 1 CS lead for a 4-week pilot at 3 accounts.
+
+**Refined on 2026-11-02.** The four-week plan starts after VEL-01's pre-build evidence gate passes. Build weeks 1 and 2 are followed by a pre-exposure implementation gate. A failed implementation check delays randomization and the read. The 14.6-minute source is a scenario mean, not a measured saving. The prototype median of 3 minutes is an unproven usability bar. B3 is a candidate for validation after B1, not an approved weeks-5-to-8 build.
 
 ## Your strategic anchors
 
@@ -10,15 +12,15 @@ A fleet coordinator, the dispatcher in our research, who assigns routes, logs co
 
 **Primary success metric (M3), your leading indicator**
 
-Compliance-step completion: the share of coordinators who finish logging compliance checks in RouteLogic. Baseline 48%, target 60%.
+Daily compliance completion on scheduled workdays fixed before assignment, including non-use as zero. The target is +12 points versus concurrent control. The scenario illustration is 48% → 60%, but its app-opener baseline must be validated on the experimental denominator. [VEL-01 defines the estimator and readiness gate](../05-experimentation/experimentation-plan.md).
 
 **Moment of misery (M2), the specific friction blocking the goal**
 
-Logging compliance checks takes 14.6 minutes against a 3-minute benchmark. It is the step where the daily workflow breaks: 71% finish route assignment, 48% log compliance.
+The scenario mean is 14.6 minutes against a 3-minute benchmark. Completion falls from 71% at route assignment to 48% at compliance. Whether navigation or recording friction causes the drop is unproven and must be observed before build.
 
 **Guardrail metric (M3), what must not drop or break**
 
-Record accuracy holds and the share of checks marked Fail does not collapse. Manager Compliance CSAT stays at 3.9 or higher.
+Accuracy deterioration may not exceed 2 points versus concurrent control. A Fail-rate ratio below 0.5 triggers an audit and pauses shipping. The compliance owner agrees these planning boundaries before exposure. Manager CSAT is a descriptive trust signal. [VEL-01 owns the definitions and safety actions](../05-experimentation/experimentation-plan.md).
 
 ## Scan the backlog & set a human baseline
 
@@ -45,7 +47,7 @@ No. It was ruthless with both: the Sales request B8 scored 2 and the Engineering
 
 **Did it underweight something your M3 cohort/funnel data strongly supports?**
 
-Yes, the Shift Handoff Wizard (B3). The AI scored it 2 because it does not move the 48%. The funnel shows about a third of coordinators leaving at handoff: only 31 of 48 finish it. Once compliance is fixed, handoff becomes the bottleneck for the north-star, so it leads the Next lane.
+Yes, the Shift Handoff Wizard (B3). The AI scored it 2 because it does not move the 48%. The funnel shows about a third of coordinators leaving at handoff: only 31 of 48 finish it. If the compliance result holds, observe handoff next to see whether it becomes the constraint. B3 leads the Next lane as a validation candidate.
 
 ## Scoring
 
@@ -53,7 +55,7 @@ Final scores after the audit. Value is the lift on compliance-step completion. E
 
 | Feature | Value | Effort | Quadrant | Decision | Rationale |
 |---|---|---|---|---|---|
-| B1 One-Click Compliance Checklist | 5 | 2 | Quick Win | Now | Pre-fills what RouteLogic already knows, so the 14.6-minute step moves toward 3 minutes. Coordinators still confirm every item. |
+| B1 One-Click Compliance Checklist | 5 | 2 | Quick Win | Now | Tests whether reusing verified route fields and a single checklist removes observed recording friction. Every check still needs an answer. |
 | B2 Smart Daily Report Auto-Fill | 2 | 4 | Time Sinker | Cut | Wrong step. One-click AI submits invite rubber-stamping, which puts the records guardrail at risk. |
 | B3 Shift Handoff Wizard | 4 | 3 | Major Project | Next | The next leak after compliance: 31 of 48 finish the handoff, which runs 6.8 minutes over benchmark. |
 | B4 Mobile-First Coordinator Dashboard | 3 | 5 | Time Sinker | Cut | Rebuilds three flows with one designer. |
@@ -68,11 +70,11 @@ Final scores after the audit. Value is the lift on compliance-step completion. E
 
 **My “Now” lane (this sprint), the 2 to 3 quick wins I’ll build first**
 
-One item, on purpose: B1 One-Click Compliance Checklist. B5's "compliance not yet logged" marker folds into it as a should-have. The primary metric depends on one step, and the pilot has two engineers for four weeks. A second Now item would split them.
+B1 One-Click Compliance Checklist is the only Now item. B5's "compliance not yet logged" marker folds into it as a should-have. The primary metric depends on one step, and the pilot has two engineers for four weeks. A second Now item would split them.
 
 **What I cut, and the “no” I’m protecting the scope from**
 
-Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs, B8 manager analytics, and B5 as a separate feature. The "no" is to anything that does not touch the compliance step during the pilot. It protects both engineers' four weeks for B1. Cutting B2 also keeps one-click AI submits away from compliance records, which would put the guardrail at risk.
+Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs, B8 manager analytics, and B5 as a separate feature. We will not add work outside the compliance step to this pilot because the proposed team must build and test B1. B2 also introduces inferred answers into records that need explicit coordinator responses.
 
 **Prototype/roadmap screenshot link (paste into your deliverables)**
 
@@ -81,13 +83,15 @@ Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs
 ## High-level product roadmap
 
 ### NOW, Pilot (4 weeks, 3 accounts)
-- **B1 One-Click Compliance Checklist**, the only Now item. At week 4 we read completion against 60%, logging time against 3 minutes, record accuracy, the Fail rate, and manager CSAT at 3.9 or higher. The return at target is 11.6 minutes back per coordinator per day, for about two weeks of build by both engineers.
+- **Before build:** pass VEL-01's evidence gate: observed mechanism, checklist fit, enrollment and power, feasible measurement/audit design and staffing. Hold the build if the mechanism or sample does not fit.
+- **B1 One-Click Compliance Checklist**, the only Now item. Build weeks 1 and 2 implement the flow. Before exposure, verify both-arm telemetry, production write guards, 15 usability sessions and the canary. A failure holds randomization and moves the read while retaining the full 14-day test. The day-14 read follows [VEL-01's ordered decision rules](../05-experimentation/experimentation-plan.md#formalize-your-hypothesis--shipping-criteria), not an absolute 60% result. Safety monitoring can stop the variant earlier. The return is evidence about completion, quality and usability, not a promised number of minutes saved.
 
 ### NEXT, GA Release (weeks 5-8)
-- **B3 Shift Handoff Wizard**, the next leak in the funnel. B1 rolls out to all accounts if the pilot passes.
+- **B1 rollout, conditional:** the weeks-5-to-8 window is provisional, measured after the pre-build evidence gate passes. Eligible matching-checklist accounts expand only on a ship decision and the GTM wave gates. Delays move the window.
+- **B3 Shift Handoff Wizard, validation candidate:** observe the handoff after B1. Build approval requires sustained complete-day logging without confirmed harm, validation that B3 addresses the remaining obstacle, and confirmed engineering and design capacity. B1's result alone does not authorize B3.
 
 ### LATER, backlog
-- **B9 Compliance Audit Trail Export**, if B1 ships early or audits come up.
+- **B9 Compliance Audit Trail Export**, only if an observed audit gap justifies it and capacity is approved. It is not spare work inside the B1 experiment.
 - **B10 In-App Coordinator Training**, when new coordinators join at scale.
 
 ### ✂ Cut List
@@ -97,23 +101,24 @@ Six cuts: B2 report auto-fill, B4 mobile dashboard, B6 driver alerts, B7 AI ETAs
 
 - B1 depends on clean route data. A route without a driver or vehicle cannot open a checklist, so dispatch data quality is a pilot risk.
 - B1 keeps the existing compliance record format. Compliance and Legal review the checklist items and confirm nothing changes in what is legally required.
-- B3 and B9 both build on B1's records, so neither starts before B1 ships.
+- B3 and B9 need separate problem validation and capacity approval after B1. Neither is authorized by this pilot.
+- The proposed two-week B1 estimate must include control and variant telemetry, roster joins, flag operation, audit support and rollback. If those do not fit, simplify scope or move the start before locking the protocol. The test retains its full 14 days.
 - The roadmap is re-scored at the week-4 pilot read-out, with the new evidence.
 
-The balance is almost all core work, the 70% share: B1 and B3 fix an existing workflow. B9 is the adjacent 20%, protecting the buyer's records. There is no 10% innovation bet in the pilot. The one candidate, B2's AI auto-fill, is cut for its guardrail risk.
+Using the course's 70/20/10 horizon lens, B1 and the B3 candidate are core workflow work. B9 is adjacent. These are categories, not measured staffing allocations. The pilot funds only B1. It includes no innovation bet: B2's AI auto-fill is cut for its record-quality risk.
 
-![RouteLogic Velocity roadmap: Now, Next, Later and Cut List](images/roadmap.png)
+
 
 ## PRD snippets
 
 The key elements of the Simplified PRD for B1. The full version is in [`simplified-prd.md`](simplified-prd.md).
 
-- **Vision:** a fleet coordinator logs every compliance check in about 3 minutes, right after assigning the route. No check counts as passed unless the coordinator confirmed it.
-- **Success metrics:** compliance-step completion from 48% to 60% in the pilot. Guardrail: record accuracy holds, the Fail rate does not collapse, and manager Compliance CSAT stays at 3.9 or higher.
-- **MVP core value and happy path:** one outcome, a complete compliance log in about 3 minutes. The shortest path is route list, then 12 one-tap checks with a reason on any Fail, then submit and confirmation.
+- **Vision:** a coordinator can record compliance from the assigned route with every answer explicit. Prototype median ≤ 3 minutes is a usability hypothesis to test after observing the job.
+- **Success metrics:** +12 points in completed daily logging versus concurrent control, with VEL-01's sample, uncertainty, persistence and quality conditions met. Manager CSAT informs investigation, not the randomized effect.
+- **MVP core value and happy path:** route list, read-only header, 12 blank checks with a reason on any Fail, then submit and confirmation. Completeness records explicit answers, not proof that physical inspections occurred.
 - **Core rules:** the checklist opens in one tap from the assigned route. Six header fields come pre-filled and read-only. Every item starts blank and takes one tap. A Fail needs a reason. Submit stays blocked until every item has an answer.
-- **Guard against made-up answers:** every saved result must match a tap event. There is no "mark all as pass".
-- **Evals:** median time to submit of 3:00 or less, 100% complete records, and zero safety triggers before the pilot starts.
+- **Guard against automatic answers:** every saved result must match a tap event. There is no "mark all as pass". Record audits still need to check truthfulness.
+- **Evals:** proposed median time to submit ≤ 3:00 in 15 usability sessions, plus deterministic record validation and edge-case checks. These do not establish production accuracy or time savings. [The PRD](simplified-prd.md#evals) separates build checks from VEL-01's pilot gate.
 
 ## Wireframes / prototype
 
@@ -122,3 +127,9 @@ Clickable prototype of B1: [route-ready-checklist.lovable.app](https://route-rea
 ![Today's routes with R-104 logged and R-103 blocked](images/prototype-routes.png)
 
 ![Compliance checklist with one failed check and its reason](images/prototype-checklist.png)
+
+## Historical roadmap screenshot
+
+The original Module 4 screenshot below predates the 2026-11-02 review. Its automatic B3 schedule and time-saving assumption are superseded. [The current interactive roadmap](roadmap.html) is the authoritative plan.
+
+![Original Module 4 roadmap, retained as history before the revised evidence and rollout gates](images/roadmap.png)

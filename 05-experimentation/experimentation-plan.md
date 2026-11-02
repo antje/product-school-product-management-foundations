@@ -2,157 +2,163 @@
 
 Module 5 · Deliverable 5. Scenario: RouteLogic Velocity. Experiment: VEL-01 One-Click Compliance Checklist. Owner: Antje Barth (PM). Sign-off: the CS lead and the compliance owner.
 
+**Refined on 2026-11-02.** My original plan used an absolute 60% ship target, suggested repeated observations could rescue a small sample, and prohibited every early read. This version uses concurrent control, checks power before build, and separates the fixed efficacy read from live safety monitoring. The experiment has not run.
+
 ## Overview
 
-This is an A/B test of the One-Click Compliance Checklist (B1) inside the 4-week pilot. B1 takes the first two weeks to build. The test runs for the last 14 days, two full weekly dispatch cycles, with one fixed read at the end.
+VEL-01 tests whether B1 changes coordinators' daily compliance behavior. The proposed pilot has two weeks to build and two weeks to test at three accounts. Its four-week plan starts after the pre-build evidence gate. The pre-exposure implementation gate follows the build in weeks 1 and 2. If that gate fails, hold randomization and move the read date. The experiment still gets its full 14 days.
 
-**Why it matters.** Our largest account is trialing a leaner rival, coordinator NPS fell from +18 to -12, and four of five churned accounts cite complexity. Compliance logging is the step where coordinators leave RouteLogic. This test decides whether B1 rolls out to every account.
+**Why it matters.** Our largest account is trialing a leaner rival. The scenario's compliance step averages 14.6 minutes against a 3-minute benchmark. Whether navigation and retyping cause that gap is a hypothesis: no supplied interview describes compliance logging.
 
-**Why this method.** The question is whether one change moves one metric, so the experiment type is an A/B test. A pilot of about 540 coordinators sits below the usual 1,000-user guide for A/B tests. Measuring each coordinator's daily rate gives about ten observations per person instead of one. The stakes are high, so the test combines three methods:
+**Why this method.** An A/B test compares the B1 package with the existing flow. A login-bound feature flag controls exposure and rollback. A two-day canary at the end of week 2 checks stability before randomization. Its participants are excluded from the A/B sample because they have already seen B1. A multivariate test would ask about combinations and need more traffic. A fake door would measure interest, not completed, accurate logs.
 
-- **Canary:** at the end of week 2, the CS lead and two coordinators use B1 for two days to confirm it is stable.
-- **Feature flag:** the flag controls who sees B1 and allows instant rollback.
-- **Phased rollout:** if B1 ships, the 3 pilot accounts switch on fully in week 5. Every other account follows in weekly waves in weeks 6 to 8.
+**Pre-build evidence gate.** Antje records a pass or hold for each item before authorizing the two-week build. All must pass:
 
-A multivariate test would need about ten times the traffic. A fake door would only measure interest, and demand for a faster form is not in doubt.
+1. **Observe the job.** The CS lead observes five current-flow sessions per pilot account, 15 total. Record screens, retyped fields, checklist obligations, checking versus data-entry time, and why people leave. This small discovery sample tests the proposed mechanism, not lift. If B1 does not remove the observed obstacle, revise it before the build.
+2. **Confirm checklist fit.** The compliance owner matches each pilot's required items and record format to B1. Known mismatches are ineligible until account-specific configuration is scoped and the plan re-estimated.
+3. **Confirm enrollment and power.** Count eligible coordinators after canary exclusions, get prior daily rates, and check variance and account mix. The 540-person population is unconfirmed. If the available sample cannot meet the locked power calculation, hold, recruit more accounts, or approve a newly powered protocol before build and randomization.
+4. **Approve the measurement and operating design.** The compliance owner defines a completed daily requirement, an accurate record, and comparable audit sampling and follow-up in both arms. The pilot engineer confirms that roster joins, both-arm telemetry, assignment, persistence, and rollback fit the build estimate. Antje approves the analysis method, boundaries, audit capacity, staffing, and proposed 14-day window. These are design and feasibility decisions, not tests of an implementation that has not been built.
 
-**Instrumentation.** The M6 events from the PRD (checklist opened, item answered, submitted, time taken) are the experiment tags. The two engineers build them with B1 in weeks 1 and 2, and they must work in the canary before randomization starts.
+**Pre-exposure implementation gate, after the build.** Before day 1 of randomization, the pilot engineer verifies both-arm telemetry, denominator joins, assignment, production persistence, write guards, and rollback. The CS lead completes the PRD's 15 prototype usability sessions after build, distinct from the 15 current-flow observations before build. Then run the two-day canary planned for the end of week 2. Antje and the compliance owner confirm that the tested behavior, audit process, enrolled sample, and locked analysis still match the protocol. A failure holds exposure and moves the planned test and launch dates.
+
+**Instrumentation.** PRD M6 checklist events alone cannot count non-users. Join assignment and account/coordinator IDs to the work roster, route/shift obligations, app opens, completed records in both flows, block reasons, corrections, and audit outcomes. These joins and missing-event handling must pass the pre-exposure implementation gate and canary. A failed denominator or control-arm check holds randomization.
 
 ## What you're testing
 
 | Element | Detail |
 |---|---|
-| Hypothesis under test | B1 gets fleet coordinators to finish compliance logging in RouteLogic, lifting daily compliance-step completion from 48% to 60%. |
-| Experiment design (A/B, etc.) | A/B test, 50/50 by coordinator within each of the 3 pilot accounts, exposed through a feature flag tied to the login. |
-| Primary metric | Daily compliance-step completion, per coordinator, averaged per arm. |
-| Guardrail metric | Record accuracy, and the Fail rate as a check against rubber-stamping. |
-| Decision rule (ship / kill / pivot) | Ship at +12 points or more with p < 0.05 and both guardrails held. Iterate, investigate or kill otherwise. Read fixed at day 14. |
+| Hypothesis under test | B1 increases daily compliance-step completion by at least 12 percentage points versus concurrent control without degrading records. |
+| Experiment design (A/B, etc.) | 50/50 by coordinator within each of three eligible accounts, through a login-bound flag. |
+| Primary metric | Each coordinator's fraction of scheduled workdays with required compliance logging completed. Compare arm means at a fixed account mix. |
+| Guardrail metric | Audited record accuracy and the Fail-rate audit trigger. |
+| Decision rule (ship / kill / pivot) | Apply the ordered table below at day 14. No rollout on an invalid, inconclusive, underpowered, or harmful result. |
 
 ## Parameters
 
 | Parameter | Decision |
 |---|---|
-| Feature under test | B1 One-Click Compliance Checklist, as specified in the Simplified PRD |
-| Persona | Fleet coordinator who assigns routes, logs compliance checks and hands off shifts every day |
-| Expected outcome | Coordinators finish compliance logging in RouteLogic on the day they assign routes |
-| Primary success metric | Daily compliance-step completion, per coordinator, averaged per arm |
-| Baseline rate | 48% |
-| Guardrail metric | Record accuracy: records corrected or flagged in the compliance audit |
-| Guardrail boundary | No more than 2 points above control |
-| Second guardrail | Fail rate: share of checks marked Fail, not below half of control |
-| Minimum Detectable Effect | +12 percentage points (48% to 60%) |
-| Sample size per arm | 270 coordinators (540 in total) |
-| Traffic split | 50/50 by coordinator, within each of the 3 pilot accounts |
-| Test duration | 14 days, pilot weeks 3 and 4 |
-| Significance threshold | p < 0.05, two-sided |
+| Feature under test | B1 after observation and checklist-fit confirmation |
+| Persona | Fleet coordinator responsible for daily compliance logging |
+| Expected outcome | Required logs completed in RouteLogic by shift end |
+| Primary success metric | Account-standardized difference between coordinator daily completion rates |
+| Baseline rate | 48%, scenario reference among daily app-openers. Validate on the experimental denominator before build |
+| Guardrail boundary | Audited correction/flag rate no more than 2 points above concurrent control |
+| Second guardrail | Fail-rate ratio, variant/control, below 0.5 triggers an audit and pauses shipping |
+| Minimum worthwhile effect | +12 percentage points versus concurrent control |
+| Planning sample | 270 per arm, 540 total. Final eligible sample and power checked before build |
+| Traffic split | 50/50 within each account |
+| Test duration | 14 days after build and canary, two full weekly dispatch cycles |
+| Significance threshold | Two-sided p < 0.05. 95% confidence interval wholly above zero |
 
 ## Get your documents ready
 
 **From M3, your hypothesis sentence**
 
-Based on dispatchers who "can't trust the board" and 14.6-minute compliance logs, I believe faster compliance logging will get fleet coordinators to finish their day in RouteLogic. It will show as a 25% increase in compliance-step completion, from 48% to 60%.
+Faster compliance logging will increase coordinators' completed daily logs by at least 12 points versus concurrent control. At the scenario's 48% baseline this corresponds to 60%. An absolute 60% result alone does not establish lift.
 
 **From M3, your primary success metric & guardrail metric**
 
-Primary: compliance-step completion, 48% to 60%. Guardrail: record accuracy holds and the Fail rate does not collapse, with manager Compliance CSAT at 3.9 or higher.
+Primary: coordinator daily compliance completion. Guardrails: no more than 2 points of audit deterioration, and a falling Fail rate investigated before shipping. Manager Compliance CSAT is a descriptive pilot signal, not a randomized-arm outcome.
 
 **From M4, the feature you scoped in your PRD this is what you're testing**
 
-B1 One-Click Compliance Checklist. It is one screen, opened in one tap from the assigned route, with six read-only pre-filled fields. Each check takes one tap, every Fail needs a reason, and submit stays blocked until every check has an answer.
+B1 opens from the assigned route, pre-fills system data only, starts checks blank, requires reasons on Fails, and saves one complete record. The proposed prototype median of 3 minutes is an unproven usability bar, not evidence of mean task-time savings.
 
 ## Define your experiment parameters
 
 **Feature under test, pull from your M4 PRD**
 
-B1 One-Click Compliance Checklist, as specified in the Simplified PRD. We test the package. The decision is whether to ship B1 as a whole, so the lift is not attributed to any single part.
+Test the scoped B1 package, not its individual components. Observation may change it before the protocol locks. A material change after exposure requires a new test.
 
 **Persona, pull your M2 persona**
 
-A fleet coordinator, the dispatcher in our research, who assigns routes, logs compliance checks and hands off shifts every day.
+Fleet coordinators with compliance responsibility, enrolled before randomization. Module 2 began with drivers. Module 3 moved the bet after reconciling the funnel and CSAT data.
 
 **Expected outcome, the behaviour change you expect, from your M3 hypothesis**
 
-Coordinators finish compliance logging in RouteLogic on the same day they assign routes, instead of leaving the tool for WhatsApp and paper.
+Coordinators complete their required daily compliance logs in RouteLogic. Observation establishes today's workflow and workaround. The experiment tests the change.
 
 **Primary success metric, the one number that defines success, from M3**
 
-Daily compliance-step completion: the share of a coordinator's workdays on which they finish logging compliance checks in RouteLogic. It is computed per coordinator and averaged per arm. The base is coordinators who open RouteLogic that day, the same base as the M3 funnel. All randomized coordinators are analyzed, whether or not they use the checklist.
+Enroll coordinators scheduled for compliance work in both test weeks. For each coordinator, divide completed compliance workdays by scheduled workdays in the 14-day window. Fix the denominator from the roster before assignment. A successful day requires all required route/shift compliance logs completed by shift end, using the obligation definition the compliance owner approved before randomization. Non-use, including no app open, counts as zero. Remove planned absences before assignment. Do not drop unplanned non-use afterward.
+
+Average daily outcomes within each coordinator. Calculate variant minus control mean within each account, then weight those differences by the account's share of the eligible population fixed before assignment. This difference, Δ, is the primary estimate. Use coordinator-level variance within account strata for the confidence interval and p-value. Daily observations are not independent extra users. The pre-build power check uses this estimator. Broken telemetry makes the read invalid, not a zero-use result.
 
 **Baseline rate, today's rate of your primary metric, from your M3 data**
 
-48%. Among coordinators who finish route assignment, it is already about 68% (48 of 71), so the 60% target means about 85% of route assigners.
+The scenario's 48% uses daily app-openers. Our fixed roster also includes non-openers, so re-estimate baseline and variance on that exact base using the prior two full dispatch weeks before locking power. The scenario's 48/71 ≈ 68% and 60/71 ≈ 85% are daily conditional funnel ratios, not weekly first-use targets.
 
 **Guardrail metric & boundary, what must not break, and how far it can move before you investigate**
 
-Two guardrails, each against the control arm in the same weeks:
+- **Record accuracy:** share of submitted logs corrected or flagged under the same audit sampling and follow-up protocol in both arms. More than +2 points versus control pauses exposure and triggers investigation. Two points is a PM planning judgment, agreed with the compliance owner before exposure using baseline audit variation. Incomplete required audits at day 14 mean no ship.
+- **Fail rate:** share of matching required items marked Fail. A variant/control ratio below 0.5 triggers an audit and pauses shipping. This PM screening judgment is agreed before launch. It does not prove rubber-stamping or statistical significance. Check case mix, newly captured low-risk logs, real improvements, and rushed answers. All-Pass logs under 20 seconds are one diagnostic: 20/12 is under 2 seconds per item, a sensitive screen that may flag legitimate pre-checked work. With zero or too few control Fails, use the agreed audit instead of declaring the ratio passed.
 
-- **Record accuracy:** measured as the share of records later corrected or flagged in the compliance audit, including wrong pre-filled drivers or vehicles. Boundary: no more than 2 points above control. Two points is a judgment call, agreed with the compliance owner before launch, and the read checks it against the audit's normal week-to-week variation.
-- **Fail rate:** the share of checks marked Fail. More Fails can mean more honest logging. A collapse means coordinators are tapping Pass to clear the blocked submit. Boundary: not below half of the control rate. Honest logging should keep the Fail rate near control, so a drop by half is too large to be noise. All-Pass records submitted in under 20 seconds are reviewed as the diagnostic. Twenty seconds for 12 checks is under 2 seconds a check, too fast to have looked at anything.
+Antje and the compliance owner monitor harm daily. Antje orders immediate flag rollback through the pilot engineer on confirmed severe harm. The engineer is the backup flag operator. Severe means an incorrect B1 record caused an unsafe operational decision, or a matched audit confirms deterioration above +4 points, twice the agreed accuracy boundary. Other boundary breaches pause exposure pending an audit within two working days. A positive lift cannot override confirmed harm.
 
-Manager Compliance CSAT, which must stay at 3.9 or higher, is tracked across the whole pilot. It cannot be split by arm, because managers see records from both.
+Manager Compliance CSAT has a planning floor of 3.9, its scenario baseline. Managers see both arms, so it cannot identify an arm effect. A decline or written compliance concern triggers investigation.
 
 **Minimum Detectable Effect (MDE), the smallest improvement worth shipping, your floor**
 
-+12 percentage points, from 48% to 60%. That recovers half of the 23 points lost between route assignment (71%) and compliance (48%). A smaller lift would not remove the main barrier.
++12 points versus concurrent control. The PM's planning judgment is to recover roughly half the scenario's 23-point assignment-to-compliance leak: 12/23 ≈ 52%. This explains the bar. It does not validate the mechanism.
 
 **Sample size per arm, use the calculator in the builder, baseline + MDE**
 
-270 coordinators per arm, 540 in total, from the standard two-proportion formula: baseline 48%, MDE 12 points, 80% power, 5% significance. This assumes the 3 pilot accounts have 540 active coordinators. If they have fewer, running longer does not help, because it adds no coordinators. Power then comes from the per-coordinator daily rate, from adjusting for each coordinator's pre-pilot logging rate (CUPED), and from analyzing by account.
+The independent binary-outcome approximation gives n = 269.6, rounded up to 270 per arm, for 48% versus 60%, 80% power, and two-sided 5% significance. This is a planning calculation, not a power guarantee for the daily-rate estimator or extra shipping conditions. Verify enrollment and re-power from prior daily-rate variance, fixed account weights, and the segment/persistence checks before build.
+
+Fewer eligible users means hold and recruit, or agree a new design, sample, and read date before exposure. Repeated days, CUPED, or account stratification do not automatically rescue low power. The signed protocol locks the sample and analysis. An insufficient sample at read-out cannot produce a ship.
 
 **Traffic split & test duration, 50/50 standard · cover ≥ 2 weekly cycles**
 
-50/50 by coordinator, randomized within each account so the accounts balance. An even split is a real choice here, not a default. The coordinator population is small, and any other split would leave one arm too small to read. 14 days, pilot weeks 3 and 4, which covers two full weekly dispatch cycles.
+Randomize 50/50 within account to preserve precision. Assignment follows login on shared devices. Run 14 days after the canary. Check assignment and sample ratio at launch and daily. An unexplained sample-ratio p < 0.001 triggers a data hold. This planning alarm limits false alerts from ordinary imbalance. Do not interpret efficacy until assignment and exposure are resolved.
 
 **Significance threshold, p < 0.05 is standard, explain any deviation**
 
-p < 0.05, two-sided, with no deviation. There is one primary metric, so no multiple-comparison correction is needed. The guardrails are checks against harm, not extra chances to win.
+One primary comparison, two-sided p < 0.05 with its 95% interval wholly above zero. Account, shift, and tenure slices are diagnostic except for the locked account check below. A post-hoc segment cannot rescue the primary result.
 
 ## Define your control and variant
 
 **Control (A), the current experience, reference your M2 moment of misery and M3 funnel/workflow data**
 
-Today's compliance step. Coordinators log checks across several screens and re-type driver, vehicle and route details. It takes 14.6 minutes against a 3-minute benchmark. 71% finish route assignment, but only 48% log compliance, and the rest of the day runs in a WhatsApp group and on paper.
+The existing compliance flow, unchanged. Its scenario average is 14.6 minutes against a 3-minute benchmark. Several screens and retyped driver, vehicle, or route details are proposed causes, not observed facts. The 15 pre-build sessions establish the sequence and where time goes. If substantive inspection rather than interface friction explains the gap, change the variant and target before build.
 
 **Variant (B), your single change, copy the relevant screens & functional requirements from your M4 PRD**
 
-The B1 checklist from the PRD:
-
-- **Screen 1, Today's Routes:** each assigned route has a "Log compliance" button. Routes without a driver or vehicle show "Assign a driver and vehicle before logging compliance".
-- **Screen 2, Compliance Checklist:** a read-only "From RouteLogic" card with six fields, then 12 checks that start blank with one tap each. A Fail opens a reason list, and "Other" needs a note. Submit stays blocked until every check has an answer.
-- **Screen 3, Compliance Logged:** passes, fails and time taken, with failed checks listed first.
-- **Rules:** FR1 to FR7, including one record per route per shift and events logged for every step.
+- **Today's Routes:** checklist entry from an assigned route. Missing driver or vehicle blocks entry with an explanation.
+- **Compliance Checklist:** read-only system fields, initially blank checks, a reason on Fail and a note for Other. Submit is blocked until complete.
+- **Compliance Logged:** complete record with failed items first, reasons, and elapsed time.
+- **Rules:** FR1–FR7 in the [PRD](../04-roadmap/simplified-prd.md), plus the measurement contract above. Obligations and record format match control.
 
 **Isolation check, what has NOT changed?**
 
-Identical in both arms:
-
-- route assignment and the optimizer
-- the dispatch board
-- the shift handoff and daily report steps
-- the driver app and its notifications
-- the checklist items and the compliance record format
-- the app version
-
-The CS lead's onboarding uses the same general compliance script for both arms, before randomization, and never demos B1. The flag follows the login, not the device, so a control coordinator on a shared depot screen still sees control. Crossovers are logged.
+Route assignment, optimizer, dispatch board, handoff, daily reports, driver app, checklist obligations, record format, and app version stay the same in both arms. General onboarding is identical and never demonstrates B1 before assignment. Exclude canary participants. Log crossovers and analyze original assignment. No other Velocity change ships during the test.
 
 ## Formalize your hypothesis & shipping criteria
 
 **Your hypothesis (filled in)**
 
-I believe that B1, the One-Click Compliance Checklist, for fleet coordinators will result in more compliance logged in RouteLogic, as measured by a +12-point change in daily compliance-step completion within 14 days. We will protect record accuracy and the Fail rate throughout the test.
+I believe the observed-friction version of B1 will lift fleet coordinators' daily compliance completion by at least 12 points versus concurrent control over 14 days, while protecting accurate records. Both mechanism and effect remain unproven.
 
 **Your shipping criteria (filled in)**
 
-We will **ship** if daily compliance-step completion improves by 12 points or more at p < 0.05 after 14 days. Neither guardrail may reach its boundary. The lift must point the same way in at least 2 of the 3 accounts. And the week-2 lift must be at least half of week 1.
+Antje applies this table in order. The first matching row decides the outcome.
 
-We will **iterate** if the direction is positive but the lift is below 12 points. The next step is a sharper variant or more accounts, not a rollout.
+| Order | Condition | Decision and consequence |
+|---|---|---|
+| 1 | Assignment, telemetry, required sample, or the locked audit read is invalid or incomplete | **Investigate, no ship.** Hold exposure and rollout. Live harm stops still apply. Repair and rerun under a newly locked protocol if the causal read cannot be recovered. |
+| 2 | Severe B1 harm is confirmed | **Stop / kill this variant.** Disable B1, return to the old flow, and log the cause before redesign. This action can occur before day 14. |
+| 3 | Accuracy exceeds +2 points, a Fail-rate audit or compliance concern is unresolved, or an account's completion effect has a 95% interval wholly below zero | **Pause / investigate.** No expansion. Resolve the affected account and records before proposing another test. |
+| 4 | All of: Δ ≥ +12 points, p < 0.05, 95% interval wholly above zero, completed audits inside the accuracy boundary, resolved Fail concerns, positive effects in at least 2 of 3 accounts, and a positive week-2 effect at least half of week 1's | **Ship to eligible matching-checklist accounts**, starting with pilot accounts in week 5. |
+| 5 | The primary 95% interval is wholly at or below zero | **Kill this variant.** The sufficiently precise nonpositive result rejects it. Re-score the roadmap. |
+| 6 | Every remaining valid result, including small positive lift, an interval crossing zero, or failed persistence/account checks | **Iterate, no rollout.** Investigate the mechanism and plan a sharper variant or more accounts before a new test. |
 
-We will **investigate** if completion clears the bar but a guardrail breaks, or the accounts disagree. We find out who was harmed before any decision.
+The half-week persistence bar is a PM planning judgment screening a novelty-only result, not proof of durability. The 2-of-3 sign check prevents one account carrying the claim. A third account's noisy negative estimate is not automatically harm. Row 3 defines the harmful-account stop.
 
-We will **kill** if completion shows no improvement or moves down. We also kill if record accuracy is breached by more than twice its boundary, whatever the primary result.
-
-The read date is fixed at the end of day 14, which is the end of pilot week 4. No results are reviewed before then. Once the test is live, targeting, the variant and the metrics do not change. No other Velocity change ships to the pilot accounts during the test. A sample-ratio check runs at launch and at the read, and a split far from 50/50 makes the test invalid. The read covers all five questions: significance, lift against the MDE, the confidence interval, both guardrails, and the segments. The segments are account, shift (day or night) and coordinator tenure, since new coordinators struggle most with the current menus. A confidence interval that crosses zero means iterate, however good the midpoint looks. Median time to submit is reported alongside. It does not gate the decision, but it shows whether the time saving was the mechanism. Every outcome, including a kill, is logged with its rationale in the team's experiment library. A clean result ships on day 14 without reopening the debate.
+Read efficacy only at the end of day 14, planned as the end of pilot week 4 if both gates pass on schedule. Do not inspect interim lift to stop for success or change targeting, variant, or metric. Daily safety and data monitoring continue throughout. Report Δ, uncertainty, account effects, persistence, guardrails, and sample validity together. Log every outcome and rationale. Report elapsed-time mean and median separately. Subtracting the prototype median from the scenario mean cannot establish time savings.
 
 **Hardest parameter to define, and did it change your hypothesis? quick debrief**
 
-The guardrail. My first guardrail, "no rise in incomplete or failed records", had a flaw. In the variant, incomplete records cannot happen because submit is blocked, so that guardrail could never fail. And more Fails can mean coordinators finally log honestly. The real risk of a faster form is rubber-stamping. So the hypothesis now protects record accuracy and the Fail rate instead. The sample size was the second hardest. A B2B pilot has coordinators, not millions of users, and 540 active coordinators is an assumption.
+My first guardrail could never fail: blocked submit prevents incomplete records, and more Fails can mean honest logging. I changed it to accuracy and an audit of falling Fail rates. The review also caught my sample shortcut. Daily observations do not create independent coordinators. I now confirm eligibility, baseline variance, and checklist fit before build, and keep an inconclusive result inconclusive.
+
+## Findings & decision _(after running it)_
+
+**Not run.** There is no measured lift, guardrail result, or ship decision. The prototype demonstrates interface behavior on mock data. VEL-01 remains a proposed test. The pre-build evidence gate and pre-exposure implementation gate are both outstanding.
